@@ -122,6 +122,23 @@ export const MetaSchema = z
   })
   .strict();
 
+/** Wire schema for POST /api/trade/validate. */
+export const TradeSideSchema = z
+  .object({
+    team: z.string().regex(/^[A-Z]{2,4}$/),
+    playerIds: z.array(z.string().min(1)).max(8),
+    cash: z.number().int().nonnegative().max(50_000_000).optional(),
+    pickIds: z.array(z.string().regex(/^[A-Z]{2,4}-\d{4}-1st$/)).max(7).optional(),
+  })
+  .strict();
+
+export const TradeProposalSchema = z
+  .object({
+    leagueYear: z.literal("2026-27"),
+    sides: z.tuple([TradeSideSchema, TradeSideSchema]),
+  })
+  .strict();
+
 export type RosterFile = z.infer<typeof RosterFileSchema>;
 export type PicksFile = z.infer<typeof PicksFileSchema>;
 export type StatsFile = z.infer<typeof StatsFileSchema>;

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter, JetBrains_Mono } from "next/font/google";
+import { AppShell } from "@/components/shell/AppShell";
+import { loadMeta } from "@/lib/data/load";
 import "./globals.css";
 
 const display = Barlow_Condensed({
@@ -29,7 +31,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AppShell meta={loadMeta()}>{children}</AppShell>
+      </body>
     </html>
   );
 }

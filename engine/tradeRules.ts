@@ -498,7 +498,7 @@ export function validateTrade(proposal: TradeProposal, ctx: TradeContext): Verdi
         ? `Hard cap triggered at the first apron (${usdM(FIRST_APRON)})`
         : "First-apron hard cap: not triggered",
       detail: apron1Triggers.length
-        ? `This trade is legal, but ${apron1Triggers.join(" and ")} hard-caps ${t} at the first apron (${usd(FIRST_APRON)}) for the rest of ${LEAGUE_YEAR}. ${t} finishes at ${usd(s.postTotal)}, leaving ${usd(FIRST_APRON - s.postTotal)} of headroom under its new ceiling.`
+        ? `Legal in itself, but ${apron1Triggers.join(" and ")} hard-caps ${t} at the first apron (${usd(FIRST_APRON)}) for the rest of ${LEAGUE_YEAR}. ${t} finishes at ${usd(s.postTotal)}, leaving ${usd(FIRST_APRON - s.postTotal)} of headroom under its new ceiling.`
         : `${t} doesn't take back more than 100% of outgoing salary, so no first-apron hard cap is created by this trade.`,
     });
 
@@ -517,7 +517,7 @@ export function validateTrade(proposal: TradeProposal, ctx: TradeContext): Verdi
         ? `Hard cap triggered at the second apron (${usdM(SECOND_APRON)})`
         : "Second-apron hard cap: not triggered",
       detail: apron2Triggers.length
-        ? `This trade is legal, but ${apron2Triggers.join(" and ")} hard-caps ${t} at the second apron (${usd(SECOND_APRON)}) for the rest of ${LEAGUE_YEAR}.${apron1Triggers.length ? " The stricter first-apron cap above binds first." : ""} ${t} finishes at ${usd(s.postTotal)}.`
+        ? `Legal in itself, but ${apron2Triggers.join(" and ")} hard-caps ${t} at the second apron (${usd(SECOND_APRON)}) for the rest of ${LEAGUE_YEAR}.${apron1Triggers.length ? " The stricter first-apron cap above binds first." : ""} ${t} finishes at ${usd(s.postTotal)}.`
         : `${t} neither aggregates salaries nor sends cash, so no second-apron hard cap is created by this trade.`,
     });
 
