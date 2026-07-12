@@ -80,7 +80,7 @@ export function PlayersClient() {
           <select
             value={team}
             onChange={(e) => setTeam(e.target.value)}
-            className="rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm text-bone"
+            className="w-56 max-w-full rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm text-bone"
           >
             <option value="ALL">All seeded teams</option>
             {(teams.data?.teams ?? []).map((t) => (
@@ -129,8 +129,10 @@ export function PlayersClient() {
         <p className="font-mono text-[11px] text-silver">pick one more player to open the comparison radar (up to 4)</p>
       )}
 
-      {players.loading ? (
-        <p className="animate-pulse font-mono text-sm text-silver">loading players…</p>
+      {players.loading || stats.loading || teams.loading ? (
+        <div className="min-h-dvh">
+          <p className="animate-pulse font-mono text-sm text-silver">loading players…</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {list.map((p) => (

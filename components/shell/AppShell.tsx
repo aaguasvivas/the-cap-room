@@ -16,7 +16,7 @@ export function AppShell({ meta, children }: { meta: Meta; children: React.React
             </span>
           </Link>
           <span
-            className="rounded-sm border border-royal-bright/60 bg-royal-faint px-1.5 py-0.5 font-mono text-[11px] font-medium text-royal-soft"
+            className="rounded-sm border border-royal-bright/60 bg-royal-faint px-1.5 py-0.5 font-mono text-[11px] font-medium text-[#C4AEE8]"
             title="League year"
           >
             {meta.leagueYear}

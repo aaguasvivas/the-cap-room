@@ -52,7 +52,9 @@ export function CapClient() {
       </div>
 
       {!s ? (
-        <p className="animate-pulse font-mono text-sm text-silver">computing cap sheet…</p>
+        <div className="min-h-[560px]">
+          <p className="animate-pulse font-mono text-sm text-silver">computing cap sheet…</p>
+        </div>
       ) : (
         <>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">

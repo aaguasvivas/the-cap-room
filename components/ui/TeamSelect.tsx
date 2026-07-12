@@ -26,6 +26,7 @@ export function TeamSelect({
       <select
         id={id}
         value={value}
+        aria-label={label ? undefined : "Team"}
         onChange={(e) => onChange(e.target.value)}
         className="max-w-full min-w-0 rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm font-medium text-bone hover:border-royal-soft"
       >

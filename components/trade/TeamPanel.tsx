@@ -106,7 +106,8 @@ export function TeamPanel({
           <span className="font-display text-2xl font-semibold tnum text-bone">{usdM(outSalary)}</span>
         </div>
 
-        <ul className="max-h-72 space-y-0.5 overflow-y-auto pr-1" aria-label={`${team} roster, click to add to the deal`}>
+        {/* Fixed height so the arriving roster never shifts the layout below */}
+        <ul className="h-72 space-y-0.5 overflow-y-auto pr-1" aria-label={`${team} roster, click to add to the deal`}>
           {tradeable.length === 0 && (
             <li className="px-2 py-3 font-mono text-[12px] text-silver animate-pulse">loading roster…</li>
           )}
@@ -136,7 +137,7 @@ export function TeamPanel({
           </p>
         </div>
 
-        <div className="border-t border-graphite-line pt-3">
+        <div className="min-h-[76px] border-t border-graphite-line pt-3">
           <span className="font-mono text-[11px] uppercase tracking-wideish text-silver">first-round picks</span>
           {picks ? (
             <div className="mt-1.5 flex flex-wrap gap-1.5">
