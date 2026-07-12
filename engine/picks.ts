@@ -2,7 +2,7 @@ import type { FirstRoundPick, TeamCode, TeamPicks } from "./types";
 
 /**
  * Stepien rule: a team may not leave itself without a first-round pick in
- * consecutive future drafts. "Without" means traded away outright — a pick
+ * consecutive future drafts. "Without" means traded away outright; a pick
  * that is merely swap-encumbered still counts as having a first that year.
  *
  * Teams own their future firsts by default; the picks file records only the
@@ -38,7 +38,7 @@ export interface StepienResult {
  *
  * @param picks         the team's picks file (may be undefined → all firsts owned)
  * @param sentYears     draft years of own firsts sent out in this trade
- * @param receivedYears draft years of firsts received in this trade (any origin —
+ * @param receivedYears draft years of firsts received in this trade (any origin;
  *                      an incoming first covers that draft year)
  */
 export function checkStepien(

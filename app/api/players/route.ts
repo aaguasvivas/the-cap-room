@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { listTeams, loadRoster } from "@/lib/data/load";
 
-/** GET /api/players?team=SAC&q=mur — search seeded players. */
+/** GET /api/players?team=SAC&q=mur: search seeded players. */
 export async function GET(req: NextRequest) {
   const team = req.nextUrl.searchParams.get("team")?.toUpperCase();
   const q = req.nextUrl.searchParams.get("q")?.toLowerCase().trim();

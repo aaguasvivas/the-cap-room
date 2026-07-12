@@ -96,7 +96,7 @@ function buildExceptions(status: ApronStatus): ExceptionInfo[] {
       amount: BI_ANNUAL_EXC,
       available: !roomTeam && belowApron1,
       reason: !roomTeam && belowApron1
-        ? "Available while team salary stays at or below the first apron (and not used last season — assumed unused in this snapshot)."
+        ? "Available while team salary stays at or below the first apron (and not used last season; assumed unused in this snapshot)."
         : roomTeam
           ? "Unavailable: room teams renounce the BAE when they use cap space."
           : `Unavailable: team salary is above the first apron (${usd(FIRST_APRON)}).`,

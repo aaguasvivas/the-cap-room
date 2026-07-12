@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { statusLabel } from "@/engine/capsheet";
 import { loadAllCapSheets, loadMeta, loadRoster } from "@/lib/data/load";
 
-/** GET /api/teams — every seeded team with its cap position. */
+/** GET /api/teams: every seeded team with its cap position. */
 export async function GET() {
   const sheets = loadAllCapSheets();
   const meta = loadMeta();

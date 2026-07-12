@@ -8,7 +8,7 @@ const GLYPH: Record<RuleCheck["status"], string> = {
   fail: "✕",
   warning: "▲",
   pass: "✓",
-  "n/a": "—",
+  "n/a": "·",
 };
 
 const TONE: Record<RuleCheck["status"], { text: string; border: string; word: string }> = {

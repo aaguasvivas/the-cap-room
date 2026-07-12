@@ -5,7 +5,7 @@ import { usd, usdM } from "@/engine/format";
 
 /**
  * The hero gauge: team salary as a vertical level against the five CBA lines.
- * This is a threshold gauge, not a magnitude bar — the scale window is
+ * This is a threshold gauge, not a magnitude bar: the scale window is
  * [$130M, $245M] and says so with a broken-axis mark at its base.
  */
 const DOMAIN_MIN = 130_000_000;
@@ -64,7 +64,7 @@ export function Thermometer({
         strokeWidth={1}
       />
 
-      {/* Fill — the one orchestrated moment (CSS transition; reduced-motion kills it) */}
+      {/* Fill: the one orchestrated moment (CSS transition; reduced-motion kills it) */}
       <rect
         x={tubeX + 2}
         width={tubeW - 4}

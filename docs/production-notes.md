@@ -67,7 +67,7 @@ player_season_stats(
 ```
 
 Cap sheets, apron status, and trade validation stay in the **pure TypeScript
-engine** — the database stores facts, the engine computes meaning. The same
+engine**; the database stores facts, the engine computes meaning. The same
 engine package runs in the web app and in any nightly checks (e.g. "which
 teams are within one minimum contract of the second apron?").
 
@@ -85,7 +85,7 @@ teams are within one minimum contract of the second apron?").
 03:00  diff + notify     Slack digest: figures that changed overnight, with sources
 ```
 
-Failures stop the pipeline **before** load — exactly the posture the demo's
+Failures stop the pipeline **before** load, exactly the posture the demo's
 `validate-data` build gate takes. During the season, transaction events
 (trade calls, signings) enqueue an immediate re-pull rather than waiting for
 the nightly run.
@@ -95,6 +95,6 @@ the nightly run.
 - Next.js app authenticates against the front-office SSO; API routes read
   Postgres through a read-replica.
 - Trade validation remains synchronous and stateless: `POST /api/trade/validate`
-  loads the two cap sheets and runs the engine — no writes, trivially cacheable.
+  loads the two cap sheets and runs the engine: no writes, trivially cacheable.
 - Shareable trade URLs become short-lived rows (`proposals`) so scouts can pass
   links around without 500-character query strings.

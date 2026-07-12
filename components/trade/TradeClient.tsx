@@ -103,7 +103,7 @@ export function TradeClient() {
           Trade Machine
         </h1>
         <span className="font-mono text-[11px] text-silver">two-team trades · 2026-27 CBA</span>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex min-w-0 flex-wrap items-center justify-end gap-2">
           <Scenarios />
           <button
             className="rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide text-silver hover:border-royal-soft hover:text-bone"
@@ -119,7 +119,7 @@ export function TradeClient() {
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <TeamPanel
           sideLabel="Side A sends"
           idPrefix="a"
@@ -165,14 +165,14 @@ export function TradeClient() {
       {!evaluable ? (
         <Card>
           <p className="py-6 text-center font-mono text-sm text-silver">
-            Add at least one asset to each side — the full rule ledger renders the moment a deal exists.
+            Add at least one asset to each side. The full rule ledger renders the moment a deal exists.
           </p>
         </Card>
       ) : (
         <>
           <VerdictStamp verdict={verdict} validating={validating} />
           {verdict && (
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
               <div className="lg:col-span-2">
                 <RuleLedger verdict={verdict} />
               </div>

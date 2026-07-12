@@ -9,7 +9,7 @@ const MODULES = [
   {
     href: "/cap",
     title: "Cap Sheet",
-    blurb: "Team salary against the five lines, contracts three years out, and which exceptions are live — with the hard cap each one would trigger.",
+    blurb: "Team salary against the five lines, contracts three years out, and which exceptions are live, with the hard cap each one would trigger.",
   },
   {
     href: "/trade",
@@ -42,7 +42,7 @@ export default function Home() {
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-silver">
           A front-office console for NBA roster construction under the 2023 CBA: a pure, unit-tested
           rules engine with a war-room interface on top. Built as an engineering demo for the
-          Sacramento Kings — every figure traces to a dated public source.
+          Sacramento Kings. Every figure traces to a dated public source.
         </p>
       </div>
 
@@ -62,12 +62,12 @@ export default function Home() {
           </div>
           <p className="mt-1.5 font-mono text-[11px] text-silver">
             {usd(sac.totalSalary)} committed for {meta.leagueYear} · {usdM(LUXURY_TAX - sac.totalSalary)} under the tax line ·{" "}
-            {sac.standardCount} standard contracts — open the cap sheet →
+            {sac.standardCount} standard contracts · open the cap sheet →
           </p>
         </Link>
       )}
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {MODULES.map((m) => (
           <Link
             key={m.href}

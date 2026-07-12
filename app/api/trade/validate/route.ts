@@ -5,7 +5,7 @@ import { loadAllCapSheets, loadPicks } from "@/lib/data/load";
 import { TradeProposalSchema } from "@/lib/data/schemas";
 
 /**
- * POST /api/trade/validate — body is a TradeProposal, response is the
+ * POST /api/trade/validate: body is a TradeProposal, response is the
  * engine's Verdict: legal flag + the full itemized rule ledger.
  */
 export async function POST(req: NextRequest) {

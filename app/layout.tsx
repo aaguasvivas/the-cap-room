@@ -21,7 +21,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "THE CAP ROOM — NBA cap console (unofficial demo)",
+  title: "THE CAP ROOM · NBA cap console (unofficial demo)",
   description:
     "A front-office console for NBA roster construction under the 2023 CBA: cap sheet, trade validation with an itemized rule ledger, and player evaluation. Unofficial demo.",
 };

@@ -14,7 +14,7 @@ export function Card({
   return (
     <section className={`rounded-md border border-graphite-line bg-graphite-raised ${className}`}>
       {(title || action) && (
-        <header className="flex items-center justify-between gap-3 border-b border-graphite-line px-4 py-2.5">
+        <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-graphite-line px-4 py-2.5">
           {title ? (
             <h2 className="font-display text-base font-semibold uppercase tracking-wideish text-silver">
               {title}

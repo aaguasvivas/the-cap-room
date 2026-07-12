@@ -2,7 +2,7 @@ import { z } from "zod";
 
 /**
  * Zod schemas for every seed file in /data. The build fails if a seed file
- * is malformed (see scripts/validate-data.ts) — bad data never ships.
+ * is malformed (see scripts/validate-data.ts): bad data never ships.
  */
 
 export const SalarySchema = z
@@ -45,7 +45,7 @@ export const RosterFileSchema = z
     /**
      * The source's own published 2026-27 team total. scripts/validate-data.ts
      * recomputes team salary through the engine and fails the build if the
-     * seeded figures don't sum to this exactly — a typo can't ship.
+     * seeded figures don't sum to this exactly, so a typo can't ship.
      */
     publishedTotal: z.object({ "2026-27": z.number().int().nonnegative() }).strict(),
     players: z.array(PlayerSchema).min(1),

@@ -21,7 +21,7 @@ describe("Stepien rule", () => {
     expect(r.gaps).toEqual([[2028, 2029]]);
   });
 
-  it("passes when the gap year is only swap-encumbered — a swap still counts as a pick", () => {
+  it("passes when the gap year is only swap-encumbered, a swap still counts as a pick", () => {
     // 2028 swap-encumbered, sending 2027: 2027 gone, but 2028 counts.
     const r = checkStepien(picksWith([{ year: 2028, status: "swap", counterparty: "BOS" }]), [2027], []);
     expect(r.ok).toBe(true);

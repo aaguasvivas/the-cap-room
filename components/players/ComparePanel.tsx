@@ -14,8 +14,8 @@ export function ComparePanel({
   onRemove: (playerId: string) => void;
 }) {
   return (
-    <Card title={`Compare — league percentiles (${profiles.length} of 4)`}>
-      <div className="grid gap-4 lg:grid-cols-2">
+    <Card title={`Compare: league percentiles (${profiles.length} of 4)`}>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <RadarChart profiles={profiles} />
         <div className="overflow-x-auto">
           <table className="w-full min-w-[320px]">

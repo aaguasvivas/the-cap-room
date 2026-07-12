@@ -11,17 +11,17 @@ import { useRouter } from "next/navigation";
 const SCENARIOS = [
   {
     name: "Monk ⇄ Claxton",
-    note: "legal — flags the first-apron hard cap SAC creates by taking back more than 100%",
+    note: "legal: flags the first-apron hard cap SAC creates by taking back more than 100%",
     url: "/trade?a=SAC&b=BKN&give=1628370&get=1629651",
   },
   {
     name: "Hunter ⇄ Caruso + J. Williams",
-    note: "illegal — OKC finishes above the second apron and cannot aggregate two salaries",
+    note: "illegal: OKC finishes above the second apron and cannot aggregate two salaries",
     url: "/trade?a=SAC&b=OKC&give=1629631&get=1627936.okc-jaylin-williams",
   },
   {
     name: "LaVine + 2027 + 2028 firsts ⇄ Dončić",
-    note: "illegal — the pick package strips consecutive future firsts (Stepien rule)",
+    note: "illegal: the pick package strips consecutive future firsts (Stepien rule)",
     url: "/trade?a=SAC&b=LAL&give=203897&get=1629029&picksA=2027.2028",
   },
 ] as const;

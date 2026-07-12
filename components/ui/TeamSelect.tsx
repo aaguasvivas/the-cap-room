@@ -19,19 +19,21 @@ export function TeamSelect({
   exclude?: string;
 }) {
   return (
-    <label htmlFor={id} className="flex items-center gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-wideish text-silver">{label}</span>
+    <label htmlFor={id} className="flex min-w-0 items-center gap-2">
+      {label && (
+        <span className="font-mono text-[11px] uppercase tracking-wideish text-silver">{label}</span>
+      )}
       <select
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm font-medium text-bone hover:border-royal-soft"
+        className="max-w-full min-w-0 rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm font-medium text-bone hover:border-royal-soft"
       >
         {teams
           .filter((t) => t.team !== exclude)
           .map((t) => (
             <option key={t.team} value={t.team}>
-              {t.team} — {t.teamName} ({usdM(t.totalSalary)})
+              {t.team} · {t.teamName} ({usdM(t.totalSalary)})
             </option>
           ))}
       </select>

@@ -70,7 +70,7 @@ export function PlayersClient() {
         <span className="font-mono text-[11px] text-silver">
           {stats.data?.pulledAt
             ? `2025-26 snapshot · ${stats.data.qualifiedCount} qualified players league-wide · pulled ${stats.data.pulledAt.slice(0, 10)}`
-            : "stats snapshot not pulled yet — run etl/pull_stats.py"}
+            : "stats snapshot not pulled yet. Run etl/pull_stats.py"}
         </span>
       </div>
 
@@ -85,7 +85,7 @@ export function PlayersClient() {
             <option value="ALL">All seeded teams</option>
             {(teams.data?.teams ?? []).map((t) => (
               <option key={t.team} value={t.team}>
-                {t.team} — {t.teamName}
+                {t.team} · {t.teamName}
               </option>
             ))}
           </select>
@@ -132,7 +132,7 @@ export function PlayersClient() {
       {players.loading ? (
         <p className="animate-pulse font-mono text-sm text-silver">loading players…</p>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {list.map((p) => (
             <PlayerCard
               key={`${p.team}-${p.playerId}`}

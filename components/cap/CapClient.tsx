@@ -55,7 +55,7 @@ export function CapClient() {
         <p className="animate-pulse font-mono text-sm text-silver">computing cap sheet…</p>
       ) : (
         <>
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
             <Card title={`${s.teamName} vs the five lines`} className="lg:col-span-2">
               <Thermometer total={s.totalSalary} />
               <p className="mt-2 font-mono text-[11px] text-silver">

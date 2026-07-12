@@ -2,7 +2,7 @@
 
 **A front-office console for NBA roster construction under the 2023 CBA.**
 Cap sheets against the five lines, a trade machine whose verdicts explain
-themselves rule by rule, and league-percentile player evaluation — built as an
+themselves rule by rule, and league-percentile player evaluation. Built as an
 engineering demo for the Sacramento Kings' Basketball Software Engineer role.
 
 > 🎬 *30-second demo GIF goes here: build the Dončić trade → the ledger fails it
@@ -17,17 +17,17 @@ engineering demo for the Sacramento Kings' Basketball Software Engineer role.
 
 Three modules over one pure rules engine:
 
-- **Cap Sheet** — team salary as a level gauge against floor / cap / tax /
+- **Cap Sheet**: team salary as a level gauge against floor / cap / tax /
   first apron / second apron, dollar distances to each, three years of
   committed money, and which exceptions are live *including the hard cap each
   one would trigger*.
-- **Trade Machine** — the flagship. Build a two-team deal (players, cash,
+- **Trade Machine**: the flagship. Build a two-team deal (players, cash,
   SAC's first-round picks) and get the **Rule Ledger**: every CBA check the
   engine ran, pass or fail, with the arithmetic in plain English. A silent
-  red X is a product failure here — illegal trades cite the rule and the
+  red X is a product failure here: illegal trades cite the rule and the
   numbers. Legal trades that create hard caps say so. Proposals live in the
   URL, so any trade is a shareable link.
-- **Player Eval** — contract-aware cards with 2025-26 league percentiles
+- **Player Eval**: contract-aware cards with 2025-26 league percentiles
   (computed against all qualified players, not just the seeded teams) and a
   compare radar for 2–4 players.
 
@@ -39,13 +39,13 @@ flowchart LR
         ETL["etl/pull_stats.py<br/>nba_api → league-wide stats"]
         SEED["seed day: contracts + picks<br/>transcribed from public sources"]
     end
-    subgraph repo["/data — committed, Zod-gated JSON"]
+    subgraph repo["/data · committed, Zod-gated JSON"]
         R["rosters/*.json"]
         P["picks/SAC.json"]
         S["stats/players-2025-26.json"]
     end
     subgraph app["Next.js 14 (single Vercel deploy)"]
-        ENGINE["/engine — pure TS CBA rules<br/>constants · capsheet · tradeRules · picks<br/>zero UI imports, 43 unit tests"]
+        ENGINE["/engine · pure TS CBA rules<br/>constants · capsheet · tradeRules · picks<br/>zero UI imports, 43 unit tests"]
         API["/api REST routes"]
         UI["Cap Sheet · Trade Machine · Player Eval"]
     end
@@ -57,8 +57,8 @@ flowchart LR
     API --> UI
 ```
 
-**The engine is the product.** `/engine` is pure TypeScript — no React, no
-Next.js, no I/O — so the CBA logic can be read and audited in one sitting and
+**The engine is the product.** `/engine` is pure TypeScript, with no React, no
+Next.js, and no I/O, so the CBA logic can be read and audited in one sitting and
 tested without ceremony. The UI consumes the app's own REST API.
 
 ### The stats.nba.com gotcha
@@ -73,7 +73,7 @@ date recorded per team in [`docs/sources.md`](docs/sources.md).
 ### Data honesty
 
 - Every roster file carries the source's **published team total**, and
-  `npm run validate:data` re-sums the seeded players through the engine —
+  `npm run validate:data` re-sums the seeded players through the engine;
   the build fails unless they match **to the dollar** (all 7 teams do).
 - Unknown values are surfaced as *unknown*, never invented (see "Known gaps"
   in `docs/sources.md`: two players with unpublished figures are omitted).
@@ -83,7 +83,7 @@ date recorded per team in [`docs/sources.md`](docs/sources.md).
 
 ```bash
 npm install
-npm test              # 43 engine tests — golden CBA scenarios
+npm test              # 43 engine tests: golden CBA scenarios
 npm run validate:data # schema + published-total gate (also runs pre-build)
 npm run dev           # http://localhost:3000
 ```
@@ -132,7 +132,7 @@ curl -s -X POST localhost:3000/api/trade/validate \
 | Second-apron teams | ≤ 100%, no aggregating two salaries, no sending cash |
 | Hard-cap triggers | >100% take-back → capped at apron 1; aggregation or cash → apron 2 (surfaced as warnings with the exact copy an analyst would want) |
 | Roster bounds | > 15 standard contracts fails; < 14 warns; ≤ 3 two-ways |
-| Two-way contracts | tradeable, but excluded from matching and team salary — the ledger calls out when counting one would have made the math work |
+| Two-way contracts | tradeable, but excluded from matching and team salary; the ledger calls out when counting one would have made the math work |
 | Cash | $8,495,000 annual send/receive limits, tracked separately |
 | Stepien rule | no consecutive future drafts without a first; swap-encumbered years still count as having a pick |
 | Player restrictions | no-trade (consent warning), recently-signed (blocked until the seeded date), cannot-aggregate |
@@ -153,7 +153,7 @@ exceeds the allowance generated by its largest single outgoing salary.
 
 ```
 engine/            pure CBA engine + __tests__ (read this first)
-data/              rosters · picks · stats — Zod-gated snapshots
+data/              rosters · picks · stats · Zod-gated snapshots
 lib/data/          schemas + loaders
 app/api/           REST routes over the engine
 app/ components/   the three modules + shell

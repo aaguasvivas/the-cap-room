@@ -35,7 +35,7 @@ export function RadarChart({ profiles }: { profiles: PlayerStatProfile[] }) {
     <svg
       viewBox={`0 0 ${size} ${size}`}
       role="img"
-      aria-label={`League-percentile radar for ${profiles.map((p) => p.name).join(", ")} — exact values in the table below`}
+      aria-label={`League-percentile radar for ${profiles.map((p) => p.name).join(", ")}, exact values in the table below`}
       className="mx-auto w-full max-w-sm"
     >
       {/* grid rings at 25/50/75/100 */}

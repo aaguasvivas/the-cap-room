@@ -1,7 +1,7 @@
 import type { TradeProposal } from "@/engine/types";
 
 /**
- * The whole proposal lives in the URL — /trade?a=SAC&b=LAL&give=..&get=..
+ * The whole proposal lives in the URL: /trade?a=SAC&b=LAL&give=..&get=..
  * so any trade is shareable as a link and the back button walks history.
  */
 export interface TradeUrlState {

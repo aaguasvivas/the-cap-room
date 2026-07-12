@@ -7,14 +7,14 @@ export function VerdictStamp({ verdict, validating }: { verdict: Verdict | null;
   const fails = verdict?.checks.filter((c) => c.status === "fail").length ?? 0;
 
   return (
-    <div aria-live="polite" className="flex min-h-[92px] items-center justify-center py-2">
+    <div aria-live="polite" className="flex min-h-[92px] items-center justify-center overflow-x-clip py-2">
       {!verdict ? (
         <span className="font-mono text-sm text-silver animate-pulse">running the rules…</span>
       ) : (
         <div
           key={`${verdict.legal}-${fails}-${warnings}`}
           style={{ animation: "stamp-in 420ms cubic-bezier(.2,.8,.3,1.2) both" }}
-          className={`relative select-none rounded border-4 border-double px-6 py-3 text-center ${
+          className={`relative max-w-full select-none rounded border-4 border-double px-4 py-3 text-center sm:px-6 ${
             verdict.legal ? "border-legal text-legal" : "border-illegal text-illegal"
           } ${validating ? "opacity-60" : ""}`}
         >
@@ -26,7 +26,7 @@ export function VerdictStamp({ verdict, validating }: { verdict: Verdict | null;
               ? warnings > 0
                 ? `2026-27 CBA · ${warnings} hard-cap flag${warnings > 1 ? "s" : ""}`
                 : "2026-27 CBA · clean"
-              : `${fails} rule${fails > 1 ? "s" : ""} violated — ledger explains`}
+              : `${fails} rule${fails > 1 ? "s" : ""} violated, ledger explains`}
           </div>
         </div>
       )}

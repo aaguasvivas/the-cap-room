@@ -80,7 +80,7 @@ export function PlayerCard({
           </>
         ) : (
           <p className="py-2 font-mono text-[11px] leading-relaxed text-silver/70">
-            No 2025-26 NBA stats in the snapshot — rookie or didn't play. Values stay
+            No 2025-26 NBA stats in the snapshot: rookie or didn't play. Values stay
             &ldquo;unknown&rdquo; rather than invented.
           </p>
         )}

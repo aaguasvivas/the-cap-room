@@ -2,7 +2,7 @@ import type { StatLine } from "./data/schemas";
 
 /**
  * League percentiles for the Player Eval module.
- * Qualified pool: players with ≥500 total minutes in the season — percentiles
+ * Qualified pool: players with ≥500 total minutes in the season, so percentiles
  * are computed against the actual league, not the seeded subset.
  */
 export const QUALIFYING_MINUTES = 500;

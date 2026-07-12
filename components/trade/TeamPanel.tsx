@@ -37,7 +37,7 @@ function PlayerRow({
             <span className="ml-1.5 rounded-sm border border-silver/40 px-1 font-mono text-[9px] uppercase text-silver">2W</span>
           )}
           {p.tradeRestrictions?.includes("recently-signed") && (
-            <span className="ml-1.5 rounded-sm border border-warn/60 px-1 font-mono text-[9px] text-warn" title={`Trade-eligible ${p.returnEligibleDate ?? "— date unknown"}`}>
+            <span className="ml-1.5 rounded-sm border border-warn/60 px-1 font-mono text-[9px] text-warn" title={`Trade-eligible ${p.returnEligibleDate ?? "date unknown"}`}>
               ⏳{p.returnEligibleDate ?? ""}
             </span>
           )}
@@ -106,7 +106,7 @@ export function TeamPanel({
           <span className="font-display text-2xl font-semibold tnum text-bone">{usdM(outSalary)}</span>
         </div>
 
-        <ul className="max-h-72 space-y-0.5 overflow-y-auto pr-1" aria-label={`${team} roster — click to add to the deal`}>
+        <ul className="max-h-72 space-y-0.5 overflow-y-auto pr-1" aria-label={`${team} roster, click to add to the deal`}>
           {tradeable.length === 0 && (
             <li className="px-2 py-3 font-mono text-[12px] text-silver animate-pulse">loading roster…</li>
           )}
@@ -132,7 +132,7 @@ export function TeamPanel({
             aria-describedby={`${idPrefix}-cash-note`}
           />
           <p id={`${idPrefix}-cash-note`} className="mt-0.5 font-mono text-[10px] text-silver/70">
-            annual limit {usd(TRADE_CASH_LIMIT)} — slide past it and watch the ledger
+            annual limit {usd(TRADE_CASH_LIMIT)}. Slide past it and watch the ledger
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export function TeamPanel({
             </div>
           ) : (
             <p className="mt-1 font-mono text-[10px] text-silver/60">
-              pick ledger seeded for SAC only in v1 — other teams trade players and cash here
+              pick ledger seeded for SAC only in v1. Other teams trade players and cash here
             </p>
           )}
         </div>

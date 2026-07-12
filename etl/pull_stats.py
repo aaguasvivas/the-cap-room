@@ -53,10 +53,10 @@ def fetch(measure: str, per_mode: str) -> dict[str, list]:
             rows = data["rowSet"]
             print(f"    ✓ {len(rows)} players")
             return {"headers": headers, "rows": rows}
-        except Exception as e:  # noqa: BLE001 — surface after retries
+        except Exception as e:  # noqa: BLE001, surface after retries
             last_err = e
             wait = 5 * attempt
-            print(f"    ✗ {e} — retrying in {wait}s", file=sys.stderr)
+            print(f"    ✗ {e}, retrying in {wait}s", file=sys.stderr)
             time.sleep(wait)
     raise RuntimeError(f"giving up on {measure}/{per_mode}: {last_err}")
 

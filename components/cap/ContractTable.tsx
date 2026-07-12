@@ -19,7 +19,7 @@ function SalaryCell({ p, year }: { p: Player; year: LeagueYear }) {
   return (
     <td className="whitespace-nowrap px-3 py-1.5 text-right font-mono text-[13px] tnum">
       {v === undefined ? (
-        <span className="text-silver/40">—</span>
+        <span className="text-silver/40">·</span>
       ) : (
         <span className={p.guaranteed || year !== "2026-27" ? "text-bone" : "italic text-silver"}>
           {usd(v)}
@@ -54,7 +54,7 @@ function Rows({ players, label }: { players: Player[]; label: string }) {
             {p.tradeRestrictions?.includes("recently-signed") && (
               <span
                 className="ml-1.5 align-middle rounded-sm border border-warn/60 px-1 font-mono text-[9px] uppercase text-warn"
-                title={`Recently signed — trade-eligible ${p.returnEligibleDate ?? "date unknown"}`}
+                title={`Recently signed. Trade-eligible ${p.returnEligibleDate ?? "date unknown"}`}
               >
                 ⏳{p.returnEligibleDate ? ` ${p.returnEligibleDate}` : ""}
               </span>
@@ -127,7 +127,7 @@ export function ContractTable({ players }: { players: Player[] }) {
         <tbody>
           <Rows players={standard} label={`Standard contracts (${standard.length})`} />
           <Rows players={dead} label={`Dead money (${dead.length})`} />
-          <Rows players={twoWay} label={`Two-way (${twoWay.length}) — excluded from team salary`} />
+          <Rows players={twoWay} label={`Two-way (${twoWay.length}), excluded from team salary`} />
         </tbody>
       </table>
       <p className="mt-2 font-mono text-[10px] text-silver/70">

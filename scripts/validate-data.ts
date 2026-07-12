@@ -1,7 +1,7 @@
 /**
  * Seed-data gate, run before every build (prebuild) and in CI.
  *
- * 1. Every /data file must parse against its Zod schema — malformed data
+ * 1. Every /data file must parse against its Zod schema; malformed data
  *    fails the build.
  * 2. Every roster must re-sum, through the engine's cap math, to the exact
  *    published team total transcribed from the source. A single mistyped
@@ -42,7 +42,7 @@ for (const f of readdirSync(rosterDir).filter((f) => f.endsWith(".json") && !f.s
   const published = file.publishedTotal["2026-27"];
   if (sheet.totalSalary !== published) {
     fail(
-      `${f}: engine total $${sheet.totalSalary.toLocaleString()} ≠ published total $${published.toLocaleString()} (Δ $${(sheet.totalSalary - published).toLocaleString()}) — a seeded figure is wrong`,
+      `${f}: engine total $${sheet.totalSalary.toLocaleString()} ≠ published total $${published.toLocaleString()} (Δ $${(sheet.totalSalary - published).toLocaleString()}), a seeded figure is wrong`,
     );
   }
 }
@@ -77,4 +77,4 @@ if (errors.length) {
   for (const e of errors) console.error(`  • ${e}`);
   process.exit(1);
 }
-console.log(`✓ Seed data valid — ${checked} files checked, every roster re-sums to its published total.`);
+console.log(`✓ Seed data valid: ${checked} files checked, every roster re-sums to its published total.`);

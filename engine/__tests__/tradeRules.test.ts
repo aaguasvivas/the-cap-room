@@ -46,7 +46,7 @@ describe("below-apron trades (R1, R6)", () => {
     const v = validateTrade(propose({ team: "SAC", playerIds: ["sac-a", "sac-b"] }, { team: "DAL", playerIds: ["dal-star"] }), ctxFor([sac, dal]));
 
     expect(v.legal).toBe(true);
-    // $12M out allows $21,096,000 in — the $20M star fits only via the expanded TPE.
+    // $12M out allows $21,096,000 in; the $20M star fits only via the expanded TPE.
     expect(byId(v, "SAC", "salary-matching")?.status).toBe("pass");
     expect(byId(v, "SAC", "hardcap-apron1")?.status).toBe("warning");
     // Aggregating Sac A + Sac B also hard-caps at the second apron.
@@ -91,7 +91,7 @@ describe("apron matching regimes (R2, R3)", () => {
   it("caps a first-apron team at 100%: one dollar over outgoing fails", () => {
     const out = mkPlayer({ id: "nyk-out", name: "Nyk Out", salary: 10_000_000 });
     const back = mkPlayer({ id: "chi-back", name: "Chi Back", salary: 10_000_001 });
-    const nyk = sheetFor("NYK", padRoster("NYK", [out], 213_000_000)); // finishes 213,000,001 — above apron 1
+    const nyk = sheetFor("NYK", padRoster("NYK", [out], 213_000_000)); // finishes 213,000,001, above apron 1
     const chi = sheetFor("CHI", padRoster("CHI", [back], 180_000_000));
 
     const v = validateTrade(propose({ team: "NYK", playerIds: ["nyk-out"] }, { team: "CHI", playerIds: ["chi-back"] }), ctxFor([nyk, chi]));
@@ -133,13 +133,13 @@ describe("apron matching regimes (R2, R3)", () => {
     const a = mkPlayer({ id: "bos-a", name: "Bos A", salary: 30_000_000 });
     const b = mkPlayer({ id: "bos-b", name: "Bos B", salary: 20_000_000 });
     const star = mkPlayer({ id: "nyk-star", name: "Nyk Star", salary: 45_000_000 });
-    const bos = sheetFor("BOS", padRoster("BOS", [a, b], 230_000_000)); // finishes 225M — still above apron 2
+    const bos = sheetFor("BOS", padRoster("BOS", [a, b], 230_000_000)); // finishes 225M, still above apron 2
     const nyk = sheetFor("NYK", padRoster("NYK", [star], 165_000_000));
 
     const v = validateTrade(propose({ team: "BOS", playerIds: ["bos-a", "bos-b"] }, { team: "NYK", playerIds: ["nyk-star"] }), ctxFor([bos, nyk]));
 
     expect(v.legal).toBe(false);
-    // Money fits (45 in ≤ 50 out) — it is specifically the aggregation that's illegal.
+    // Money fits (45 in ≤ 50 out); it is specifically the aggregation that's illegal.
     expect(byId(v, "BOS", "salary-matching")?.status).toBe("pass");
     expect(byId(v, "BOS", "apron2-aggregation")?.status).toBe("fail");
   });
@@ -147,7 +147,7 @@ describe("apron matching regimes (R2, R3)", () => {
   it("fails a second-apron team that sends cash", () => {
     const out = mkPlayer({ id: "bos-out", name: "Bos Out", salary: 30_000_000 });
     const back = mkPlayer({ id: "nyk-back", name: "Nyk Back", salary: 28_000_000 });
-    const bos = sheetFor("BOS", padRoster("BOS", [out], 230_000_000)); // finishes 228M — above apron 2
+    const bos = sheetFor("BOS", padRoster("BOS", [out], 230_000_000)); // finishes 228M, above apron 2
     const nyk = sheetFor("NYK", padRoster("NYK", [back], 165_000_000));
 
     const v = validateTrade(

@@ -147,7 +147,7 @@ export interface RuleCheck {
 
 export interface Verdict {
   legal: boolean;
-  /** EVERY rule evaluated, pass or fail — the full ledger. */
+  /** EVERY rule evaluated, pass or fail: the full ledger. */
   checks: RuleCheck[];
 }
 
