@@ -1,7 +1,5 @@
 # THE CAP ROOM, Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans (inline execution chosen, autonomous session, single-mind consistency required for CBA engine correctness). Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **Goal:** Ship a deployable front-office console (cap sheet, trade validator, player eval) for NBA roster construction under the 2023 CBA, as a hiring demo for the Sacramento Kings Basketball Software Engineer role.
 
 **Architecture:** Pure typed rules engine (`/engine`, zero UI imports) consumed by thin Next.js API routes, consumed in turn by three client modules. All data arrives as Zod-validated JSON snapshots in `/data`; no runtime external calls. State lives in React + URL params.

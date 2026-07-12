@@ -9,7 +9,7 @@ engineering demo for the Sacramento Kings' Basketball Software Engineer role.
 > on the Stepien rule → swap the 2028 pick for 2029 → **LEGAL** stamp.*
 > Try it live: load the "LaVine + 2027 + 2028 firsts ⇄ Dončić" scenario.
 
-![ci](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)
+![ci](https://github.com/aaguasvivas/the-cap-room/actions/workflows/ci.yml/badge.svg)
 
 ---
 
