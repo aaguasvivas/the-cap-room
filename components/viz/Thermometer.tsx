@@ -25,7 +25,7 @@ export function Thermometer({
 }) {
   const H = compact ? 190 : 320;
   const W = compact ? 250 : 560;
-  const tubeX = compact ? 30 : 60;
+  const tubeX = compact ? 92 : 60;
   const tubeW = compact ? 34 : 56;
   const topPad = 14;
   const bottomPad = 20;

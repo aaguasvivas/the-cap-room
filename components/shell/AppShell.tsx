@@ -1,10 +1,13 @@
 import Link from "next/link";
 import type { Meta } from "@/lib/data/schemas";
+import { CommandK } from "./CommandK";
+import { KHint } from "./KHint";
 import { NavRail } from "./NavRail";
 
 export function AppShell({ meta, children }: { meta: Meta; children: React.ReactNode }) {
   return (
     <div className="min-h-dvh flex flex-col">
+      <CommandK />
       <header className="sticky top-0 z-40 border-b border-graphite-line bg-graphite">
         <div className="flex items-center gap-3 px-4 py-2.5 md:px-6">
           <Link href="/" className="group flex items-baseline gap-2">
@@ -20,6 +23,9 @@ export function AppShell({ meta, children }: { meta: Meta; children: React.React
           </span>
           <span className="ml-auto hidden sm:block font-mono text-[11px] text-silver" title={meta.dataNote}>
             data as of {meta.seedDate}
+          </span>
+          <span className="ml-auto sm:ml-0">
+            <KHint />
           </span>
         </div>
         {/* Mobile module tabs */}

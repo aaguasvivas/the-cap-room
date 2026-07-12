@@ -5,9 +5,12 @@ Cap sheets against the five lines, a trade machine whose verdicts explain
 themselves rule by rule, and league-percentile player evaluation. Built as an
 engineering demo for the Sacramento Kings' Basketball Software Engineer role.
 
-> 🎬 *30-second demo GIF goes here: build the Dončić trade → the ledger fails it
-> on the Stepien rule → swap the 2028 pick for 2029 → **LEGAL** stamp.*
-> Try it live: load the "LaVine + 2027 + 2028 firsts ⇄ Dončić" scenario.
+![The Dončić test: the pick package fails the Stepien rule, swap 2028 for 2029, and it stamps LEGAL](docs/media/demo.gif)
+
+*The Dončić test: LaVine plus the 2027 and 2028 firsts fails on the Stepien
+rule with the reason written out; swap the 2028 pick for 2029 and it stamps
+LEGAL. Load it in one click from the Trade Machine's scenario menu, or press
+⌘K anywhere to jump to a player.*
 
 ![ci](https://github.com/aaguasvivas/the-cap-room/actions/workflows/ci.yml/badge.svg)
 
@@ -30,6 +33,8 @@ Three modules over one pure rules engine:
 - **Player Eval**: contract-aware cards with 2025-26 league percentiles
   (computed against all qualified players, not just the seeded teams) and a
   compare radar for 2–4 players.
+
+![The trade console: two rosters, cash sliders, pick chips, and the stamped verdict](docs/media/hero.png)
 
 ## Architecture
 
