@@ -1,0 +1,219 @@
+{
+  "team": "CLE",
+  "teamName": "Cleveland Cavaliers",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#cleveland-cavaliers",
+  "publishedTotal": {
+    "2026-27": 226017942
+  },
+  "players": [
+    {
+      "playerId": "1628378",
+      "name": "Donovan Mitchell",
+      "pos": "SG",
+      "age": 29,
+      "salary": {
+        "2026-27": 50105628,
+        "2027-28": 53817156
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630596",
+      "name": "Evan Mobley",
+      "pos": "PF",
+      "age": 25,
+      "salary": {
+        "2026-27": 50105628,
+        "2027-28": 53817156,
+        "2028-29": 57528684
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "201935",
+      "name": "James Harden",
+      "pos": "PG",
+      "age": 36,
+      "salary": {
+        "2026-27": 42317307
+      },
+      "contractType": "standard",
+      "guaranteed": false
+    },
+    {
+      "playerId": "1628386",
+      "name": "Jarrett Allen",
+      "pos": "C",
+      "age": 28,
+      "salary": {
+        "2026-27": 28000000,
+        "2027-28": 30240000,
+        "2028-29": 32480000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629622",
+      "name": "Max Strus",
+      "pos": "SF",
+      "age": 30,
+      "salary": {
+        "2026-27": 16660836
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "203471",
+      "name": "Dennis Schröder",
+      "pos": "PG",
+      "age": 32,
+      "salary": {
+        "2026-27": 14809200,
+        "2027-28": 15514400
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630241",
+      "name": "Sam Merrill",
+      "pos": "SG",
+      "age": 30,
+      "salary": {
+        "2026-27": 9160715,
+        "2027-28": 9839285,
+        "2028-29": 10517856
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-tyson",
+      "name": "Jaylon Tyson",
+      "pos": "SF",
+      "age": 23,
+      "salary": {
+        "2026-27": 3658560,
+        "2027-28": 5641500
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-bryant",
+      "name": "Thomas Bryant",
+      "pos": "C",
+      "age": 28,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-tomlin",
+      "name": "Nae'Qwan Tomlin",
+      "pos": "PF",
+      "age": 25,
+      "salary": {
+        "2026-27": 2411090
+      },
+      "contractType": "min",
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-porter",
+      "name": "Craig Porter Jr.",
+      "pos": "PG",
+      "age": 26,
+      "salary": {
+        "2026-27": 2406205
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-proctor",
+      "name": "Tyrese Proctor",
+      "pos": "PG",
+      "age": 22,
+      "salary": {
+        "2026-27": 2150917,
+        "2027-28": 2525901,
+        "2028-29": 2735698
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-thomas",
+      "name": "Meleek Thomas",
+      "pos": "SG",
+      "age": 19,
+      "salary": {
+        "2026-27": 1357763,
+        "2027-28": 2294370,
+        "2028-29": 2694363
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": true
+    },
+    {
+      "playerId": "cle-udeh",
+      "name": "Ernest Udeh Jr.",
+      "pos": "C",
+      "age": 22,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": false
+    },
+    {
+      "playerId": "cle-rubio-dead",
+      "name": "Ricky Rubio (waived)",
+      "pos": "PG",
+      "age": 35,
+      "salary": {
+        "2026-27": 424672
+      },
+      "contractType": "dead",
+      "guaranteed": true
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "team": "BKN",
+  "teamName": "Brooklyn Nets",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#brooklyn-nets",
+  "publishedTotal": {
+    "2026-27": 146082636
+  },
+  "players": [
+    {
+      "playerId": "1629008",
+      "name": "Michael Porter Jr.",
+      "pos": "SF",
+      "age": 28,
+      "salary": {
+        "2026-27": 40806150
+      },
+      "contractType": "standard",
+      "guaranteed": false
+    },
+    {
+      "playerId": "1629651",
+      "name": "Nic Claxton",
+      "pos": "C",
+      "age": 27,
+      "salary": {
+        "2026-27": 23147727,
+        "2027-28": 20943184
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629611",
+      "name": "Terance Mann",
+      "pos": "SG",
+      "age": 29,
+      "salary": {
+        "2026-27": 15500000,
+        "2027-28": 16000000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630549",
+      "name": "Day'Ron Sharpe",
+      "pos": "C",
+      "age": 24,
+      "salary": {
+        "2026-27": 10000000,
+        "2027-28": 10000000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-brown",
+      "name": "Mikel Brown Jr.",
+      "pos": "PG",
+      "age": 20,
+      "salary": {
+        "2026-27": 8787000,
+        "2027-28": 9226440,
+        "2028-29": 9666000
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-01",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-ellis",
+      "name": "Keon Ellis",
+      "pos": "SG",
+      "age": 26,
+      "salary": {
+        "2026-27": 8780488,
+        "2027-28": 9219512
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-demin",
+      "name": "Egor Demin",
+      "pos": "PG",
+      "age": 20,
+      "salary": {
+        "2026-27": 7233720,
+        "2027-28": 7578240,
+        "2028-29": 9639522
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-zwilliams",
+      "name": "Ziaire Williams",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 6250000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2026-27",
+          "type": "team"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "bkn-clowney",
+      "name": "Noah Clowney",
+      "pos": "PF",
+      "age": 21,
+      "salary": {
+        "2026-27": 5414034
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-minott",
+      "name": "Josh Minott",
+      "pos": "SF",
+      "age": 23,
+      "salary": {
+        "2026-27": 4500000,
+        "2027-28": 4500000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-traore",
+      "name": "Nolan Traoré",
+      "pos": "PG",
+      "age": 20,
+      "salary": {
+        "2026-27": 4002000,
+        "2027-28": 4193040,
+        "2028-29": 6457282
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-powell",
+      "name": "Drake Powell",
+      "pos": "SG",
+      "age": 20,
+      "salary": {
+        "2026-27": 3540600,
+        "2027-28": 3709320,
+        "2028-29": 6101832
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-saraf",
+      "name": "Ben Saraf",
+      "pos": "PG",
+      "age": 20,
+      "salary": {
+        "2026-27": 3028560,
+        "2027-28": 3172920,
+        "2028-29": 5720776
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-wolf",
+      "name": "Danny Wolf",
+      "pos": "C",
+      "age": 22,
+      "salary": {
+        "2026-27": 2941440,
+        "2027-28": 3081840,
+        "2028-29": 5559640
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-msmith",
+      "name": "Malachi Smith",
+      "pos": "PG",
+      "age": 26,
+      "salary": {
+        "2026-27": 2150917
+      },
+      "contractType": "min",
+      "guaranteed": true
+    },
+    {
+      "playerId": "bkn-bilodeau",
+      "name": "Tyler Bilodeau",
+      "pos": "PF",
+      "age": 22,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-01",
+      "guaranteed": false
+    }
+  ]
+}

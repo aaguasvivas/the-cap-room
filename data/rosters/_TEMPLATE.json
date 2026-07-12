@@ -1,0 +1,32 @@
+{
+  "team": "XXX",
+  "teamName": "Team Name",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#anchor-for-this-team (record the URL + access date there)",
+  "publishedTotal": {
+    "2026-27": 0
+  },
+  "players": [
+    {
+      "playerId": "nba.com person id where known, else a stable slug like xxx-lastname",
+      "name": "Player Name",
+      "pos": "PG",
+      "age": 25,
+      "salary": {
+        "2026-27": 10000000,
+        "2027-28": 10500000,
+        "2028-29": 11000000
+      },
+      "contractType": "standard | two-way | rookie-scale | min | dead",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player | team | ETO"
+        }
+      ],
+      "tradeRestrictions": ["no-trade | recently-signed | cannot-aggregate"],
+      "returnEligibleDate": "YYYY-MM-DD (only with recently-signed, if known)",
+      "guaranteed": true
+    }
+  ]
+}

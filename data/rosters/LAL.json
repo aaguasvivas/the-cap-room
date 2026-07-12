@@ -1,0 +1,284 @@
+{
+  "team": "LAL",
+  "teamName": "Los Angeles Lakers",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#los-angeles-lakers",
+  "publishedTotal": {
+    "2026-27": 163667732
+  },
+  "players": [
+    {
+      "playerId": "1629029",
+      "name": "Luka Dončić",
+      "pos": "PG",
+      "age": 27,
+      "salary": {
+        "2026-27": 49800000,
+        "2027-28": 53784000,
+        "2028-29": 57768000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-kessler",
+      "name": "Walker Kessler",
+      "pos": "C",
+      "age": 24,
+      "salary": {
+        "2026-27": 30232558,
+        "2027-28": 31744186,
+        "2028-29": 33255814
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630559",
+      "name": "Austin Reaves",
+      "pos": "SG",
+      "age": 28,
+      "salary": {
+        "2026-27": 14898786
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2026-27",
+          "type": "player"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "1629656",
+      "name": "Quentin Grimes",
+      "pos": "SG",
+      "age": 26,
+      "salary": {
+        "2026-27": 13953489,
+        "2027-28": 14651163,
+        "2028-29": 15348837
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-mamukelashvili",
+      "name": "Sandro Mamukelashvili",
+      "pos": "PF",
+      "age": 27,
+      "salary": {
+        "2026-27": 13000000,
+        "2027-28": 12350000,
+        "2028-29": 13000000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629020",
+      "name": "Jarred Vanderbilt",
+      "pos": "PF",
+      "age": 27,
+      "salary": {
+        "2026-27": 12428571,
+        "2027-28": 13285714
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-laravia",
+      "name": "Jake LaRavia",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 6000000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-hardy",
+      "name": "Jaden Hardy",
+      "pos": "SG",
+      "age": 24,
+      "salary": {
+        "2026-27": 6000000,
+        "2027-28": 6000000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "203935",
+      "name": "Marcus Smart",
+      "pos": "PG",
+      "age": 32,
+      "salary": {
+        "2026-27": 5390700
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2026-27",
+          "type": "player"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "lal-knecht",
+      "name": "Dalton Knecht",
+      "pos": "SF",
+      "age": 25,
+      "salary": {
+        "2026-27": 4201080,
+        "2027-28": 6452860
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-carr",
+      "name": "Cameron Carr",
+      "pos": "SG",
+      "age": 21,
+      "salary": {
+        "2026-27": 3315360,
+        "2027-28": 3481080,
+        "2028-29": 3646800
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-01",
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-bronny",
+      "name": "Bronny James",
+      "pos": "PG",
+      "age": 21,
+      "salary": {
+        "2026-27": 2296271,
+        "2027-28": 2486995
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "lal-thiero",
+      "name": "Adou Thiero",
+      "pos": "SF",
+      "age": 22,
+      "salary": {
+        "2026-27": 2150917,
+        "2027-28": 2525901
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "lal-okereke",
+      "name": "AK Okereke",
+      "pos": "SF",
+      "age": 23,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    },
+    {
+      "playerId": "lal-suder",
+      "name": "Peter Suder",
+      "pos": "SG",
+      "age": 22,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    },
+    {
+      "playerId": "lal-manon",
+      "name": "Chris Mañon",
+      "pos": "SG",
+      "age": 24,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    }
+  ]
+}

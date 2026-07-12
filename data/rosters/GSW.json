@@ -1,0 +1,183 @@
+{
+  "team": "GSW",
+  "teamName": "Golden State Warriors",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#golden-state-warriors",
+  "publishedTotal": {
+    "2026-27": 207940722
+  },
+  "players": [
+    {
+      "playerId": "201939",
+      "name": "Stephen Curry",
+      "pos": "PG",
+      "age": 38,
+      "salary": {
+        "2026-27": 62587158
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "202710",
+      "name": "Jimmy Butler",
+      "pos": "SF",
+      "age": 36,
+      "salary": {
+        "2026-27": 56832773
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "203110",
+      "name": "Draymond Green",
+      "pos": "PF",
+      "age": 36,
+      "salary": {
+        "2026-27": 27678571
+      },
+      "contractType": "standard",
+      "guaranteed": false
+    },
+    {
+      "playerId": "204001",
+      "name": "Kristaps Porziņģis",
+      "pos": "C",
+      "age": 30,
+      "salary": {
+        "2026-27": 19512195,
+        "2027-28": 20487805
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-30",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630541",
+      "name": "Moses Moody",
+      "pos": "SG",
+      "age": 24,
+      "salary": {
+        "2026-27": 12500000,
+        "2027-28": 13425925
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "201143",
+      "name": "Al Horford",
+      "pos": "C",
+      "age": 40,
+      "salary": {
+        "2026-27": 6822000,
+        "2027-28": 7163100
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "gsw-lendeborg",
+      "name": "Yaxel Lendeborg",
+      "pos": "PF",
+      "age": 23,
+      "salary": {
+        "2026-27": 6096240,
+        "2027-28": 6401280,
+        "2028-29": 6706200
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": true
+    },
+    {
+      "playerId": "gsw-podziemski",
+      "name": "Brandin Podziemski",
+      "pos": "SG",
+      "age": 23,
+      "salary": {
+        "2026-27": 5679459
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "gsw-santos",
+      "name": "Gui Santos",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 4629630,
+        "2027-28": 5000000,
+        "2028-29": 5370370
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629001",
+      "name": "De'Anthony Melton",
+      "pos": "SG",
+      "age": 28,
+      "salary": {
+        "2026-27": 3451779
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2026-27",
+          "type": "player"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "gsw-richard",
+      "name": "Will Richard",
+      "pos": "SG",
+      "age": 23,
+      "salary": {
+        "2026-27": 2150917,
+        "2027-28": 2525901,
+        "2028-29": 2735698
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    }
+  ]
+}

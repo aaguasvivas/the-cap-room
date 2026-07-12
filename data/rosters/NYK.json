@@ -1,0 +1,205 @@
+{
+  "team": "NYK",
+  "teamName": "New York Knicks",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#new-york-knicks",
+  "publishedTotal": {
+    "2026-27": 215499335
+  },
+  "players": [
+    {
+      "playerId": "1626157",
+      "name": "Karl-Anthony Towns",
+      "pos": "C",
+      "age": 30,
+      "salary": {
+        "2026-27": 57078728,
+        "2027-28": 61015192
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628384",
+      "name": "OG Anunoby",
+      "pos": "SF",
+      "age": 28,
+      "salary": {
+        "2026-27": 42500000,
+        "2027-28": 45431034,
+        "2028-29": 48362068
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628973",
+      "name": "Jalen Brunson",
+      "pos": "PG",
+      "age": 29,
+      "salary": {
+        "2026-27": 37739521,
+        "2027-28": 40535041,
+        "2028-29": 43330561
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628969",
+      "name": "Mikal Bridges",
+      "pos": "SF",
+      "age": 29,
+      "salary": {
+        "2026-27": 33482145,
+        "2027-28": 36160714,
+        "2028-29": 38839285
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628404",
+      "name": "Josh Hart",
+      "pos": "SG",
+      "age": 31,
+      "salary": {
+        "2026-27": 20923760,
+        "2027-28": 22375280
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629013",
+      "name": "Landry Shamet",
+      "pos": "SG",
+      "age": 29,
+      "salary": {
+        "2026-27": 5357143,
+        "2027-28": 5785714,
+        "2028-29": 6214286
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630631",
+      "name": "Jose Alvarado",
+      "pos": "PG",
+      "age": 28,
+      "salary": {
+        "2026-27": 4500000,
+        "2027-28": 4860000,
+        "2028-29": 5220000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630540",
+      "name": "Miles McBride",
+      "pos": "SG",
+      "age": 25,
+      "salary": {
+        "2026-27": 3956523
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "nyk-dadiet",
+      "name": "Pacôme Dadiet",
+      "pos": "SF",
+      "age": 20,
+      "salary": {
+        "2026-27": 2983680,
+        "2027-28": 5373608
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "203083",
+      "name": "Andre Drummond",
+      "pos": "C",
+      "age": 32,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "nyk-kolek",
+      "name": "Tyler Kolek",
+      "pos": "PG",
+      "age": 25,
+      "salary": {
+        "2026-27": 2296271,
+        "2027-28": 2486995
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "nyk-diawara",
+      "name": "Mohamed Diawara",
+      "pos": "PF",
+      "age": 21,
+      "salary": {
+        "2026-27": 2232143,
+        "2027-28": 2410714,
+        "2028-29": 2589286
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    }
+  ]
+}

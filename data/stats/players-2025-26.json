@@ -1,0 +1,6 @@
+{
+  "season": "2025-26",
+  "pulledAt": null,
+  "source": "etl/pull_stats.py — not yet run; run it locally to populate (stats.nba.com blocks cloud IPs, so this file is the committed snapshot the app reads)",
+  "players": []
+}

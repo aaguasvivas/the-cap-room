@@ -1,0 +1,309 @@
+{
+  "team": "OKC",
+  "teamName": "Oklahoma City Thunder",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#oklahoma-city-thunder",
+  "publishedTotal": {
+    "2026-27": 233021214
+  },
+  "players": [
+    {
+      "playerId": "1631096",
+      "name": "Chet Holmgren",
+      "pos": "C",
+      "age": 24,
+      "salary": {
+        "2026-27": 41500000,
+        "2027-28": 44820000,
+        "2028-29": 48140000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-jwilliams",
+      "name": "Jalen Williams",
+      "pos": "SF",
+      "age": 25,
+      "salary": {
+        "2026-27": 41500000,
+        "2027-28": 44820000,
+        "2028-29": 48140000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628983",
+      "name": "Shai Gilgeous-Alexander",
+      "pos": "PG",
+      "age": 27,
+      "salary": {
+        "2026-27": 40806150,
+        "2027-28": 61005000,
+        "2028-29": 65885400
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628392",
+      "name": "Isaiah Hartenstein",
+      "pos": "C",
+      "age": 28,
+      "salary": {
+        "2026-27": 23148148,
+        "2027-28": 25000000,
+        "2028-29": 26851852
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "player"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1627936",
+      "name": "Alex Caruso",
+      "pos": "SG",
+      "age": 32,
+      "salary": {
+        "2026-27": 19550160,
+        "2027-28": 20998320,
+        "2028-29": 22446480
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629652",
+      "name": "Luguentz Dort",
+      "pos": "SG",
+      "age": 27,
+      "salary": {
+        "2026-27": 18222222
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-jaylin-williams",
+      "name": "Jaylin Williams",
+      "pos": "PF",
+      "age": 24,
+      "salary": {
+        "2026-27": 7774648,
+        "2027-28": 7774648
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-wallace",
+      "name": "Cason Wallace",
+      "pos": "SG",
+      "age": 22,
+      "salary": {
+        "2026-27": 7420806
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-mara",
+      "name": "Aday Mara",
+      "pos": "C",
+      "age": 21,
+      "salary": {
+        "2026-27": 5791680,
+        "2027-28": 6081480,
+        "2028-29": 6371160
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-topic",
+      "name": "Nikola Topić",
+      "pos": "PG",
+      "age": 20,
+      "salary": {
+        "2026-27": 5429760,
+        "2027-28": 7482210
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-kenrich",
+      "name": "Kenrich Williams",
+      "pos": "SF",
+      "age": 31,
+      "salary": {
+        "2026-27": 5000000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-sorber",
+      "name": "Thomas Sorber",
+      "pos": "C",
+      "age": 20,
+      "salary": {
+        "2026-27": 4887720,
+        "2027-28": 5120400,
+        "2028-29": 7849573
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-stirtz",
+      "name": "Bennett Stirtz",
+      "pos": "PG",
+      "age": 22,
+      "salary": {
+        "2026-27": 4717320,
+        "2027-28": 4953240,
+        "2028-29": 5189400
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-mccain",
+      "name": "Jared McCain",
+      "pos": "SG",
+      "age": 22,
+      "salary": {
+        "2026-27": 4422600,
+        "2027-28": 6784268
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "okc-ajay",
+      "name": "Ajay Mitchell",
+      "pos": "PG",
+      "age": 24,
+      "salary": {
+        "2026-27": 2850000,
+        "2027-28": 2850000
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": false
+    },
+    {
+      "playerId": "okc-dix",
+      "name": "Josh Dix",
+      "pos": "SG",
+      "age": 22,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    },
+    {
+      "playerId": "okc-barnhizer",
+      "name": "Brooks Barnhizer",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    },
+    {
+      "playerId": "okc-oweh",
+      "name": "Otega Oweh",
+      "pos": "SG",
+      "age": 23,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-02",
+      "guaranteed": false
+    }
+  ]
+}

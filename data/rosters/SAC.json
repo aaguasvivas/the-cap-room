@@ -1,0 +1,248 @@
+{
+  "team": "SAC",
+  "teamName": "Sacramento Kings",
+  "asOf": "2026-07-12",
+  "source": "docs/sources.md#sacramento-kings",
+  "publishedTotal": {
+    "2026-27": 189346486
+  },
+  "players": [
+    {
+      "playerId": "203897",
+      "name": "Zach LaVine",
+      "pos": "SG",
+      "age": 31,
+      "salary": {
+        "2026-27": 48967380
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1627734",
+      "name": "Domantas Sabonis",
+      "pos": "C",
+      "age": 30,
+      "salary": {
+        "2026-27": 45472000,
+        "2027-28": 48608000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629631",
+      "name": "De'Andre Hunter",
+      "pos": "SF",
+      "age": 28,
+      "salary": {
+        "2026-27": 24910714
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1631099",
+      "name": "Keegan Murray",
+      "pos": "PF",
+      "age": 25,
+      "salary": {
+        "2026-27": 24137936,
+        "2027-28": 26068965,
+        "2028-29": 27999999
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628370",
+      "name": "Malik Monk",
+      "pos": "SG",
+      "age": 28,
+      "salary": {
+        "2026-27": 20190035,
+        "2027-28": 21582451
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-acuff",
+      "name": "Darius Acuff Jr.",
+      "pos": "PG",
+      "age": 19,
+      "salary": {
+        "2026-27": 8021640,
+        "2027-28": 8422920,
+        "2028-29": 8823600
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630173",
+      "name": "Precious Achiuwa",
+      "pos": "PF",
+      "age": 26,
+      "salary": {
+        "2026-27": 5477000,
+        "2027-28": 5750850
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-clifford",
+      "name": "Nique Clifford",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 3263400,
+        "2027-28": 3418800,
+        "2028-29": 5979481
+      },
+      "contractType": "rookie-scale",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        },
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-karaban",
+      "name": "Alex Karaban",
+      "pos": "PF",
+      "age": 23,
+      "salary": {
+        "2026-27": 2948280,
+        "2027-28": 3095640,
+        "2028-29": 3243120
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-plowden",
+      "name": "Daeqwon Plowden",
+      "pos": "SG",
+      "age": 27,
+      "salary": {
+        "2026-27": 2449421,
+        "2027-28": 2664401
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-raynaud",
+      "name": "Maxime Raynaud",
+      "pos": "C",
+      "age": 23,
+      "salary": {
+        "2026-27": 2150917,
+        "2027-28": 2525901
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-sharp",
+      "name": "Emanuel Sharp",
+      "pos": "SG",
+      "age": 22,
+      "salary": {
+        "2026-27": 1357763,
+        "2027-28": 2294370,
+        "2028-29": 2694363
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": true
+    },
+    {
+      "playerId": "sac-flagler",
+      "name": "Adam Flagler",
+      "pos": "PG",
+      "age": 26,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-07-31",
+      "guaranteed": false
+    },
+    {
+      "playerId": "sac-mogbo",
+      "name": "Jonathan Mogbo",
+      "pos": "PF",
+      "age": 24,
+      "salary": {
+        "2026-27": 678882
+      },
+      "contractType": "two-way",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-08-01",
+      "guaranteed": false
+    }
+  ]
+}
