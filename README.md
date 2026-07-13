@@ -82,8 +82,8 @@ date recorded per team in [`docs/sources.md`](docs/sources.md).
 - Every roster file carries the source's **published team total**, and
   `npm run validate:data` re-sums the seeded players through the engine;
   the build fails unless they match **to the dollar** (all 7 teams do).
-- Unknown values are surfaced as *unknown*, never invented (see "Known gaps"
-  in `docs/sources.md`: two players with unpublished figures are omitted).
+- Unknown values are surfaced as *unknown*, never invented; unsigned cap
+  holds and pending deals are excluded (see "Known gaps" in `docs/sources.md`).
 - The footer's "data as of" date is load-bearing: July rosters move fast.
 
 ## Run it
