@@ -1,5 +1,7 @@
 # THE CAP ROOM
 
+**Live: [the-cap-room.vercel.app](https://the-cap-room.vercel.app)**
+
 **A front-office console for NBA roster construction under the 2023 CBA.**
 Cap sheets against the five lines, a trade machine whose verdicts explain
 themselves rule by rule, and league-percentile player evaluation. Built as an

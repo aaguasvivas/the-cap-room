@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { statusLabel } from "@/engine/capsheet";
 import { usd, usdM } from "@/engine/format";
 import { LUXURY_TAX } from "@/engine/constants";
-import { loadCapSheet, loadMeta } from "@/lib/data/load";
-import { StatusChip } from "@/components/ui/bits";
+import { listTeams, loadAllCapSheets, loadCapSheet, loadMeta } from "@/lib/data/load";
+import { LeagueBoard, type BoardTeam } from "@/components/viz/LeagueBoard";
 
 const MODULES = [
   {
@@ -32,9 +31,18 @@ const SCENARIOS = [
 export default function Home() {
   const meta = loadMeta();
   const sac = loadCapSheet("SAC");
+  const names = new Map(listTeams().map((t) => [t.team, t.teamName]));
+  const board: BoardTeam[] = Object.values(loadAllCapSheets())
+    .map((s) => ({
+      team: s.team,
+      teamName: names.get(s.team) ?? s.team,
+      total: s.totalSalary,
+      status: s.status,
+    }))
+    .sort((a, b) => b.total - a.total);
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8 py-4">
+    <div className="mx-auto max-w-5xl space-y-8 py-4">
       <div>
         <h1 className="font-display text-5xl font-bold uppercase tracking-tightest text-bone md:text-6xl">
           The Cap Room
@@ -46,26 +54,22 @@ export default function Home() {
         </p>
       </div>
 
-      {sac && (
-        <Link
-          href="/cap"
-          className="block rounded-md border border-graphite-line bg-graphite-raised px-5 py-4 hover:border-royal-soft transition-colors"
-        >
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span className="font-display text-lg font-semibold uppercase tracking-wide text-bone">
-              Sacramento Kings
+      <section className="rounded-md border border-graphite-line bg-graphite-raised p-4 md:p-5">
+        <div className="mb-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="font-display text-base font-semibold uppercase tracking-wideish text-silver">
+            The league board
+          </h2>
+          <span className="font-mono text-[11px] text-silver/70">
+            {meta.leagueYear} team salary vs the five lines · seeded league
+          </span>
+          {sac && (
+            <span className="ml-auto font-mono text-[11px] text-silver">
+              SAC {usd(sac.totalSalary)} · {usdM(LUXURY_TAX - sac.totalSalary)} under the tax
             </span>
-            <StatusChip status={sac.status} label={statusLabel(sac.status)} />
-            <span className="ml-auto font-display text-3xl font-semibold tnum text-bone">
-              {usdM(sac.totalSalary)}
-            </span>
-          </div>
-          <p className="mt-1.5 font-mono text-[11px] text-silver">
-            {usd(sac.totalSalary)} committed for {meta.leagueYear} · {usdM(LUXURY_TAX - sac.totalSalary)} under the tax line ·{" "}
-            {sac.standardCount} standard contracts · open the cap sheet →
-          </p>
-        </Link>
-      )}
+          )}
+        </div>
+        <LeagueBoard teams={board} asOf={meta.seedDate} />
+      </section>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {MODULES.map((m) => (
