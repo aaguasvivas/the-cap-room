@@ -1,10 +1,10 @@
 {
   "team": "GSW",
   "teamName": "Golden State Warriors",
-  "asOf": "2026-07-12",
+  "asOf": "2026-07-13",
   "source": "docs/sources.md#golden-state-warriors",
   "publishedTotal": {
-    "2026-27": 207940722
+    "2026-27": 179747598
   },
   "players": [
     {
@@ -22,7 +22,7 @@
       "playerId": "202710",
       "name": "Jimmy Butler",
       "pos": "SF",
-      "age": 36,
+      "age": 37,
       "salary": {
         "2026-27": 56832773
       },
@@ -30,32 +30,14 @@
       "guaranteed": true
     },
     {
-      "playerId": "203110",
-      "name": "Draymond Green",
-      "pos": "PF",
-      "age": 36,
-      "salary": {
-        "2026-27": 27678571
-      },
-      "contractType": "standard",
-      "guaranteed": false
-    },
-    {
       "playerId": "204001",
       "name": "Kristaps Porziņģis",
-      "pos": "C",
-      "age": 30,
+      "pos": "PF",
+      "age": 31,
       "salary": {
-        "2026-27": 19512195,
-        "2027-28": 20487805
+        "2026-27": 20000000
       },
       "contractType": "standard",
-      "options": [
-        {
-          "year": "2027-28",
-          "type": "player"
-        }
-      ],
       "tradeRestrictions": [
         "recently-signed"
       ],
@@ -84,6 +66,12 @@
         "2027-28": 7163100
       },
       "contractType": "standard",
+      "options": [
+        {
+          "year": "2027-28",
+          "type": "player"
+        }
+      ],
       "tradeRestrictions": [
         "recently-signed"
       ],
@@ -94,7 +82,7 @@
       "playerId": "gsw-lendeborg",
       "name": "Yaxel Lendeborg",
       "pos": "PF",
-      "age": 23,
+      "age": 24,
       "salary": {
         "2026-27": 6096240,
         "2027-28": 6401280,
@@ -144,27 +132,25 @@
       "guaranteed": true
     },
     {
-      "playerId": "1629001",
-      "name": "De'Anthony Melton",
-      "pos": "SG",
-      "age": 28,
+      "playerId": "gsw-bassey",
+      "name": "Charles Bassey",
+      "pos": "C",
+      "age": 26,
       "salary": {
-        "2026-27": 3451779
+        "2026-27": 2449421
       },
-      "contractType": "standard",
-      "options": [
-        {
-          "year": "2026-27",
-          "type": "player"
-        }
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
       ],
-      "guaranteed": false
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
     },
     {
       "playerId": "gsw-richard",
       "name": "Will Richard",
       "pos": "SG",
-      "age": 23,
+      "age": 24,
       "salary": {
         "2026-27": 2150917,
         "2027-28": 2525901,

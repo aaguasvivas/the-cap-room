@@ -1,14 +1,39 @@
 {
   "team": "SAC",
-  "asOf": "2026-07-12",
+  "asOf": "2026-07-13",
   "source": "docs/sources.md#sacramento-kings-draft-picks",
   "firstRound": [
-    { "year": 2027, "status": "owned" },
-    { "year": 2028, "status": "owned" },
-    { "year": 2029, "status": "owned" },
-    { "year": 2030, "status": "owned" },
-    { "year": 2031, "status": "swap", "counterparty": "SAS", "note": "San Antonio holds unprotected swap rights (De'Aaron Fox trade, Feb 2025). Still counts as a Kings first for Stepien purposes." },
-    { "year": 2032, "status": "owned" },
-    { "year": 2033, "status": "owned" }
+    {
+      "year": 2027,
+      "status": "owned",
+      "protections": "owed to OKC if it lands 17-30 (Nique Clifford draft trade); kept if 1-16",
+      "note": "Modeled as owned in v1: a protected obligation still leaves SAC picking in 2027 if it conveys later."
+    },
+    {
+      "year": 2028,
+      "status": "owned"
+    },
+    {
+      "year": 2029,
+      "status": "owned"
+    },
+    {
+      "year": 2030,
+      "status": "owned"
+    },
+    {
+      "year": 2031,
+      "status": "swap",
+      "counterparty": "SAS",
+      "note": "San Antonio holds unprotected swap rights (De'Aaron Fox trade, Feb 2025). Still counts as a Kings first for Stepien purposes."
+    },
+    {
+      "year": 2032,
+      "status": "owned"
+    },
+    {
+      "year": 2033,
+      "status": "owned"
+    }
   ]
 }

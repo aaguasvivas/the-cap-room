@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
  */
 const SCENARIOS = [
   {
-    name: "Monk ⇄ Claxton",
-    note: "legal: flags the first-apron hard cap SAC creates by taking back more than 100%",
-    url: "/trade?a=SAC&b=BKN&give=1628370&get=1629651",
+    name: "Monk ⇄ Vanderbilt + Hardy",
+    note: "legal: LAL takes back more than 100%, which flags a first-apron hard cap",
+    url: "/trade?a=SAC&b=LAL&give=1628370&get=1629020.lal-hardy",
   },
   {
     name: "Hunter ⇄ Caruso + J. Williams",

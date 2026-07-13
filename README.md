@@ -74,7 +74,7 @@ stats.nba.com blocks cloud-provider IPs, and Spotrac has no public API. So the
 deployed demo makes **zero runtime calls** to either: `etl/pull_stats.py` runs
 locally (three rate-limited league-wide requests), writes a versioned snapshot
 with a `pulledAt` stamp, and the snapshot is committed. Same posture for
-contracts: transcribed from Basketball-Reference on seed day with URL + access
+contracts: transcribed from Spotrac on seed day with URL + access
 date recorded per team in [`docs/sources.md`](docs/sources.md).
 
 ### Data honesty
@@ -172,4 +172,4 @@ docs/production-notes.md   Postgres schema + ingestion DAG sketch
 ---
 
 Unofficial demo by Adelson Aguasvivas. Not affiliated with the Sacramento
-Kings or the NBA. No team or league marks; data as of 2026-07-12.
+Kings or the NBA. No team or league marks; data as of 2026-07-13.
