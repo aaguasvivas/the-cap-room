@@ -1,0 +1,192 @@
+{
+  "team": "ORL",
+  "teamName": "Orlando Magic",
+  "asOf": "2026-08-04",
+  "source": "docs/sources.md#orlando-magic",
+  "publishedTotal": {
+    "2026-27": 217865321
+  },
+  "players": [
+    {
+      "playerId": "orl-fwagner",
+      "name": "Franz Wagner",
+      "pos": "SF",
+      "age": 25,
+      "salary": {
+        "2026-27": 41754690
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-banchero",
+      "name": "Paolo Banchero",
+      "pos": "PF",
+      "age": 24,
+      "salary": {
+        "2026-27": 41240250
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630217",
+      "name": "Desmond Bane",
+      "pos": "SG",
+      "age": 28,
+      "salary": {
+        "2026-27": 39446090
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-suggs",
+      "name": "Jalen Suggs",
+      "pos": "SG",
+      "age": 25,
+      "salary": {
+        "2026-27": 32400000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1628976",
+      "name": "Wendell Carter Jr.",
+      "pos": "C",
+      "age": 27,
+      "salary": {
+        "2026-27": 18102000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-black",
+      "name": "Anthony Black",
+      "pos": "SG",
+      "age": 23,
+      "salary": {
+        "2026-27": 10106316
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-bitadze",
+      "name": "Goga Bitadze",
+      "pos": "C",
+      "age": 27,
+      "salary": {
+        "2026-27": 7608696
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-dasilva",
+      "name": "Tristan da Silva",
+      "pos": "SF",
+      "age": 25,
+      "salary": {
+        "2026-27": 3991200
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-richardson",
+      "name": "Jase Richardson",
+      "pos": "SG",
+      "age": 21,
+      "salary": {
+        "2026-27": 3132360
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-cain",
+      "name": "Jamal Cain",
+      "pos": "SF",
+      "age": 27,
+      "salary": {
+        "2026-27": 2584539
+      },
+      "contractType": "standard",
+      "guaranteed": false
+    },
+    {
+      "playerId": "203484",
+      "name": "Jevon Carter",
+      "pos": "PG",
+      "age": 31,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-isaac",
+      "name": "Jonathan Isaac",
+      "pos": "PF",
+      "age": 29,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "202696",
+      "name": "Nikola Vučević",
+      "pos": "C",
+      "age": 36,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-penda",
+      "name": "Noah Penda",
+      "pos": "SF",
+      "age": 22,
+      "salary": {
+        "2026-27": 2150917
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "orl-isaac-dead",
+      "name": "Jonathan Isaac (waived)",
+      "pos": "PF",
+      "age": 29,
+      "salary": {
+        "2026-27": 8000000
+      },
+      "contractType": "dead",
+      "guaranteed": true
+    }
+  ]
+}

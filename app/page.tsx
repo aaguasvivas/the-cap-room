@@ -24,7 +24,7 @@ const MODULES = [
 
 const SCENARIOS = [
   { label: "A legal deal (with a hard-cap flag)", url: "/trade?a=SAC&b=LAL&give=1628370&get=1629020.lal-hardy" },
-  { label: "A second-apron aggregation violation", url: "/trade?a=SAC&b=OKC&give=1629631&get=1627936.okc-jaylin-williams" },
+  { label: "A deal that breaks on the second-apron wall", url: "/trade?a=SAC&b=NYK&give=1628370&get=1630540" },
   { label: "A Stepien-rule violation", url: "/trade?a=SAC&b=LAL&give=203897&get=1629029&picksA=2027.2028" },
 ] as const;
 

@@ -1,10 +1,10 @@
 {
   "team": "BKN",
   "teamName": "Brooklyn Nets",
-  "asOf": "2026-07-13",
+  "asOf": "2026-08-04",
   "source": "docs/sources.md#brooklyn-nets",
   "publishedTotal": {
-    "2026-27": 151056358
+    "2026-27": 160324651
   },
   "players": [
     {
@@ -75,9 +75,24 @@
       "guaranteed": true
     },
     {
+      "playerId": "bkn-wagner",
+      "name": "Moritz Wagner",
+      "pos": "C",
+      "age": 29,
+      "salary": {
+        "2026-27": 9268293
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
       "playerId": "bkn-ellis",
       "name": "Keon Ellis",
-      "pos": "SG",
+      "pos": "SF",
       "age": 27,
       "salary": {
         "2026-27": 9000000,
@@ -113,10 +128,6 @@
           "type": "team"
         }
       ],
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-01",
       "guaranteed": true
     },
     {
@@ -260,10 +271,6 @@
           "type": "team"
         }
       ],
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-01",
       "guaranteed": true
     },
     {
@@ -298,10 +305,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-01",
       "guaranteed": false
     },
     {
@@ -313,10 +316,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-01",
       "guaranteed": false
     }
   ]

@@ -161,7 +161,7 @@ describe("apron matching regimes (R2, R3)", () => {
 });
 
 describe("roster bounds (R4)", () => {
-  it("fails a trade that leaves a team with 16 standard contracts", () => {
+  it("warns at 16 standard contracts (legal in the offseason, over the regular-season 15)", () => {
     const out = mkPlayer({ id: "sac-out", name: "Sac Out", salary: 10_000_000 });
     const in1 = mkPlayer({ id: "dal-1", name: "Dal One", salary: 5_000_000 });
     const in2 = mkPlayer({ id: "dal-2", name: "Dal Two", salary: 4_000_000 });
@@ -170,9 +170,23 @@ describe("roster bounds (R4)", () => {
 
     const v = validateTrade(propose({ team: "SAC", playerIds: ["sac-out"] }, { team: "DAL", playerIds: ["dal-1", "dal-2"] }), ctxFor([sac, dal]));
 
+    expect(v.legal).toBe(true);
+    expect(byId(v, "SAC", "roster-bounds")?.status).toBe("warning");
+    expect(byId(v, "SAC", "roster-bounds")?.detail).toContain("opening night");
+  });
+
+  it("fails a trade that would exceed even the 21-man offseason roster", () => {
+    const out = mkPlayer({ id: "sac-out", name: "Sac Out", salary: 10_000_000 });
+    const in1 = mkPlayer({ id: "dal-1", name: "Dal One", salary: 5_000_000 });
+    const in2 = mkPlayer({ id: "dal-2", name: "Dal Two", salary: 4_000_000 });
+    const sac = sheetFor("SAC", padRoster("SAC", [out], 190_000_000, 21));
+    const dal = sheetFor("DAL", padRoster("DAL", [in1, in2], 172_000_000, 15));
+
+    const v = validateTrade(propose({ team: "SAC", playerIds: ["sac-out"] }, { team: "DAL", playerIds: ["dal-1", "dal-2"] }), ctxFor([sac, dal]));
+
     expect(v.legal).toBe(false);
     expect(byId(v, "SAC", "roster-bounds")?.status).toBe("fail");
-    expect(byId(v, "SAC", "roster-bounds")?.headline).toContain("16");
+    expect(byId(v, "SAC", "roster-bounds")?.headline).toContain("22");
   });
 
   it("warns (not fails) when a team drops to 13 standard contracts", () => {

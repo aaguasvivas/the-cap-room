@@ -15,9 +15,9 @@ const SCENARIOS = [
     url: "/trade?a=SAC&b=LAL&give=1628370&get=1629020.lal-hardy",
   },
   {
-    name: "Hunter ⇄ Caruso + J. Williams",
-    note: "illegal: OKC finishes above the second apron and cannot aggregate two salaries",
-    url: "/trade?a=SAC&b=OKC&give=1629631&get=1627936.okc-jaylin-williams",
+    name: "Monk ⇄ McBride",
+    note: "illegal: the deal would carry NYK over the second apron, where a team cannot take back more than it sends",
+    url: "/trade?a=SAC&b=NYK&give=1628370&get=1630540",
   },
   {
     name: "LaVine + 2027 + 2028 firsts ⇄ Dončić",

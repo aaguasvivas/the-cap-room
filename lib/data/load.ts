@@ -20,11 +20,13 @@ import NYK from "@/data/rosters/NYK.json";
 import GSW from "@/data/rosters/GSW.json";
 import LAL from "@/data/rosters/LAL.json";
 import BKN from "@/data/rosters/BKN.json";
+import ORL from "@/data/rosters/ORL.json";
+import PHI from "@/data/rosters/PHI.json";
 import SAC_PICKS from "@/data/picks/SAC.json";
 import META from "@/data/meta.json";
 import STATS from "@/data/stats/players-2025-26.json";
 
-const RAW_ROSTERS = [SAC, CLE, OKC, NYK, GSW, LAL, BKN];
+const RAW_ROSTERS = [SAC, CLE, OKC, NYK, GSW, LAL, BKN, ORL, PHI];
 
 let rostersCache: Map<TeamCode, RosterFile> | null = null;
 

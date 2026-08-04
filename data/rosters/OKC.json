@@ -1,10 +1,10 @@
 {
   "team": "OKC",
   "teamName": "Oklahoma City Thunder",
-  "asOf": "2026-07-13",
+  "asOf": "2026-08-04",
   "source": "docs/sources.md#oklahoma-city-thunder",
   "publishedTotal": {
-    "2026-27": 232001714
+    "2026-27": 214279492
   },
   "players": [
     {
@@ -83,17 +83,6 @@
       "guaranteed": true
     },
     {
-      "playerId": "1629652",
-      "name": "Luguentz Dort",
-      "pos": "SG",
-      "age": 27,
-      "salary": {
-        "2026-27": 17722222
-      },
-      "contractType": "standard",
-      "guaranteed": true
-    },
-    {
       "playerId": "okc-jaylin-williams",
       "name": "Jaylin Williams",
       "pos": "C",
@@ -139,10 +128,6 @@
           "type": "team"
         }
       ],
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-02",
       "guaranteed": true
     },
     {
@@ -218,10 +203,6 @@
           "type": "team"
         }
       ],
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-02",
       "guaranteed": true
     },
     {
@@ -269,10 +250,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-02",
       "guaranteed": false
     },
     {
@@ -284,10 +261,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-02",
       "guaranteed": false
     },
     {
@@ -299,10 +272,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-02",
       "guaranteed": false
     }
   ]

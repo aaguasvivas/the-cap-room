@@ -1,0 +1,174 @@
+{
+  "team": "PHI",
+  "teamName": "Philadelphia 76ers",
+  "asOf": "2026-08-04",
+  "source": "docs/sources.md#philadelphia-76ers",
+  "publishedTotal": {
+    "2026-27": 204737051
+  },
+  "players": [
+    {
+      "playerId": "203954",
+      "name": "Joel Embiid",
+      "pos": "C",
+      "age": 32,
+      "salary": {
+        "2026-27": 57985752
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1627759",
+      "name": "Jaylen Brown",
+      "pos": "SF",
+      "age": 30,
+      "salary": {
+        "2026-27": 57736350
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1630178",
+      "name": "Tyrese Maxey",
+      "pos": "PG",
+      "age": 26,
+      "salary": {
+        "2026-27": 40770520
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-edgecombe",
+      "name": "VJ Edgecombe",
+      "pos": "SG",
+      "age": 21,
+      "salary": {
+        "2026-27": 11663880
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629731",
+      "name": "Dean Wade",
+      "pos": "PF",
+      "age": 30,
+      "salary": {
+        "2026-27": 9000000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629014",
+      "name": "Anfernee Simons",
+      "pos": "SG",
+      "age": 27,
+      "salary": {
+        "2026-27": 6000000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "2544",
+      "name": "LeBron James",
+      "pos": "PF",
+      "age": 42,
+      "salary": {
+        "2026-27": 3876529
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-philon",
+      "name": "Labaron Philon Jr.",
+      "pos": "PG",
+      "age": 21,
+      "salary": {
+        "2026-27": 3597120
+      },
+      "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-barlow",
+      "name": "Dominick Barlow",
+      "pos": "PF",
+      "age": 23,
+      "salary": {
+        "2026-27": 3415000
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-hukporti",
+      "name": "Ariel Hukporti",
+      "pos": "C",
+      "age": 24,
+      "salary": {
+        "2026-27": 3400000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-walker",
+      "name": "Jabari Walker",
+      "pos": "SF",
+      "age": 24,
+      "salary": {
+        "2026-27": 2584539
+      },
+      "contractType": "standard",
+      "guaranteed": false
+    },
+    {
+      "playerId": "phi-edwards",
+      "name": "Justin Edwards",
+      "pos": "SG",
+      "age": 23,
+      "salary": {
+        "2026-27": 2411090
+      },
+      "contractType": "min",
+      "guaranteed": true
+    },
+    {
+      "playerId": "phi-bona",
+      "name": "Adem Bona",
+      "pos": "C",
+      "age": 23,
+      "salary": {
+        "2026-27": 2296271
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    }
+  ]
+}

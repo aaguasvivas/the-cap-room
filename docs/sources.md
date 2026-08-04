@@ -6,25 +6,31 @@ listed under **Known gaps** below. `scripts/validate-data.ts` re-sums every
 roster through the engine and fails the build if the seeded figures don't
 match the source's published team total to the dollar.
 
-**Seed date for all roster figures: 2026-07-13** (footer date). Rosters move
-fast in July. Re-verify before relying on any figure.
+**Seed date for all roster figures: 2026-08-04** (footer date). Offseason
+rosters move fast. Re-verify before relying on any figure.
 
 ## Source of record
 
-Rosters were first seeded 2026-07-12 from Basketball-Reference team payroll
-pages, then **re-seeded 2026-07-13 from Spotrac team cap tables** after
-confirming B-R ("salaries are updated monthly") had not yet reflected the
-July 12-13 wave of moves (Smart to HOU, the Reaves re-sign, the DeRozan
-waiver, Randle to BKN, Harden and Green becoming unsigned free agents).
+Rosters were first seeded 2026-07-12 from Basketball-Reference, re-seeded
+2026-07-13 from Spotrac after B-R's monthly cadence missed the July wave, and
+**re-seeded again 2026-08-04 from Spotrac** ahead of sharing: Draymond Green
+and De'Anthony Melton re-signed with GSW, Dort was traded out of OKC, LAL
+added Ziaire Williams/Thybulle/Looney (16-man offseason roster), BKN added
+Moritz Wagner, CLE added Hezonja, and Sharp (SAC) and Thomas (CLE) returned
+to Spotrac's active tables, resolving the July 13 known gap. Two teams were
+added for coverage and star power: **Orlando** and **Philadelphia** (LeBron
+James at the veteran minimum beside Embiid and Jaylen Brown). Notably, **no
+seeded team sits above the second apron in August**: contenders shed salary
+to duck it, which the league board makes visible.
 Cross-checks against news reports: [ESPN on Smart to HOU](https://www.espn.com/nba/story/_/id/49235334/sources-marcus-smart-agrees-2-year-13m-deal-rockets).
 
-Per-team pages, all accessed **2026-07-13**, pattern
+Per-team pages, all accessed **2026-08-04**, pattern
 `https://www.spotrac.com/nba/<team-slug>/cap/_/year/2026`:
-Kings, Cavaliers, Thunder, Knicks, Warriors, Lakers, Nets.
+Kings, Cavaliers, Thunder, Knicks, Warriors, Lakers, Nets, Magic, 76ers.
 
 `publishedTotal` per file = Spotrac's **Active Roster Cap total plus Dead
 Money total** for 2026-27. Validation recomputes it from the seeded players
-and requires an exact match. All 7 teams re-sum exactly. Cap holds and
+and requires an exact match. All 9 teams re-sum exactly. Cap holds and
 pending transactions are excluded (they are placeholders, not committed
 salary), which mirrors the engine's counting rules.
 
@@ -51,56 +57,40 @@ Spotrac shows the same $209,015,000 / $221,686,000 apron maxima):
 | Two-way salary | $678,882 | per spec; Spotrac lists two-way cap HOLDS at $2,185,116 (a different concept). Display-only, excluded from totals |
 | MIN_ROOKIE / MIN_TWO_YR / MIN_VET | $1,350,000 / $2,440,000 / $3,870,000 | **approx, display-only; not used in any engine math.** Spotrac shows actual vet-min cap hits at $2,449,421 (e.g. Bryant, Drummond, Clarkson, Bassey) |
 
-## Roster seeds (`/data/rosters/*.json`), all accessed 2026-07-13
+## Roster seeds (`/data/rosters/*.json`), all accessed 2026-08-04
 
 ### Sacramento Kings
-- Published: Active $190,139,641 + Dead $10,000,000 (DeMar DeRozan, waived) = **$200,139,641** ✓ re-summed exactly. SAC sits $288,359 under the tax line.
-- Spotrac flags SAC as **hard-capped at the first apron** (BAE used on Achiuwa). Pre-existing hard caps are not modeled in v1 (README known simplifications).
-- Existing TPEs (Valanciunas, Saric, Carter trades) likewise documented-not-modeled.
-- New since 7/12: DeRozan dead money, Dylan Cardwell signed. Departed active list: Emanuel Sharp (see Known gaps).
-- Trade restrictions from signing dates: Achiuwa, Plowden, Cardwell (July FA signings) trade-eligible 2026-12-15; two-ways Flagler/Mogbo 30-day. LaVine exercised his option June 29, 2026 (no restriction; Spotrac's TYPE column shows "FA", read as original signing mechanism).
+- Published: Active $191,497,404 + Dead $10,000,000 (DeRozan) = **$201,497,404** ✓ re-summed exactly. SAC is now a **taxpayer**, $1,069,404 over the line, and Spotrac flags the hard cap at the first apron (BAE used on Achiuwa).
+- Emanuel Sharp restored to the active table (July 13 gap resolved); out-years carried from the 7/12 B-R seed.
+- Restrictions: Achiuwa, Plowden, Cardwell trade-eligible 2026-12-15. All 30-day rookie/two-way windows have lapsed.
 
 ### Cleveland Cavaliers
-- Published: Active $181,918,200 + Dead $424,672 (Ricky Rubio) = **$182,342,872** ✓ re-summed exactly. CLE fell below the tax line.
-- **James Harden is an unsigned free agent** ($47.0M cap hold, excluded). His prior 26-27 salary was non-guaranteed.
-- Thomas Bryant's cap hit is $2,449,421 on a $3,524,115 base (10+ year vet minimum; league reimburses the difference). Seeded at cap hit.
-- Craig Porter Jr. 2026-27 is non-guaranteed (guarantee date 1/10/2027).
-- Departed active list: Meleek Thomas (see Known gaps). Two-ways now Udeh, Minix, Enaruna (from Spotrac deadline rows; 30-day dates approximate).
+- Published: Active $185,725,384 + Dead $424,672 (Rubio) = **$186,150,056** ✓. Below the tax. Harden remains an unsigned $47.0M cap hold. Meleek Thomas restored; Mario Hezonja signed (vet min, Dec 15 restriction).
 
 ### Oklahoma City Thunder
-- Published: Active **$232,001,714** ✓ re-summed exactly. Above the second apron by $10.3M. The league's only second-apron team in the seeded set.
-- Chet Holmgren and Jalen Williams: exactly 25% max ($41,240,250); out-years computed as the CBA-standard 8% raises (no published anchor; **display-only**).
-- Dort's cap hit dropped to $17,722,222 ($1M moved to unlikely incentives, which don't count).
-- Ajay Mitchell partially guaranteed ($1.5M of $2.85M).
+- Published: Active **$214,279,492** ✓. **Dort traded out** of the seeded league; OKC dropped below the second apron and is now a first-apron team.
 
 ### New York Knicks
-- Published: Active **$218,412,232** ✓ re-summed exactly. Above the first apron, $3.3M below the second.
-- KAT's 2027-28 player option is $62,062,000 per Spotrac deadlines (B-R had shown $61,015,192).
-- Hart's 2027-28 ($22,375,280) is a club option per Spotrac (B-R showed plain salary).
-- New: Jordan Clarkson (vet min). Shamet/Alvarado/Diawara re-signed on new deals; their 2027-28 figures aren't published on the accessed pages, so those single out-years are omitted (28-29 figures anchored by Spotrac guarantee-date values).
+- Published: Active **$218,412,232** ✓, unchanged since 7/13. The league's closest team to the second apron ($3.3M under), which the "apron wall" scenario uses.
 
 ### Golden State Warriors
-- Published: Active **$179,747,598** ✓ re-summed exactly. GSW fell under the tax.
-- **Draymond Green is an unsigned free agent** ($38.8M Bird hold, excluded).
-- Porziņģis renegotiated to a flat $20,000,000 (June 30 extension → six-month trade restriction, seeded to 2026-12-30). His new out-year isn't published; omitted.
-- De'Anthony Melton appears only as a **pending** $5,477,000 transaction (BAE-sized); pending deals don't count and are excluded.
-- Spotrac flags GSW as hard-capped at the **second** apron (not modeled in v1).
-- New: Charles Bassey (vet min).
+- Published: Active **$215,352,590** ✓. **Draymond Green re-signed** ($27,678,571) and **Melton's BAE deal is official** ($5,477,000); Gary Payton II added. GSW is a first-apron team. Note: Spotrac's own apron math adds $500K of unlikely incentives; this repo counts cap hits.
+- Bassey now partially guaranteed ($1.4M) → guaranteed: false.
 
 ### Los Angeles Lakers
-- Published: Active **$193,549,059** ✓ re-summed exactly. LAL jumped from under the cap to $28.6M over it, and Spotrac flags the roster as hard-capped at the first apron (Kessler sign-and-trade; not modeled in v1).
-- **Austin Reaves re-signed at $41,240,250** (25% max). Out-years computed from equal 8% raises and confirmed exactly by Spotrac's published 2029-30 player-option figure ($51,137,910).
-- Dončić's extension starts at $49,488,300 (exactly the 30% max; B-R's $49,800,000 was stale). 2027-28 computed by the same equal-raise arithmetic and confirmed exactly by the published 2028-29 option ($57,406,428).
-- Kessler $30,108,821 with equal raises to the published 2029-30 option ($34,625,144): $1,505,441 per year, integer-exact.
-- **Marcus Smart left for Houston** (2yr/$13M, ESPN) and is no longer seeded anywhere. New: Collin Sexton ($9,366,000). Kevon Looney is pending-only; excluded.
-- Nick Smith Jr. no longer appears at all (previous Known gap resolved by departure).
+- Published: Active **$200,897,322** ✓. LAL is a taxpayer by $469,322 and carries **16 standard contracts**, legal in the offseason (limit 21) but over the regular-season 15, which the engine now models. Added: Ziaire Williams, Matisse Thybulle, Kevon Looney (vet mins, Dec 15). Sexton's 27-28 player option published at $9,834,300. Two-ways now Mañon, Okereke, Kaluma (Suder off).
 
 ### Brooklyn Nets
-- Published: Active **$151,056,358** ✓ re-summed exactly. Above the floor now, still the only team with cap room (about $13.9M practical).
-- **Julius Randle signed** ($33,333,334, 27-28 player option $35,802,468). **Nic Claxton, Ziaire Williams, and Malachi Smith are gone** (Claxton traded out of the seeded league).
-- Michael Porter Jr. is now fully guaranteed. Keon Ellis re-signed at a flat $9,000,000 with a 27-28 player option.
-- New rookie Joshua Jefferson; his 2027-28 figure isn't published (28-29 club option anchored at $3,266,880); omitted.
-- Two-ways: Bilodeau, Chaney Johnson.
+- Published: Active **$160,324,651** ✓. Moritz Wagner signed ($9,268,293). Still the only under-cap team, now above the floor with a full 15.
+
+### Orlando Magic (added 2026-08-04)
+- Published: Active $209,865,321 + Dead $8,000,000 (Isaac, waived and re-signed at the minimum, both entries seeded) = **$217,865,321** ✓. First-apron team.
+- New seed: out-years not yet captured for most contracts (single-year figures; the multi-year strip's committed-only caveat applies). FA signings carry Dec 15 restrictions inferred from the July signing window.
+
+### Philadelphia 76ers (added 2026-08-04)
+- Published: Active **$204,737,051** ✓. Taxpayer, hard-capped at the first apron per Spotrac (NT-MLE split across Wade and Simons, BAE on Hukporti).
+- **LeBron James, age 42, on a veteran minimum** ($3,876,529 cap hit as listed), trade-restricted until Dec 15 like every July signee, which makes for an excellent ledger demonstration.
+- Jaylen Brown's cap hit ($57,736,350) exceeds his base salary per Spotrac (trade-bonus proration from the Boston trade); the cap hit is seeded. Same single-year caveat as ORL.
 
 ## Sacramento Kings draft picks (`/data/picks/SAC.json`)
 
@@ -123,14 +113,12 @@ blocks cloud-provider IPs). New July signees who changed teams keep their
 
 ## Known gaps (surfaced as unknown, never invented)
 
-- **Emanuel Sharp (SAC)** and **Meleek Thomas (CLE)**: present in Spotrac's
-  deadline data but absent from the active-roster tables on access date
-  (possibly waived or converted; both were sub-$1.4M deals). Omitted pending
-  clarity rather than guessed.
-- **James Harden (CLE)** and **Draymond Green (GSW)**: unsigned free agents
-  (cap holds only). Not seeded; holds aren't modeled.
-- **De'Anthony Melton (GSW)** and **Kevon Looney (LAL)**: pending, unofficial
-  transactions on access date. Excluded until official.
+- **James Harden (CLE)**: still an unsigned free agent ($47.0M cap hold).
+  Not seeded; holds aren't modeled. (July 13 gaps for Sharp, Thomas, Melton,
+  and Looney all resolved on 2026-08-04: the first two returned to the active
+  tables, the latter two signed.)
+- **ORL and PHI out-years**: mostly single-year seeds on their add date; see
+  team notes.
 - Out-year figures for a handful of new July deals (Shamet, Alvarado, Diawara
   27-28; Porziņģis, Jefferson 27-28; Sexton beyond 26-27) aren't published on
   the accessed pages and are omitted, per team notes above. Where an out-year

@@ -1,10 +1,10 @@
 {
   "team": "GSW",
   "teamName": "Golden State Warriors",
-  "asOf": "2026-07-13",
+  "asOf": "2026-08-04",
   "source": "docs/sources.md#golden-state-warriors",
   "publishedTotal": {
-    "2026-27": 179747598
+    "2026-27": 215352590
   },
   "players": [
     {
@@ -27,6 +27,21 @@
         "2026-27": 56832773
       },
       "contractType": "standard",
+      "guaranteed": true
+    },
+    {
+      "playerId": "203110",
+      "name": "Draymond Green",
+      "pos": "PF",
+      "age": 36,
+      "salary": {
+        "2026-27": 27678571
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
       "guaranteed": true
     },
     {
@@ -95,10 +110,6 @@
           "type": "team"
         }
       ],
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-07-31",
       "guaranteed": true
     },
     {
@@ -110,6 +121,21 @@
         "2026-27": 5679459
       },
       "contractType": "rookie-scale",
+      "guaranteed": true
+    },
+    {
+      "playerId": "1629001",
+      "name": "De'Anthony Melton",
+      "pos": "SG",
+      "age": 28,
+      "salary": {
+        "2026-27": 5477000
+      },
+      "contractType": "standard",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
       "guaranteed": true
     },
     {
@@ -136,6 +162,21 @@
       "name": "Charles Bassey",
       "pos": "C",
       "age": 26,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": false
+    },
+    {
+      "playerId": "gsw-payton",
+      "name": "Gary Payton II",
+      "pos": "PG",
+      "age": 34,
       "salary": {
         "2026-27": 2449421
       },

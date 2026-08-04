@@ -1,10 +1,10 @@
 {
   "team": "SAC",
   "teamName": "Sacramento Kings",
-  "asOf": "2026-07-13",
+  "asOf": "2026-08-04",
   "source": "docs/sources.md#sacramento-kings",
   "publishedTotal": {
-    "2026-27": 200139641
+    "2026-27": 201497404
   },
   "players": [
     {
@@ -206,6 +206,25 @@
       "guaranteed": true
     },
     {
+      "playerId": "sac-sharp",
+      "name": "Emanuel Sharp",
+      "pos": "PG",
+      "age": 22,
+      "salary": {
+        "2026-27": 1357763,
+        "2027-28": 2294370,
+        "2028-29": 2694363
+      },
+      "contractType": "standard",
+      "options": [
+        {
+          "year": "2028-29",
+          "type": "team"
+        }
+      ],
+      "guaranteed": true
+    },
+    {
       "playerId": "sac-derozan-dead",
       "name": "DeMar DeRozan (waived)",
       "pos": "SF",
@@ -225,10 +244,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-07-31",
       "guaranteed": false
     },
     {
@@ -240,10 +255,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-08-01",
       "guaranteed": false
     }
   ]

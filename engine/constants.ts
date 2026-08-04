@@ -32,6 +32,8 @@ export const MIN_VET = 3_870_000; // approx, verify on seed day
 export const TWO_WAY_SALARY = 678_882;
 
 export const ROSTER_MAX_STANDARD = 15;
+/** Offseason rosters may carry up to 21 standard contracts until opening night. */
+export const ROSTER_MAX_OFFSEASON = 21;
 export const ROSTER_MAX_TWO_WAY = 3;
 export const ROSTER_MIN_SEASON = 14;
 

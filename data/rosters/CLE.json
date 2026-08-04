@@ -1,10 +1,10 @@
 {
   "team": "CLE",
   "teamName": "Cleveland Cavaliers",
-  "asOf": "2026-07-13",
+  "asOf": "2026-08-04",
   "source": "docs/sources.md#cleveland-cavaliers",
   "publishedTotal": {
-    "2026-27": 182342872
+    "2026-27": 186150056
   },
   "players": [
     {
@@ -106,6 +106,21 @@
       "guaranteed": true
     },
     {
+      "playerId": "cle-hezonja",
+      "name": "Mario Hezonja",
+      "pos": "SG",
+      "age": 31,
+      "salary": {
+        "2026-27": 2449421
+      },
+      "contractType": "min",
+      "tradeRestrictions": [
+        "recently-signed"
+      ],
+      "returnEligibleDate": "2026-12-15",
+      "guaranteed": true
+    },
+    {
       "playerId": "cle-bryant",
       "name": "Thomas Bryant",
       "pos": "C",
@@ -162,6 +177,19 @@
       "guaranteed": true
     },
     {
+      "playerId": "cle-thomas",
+      "name": "Meleek Thomas",
+      "pos": "SG",
+      "age": 20,
+      "salary": {
+        "2026-27": 1357763,
+        "2027-28": 2294370,
+        "2028-29": 2694363
+      },
+      "contractType": "standard",
+      "guaranteed": true
+    },
+    {
       "playerId": "cle-rubio-dead",
       "name": "Ricky Rubio (waived)",
       "pos": "PG",
@@ -181,10 +209,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-07-31",
       "guaranteed": false
     },
     {
@@ -196,10 +220,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-07-31",
       "guaranteed": false
     },
     {
@@ -211,10 +231,6 @@
         "2026-27": 678882
       },
       "contractType": "two-way",
-      "tradeRestrictions": [
-        "recently-signed"
-      ],
-      "returnEligibleDate": "2026-07-31",
       "guaranteed": false
     }
   ]

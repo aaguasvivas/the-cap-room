@@ -1,5 +1,6 @@
 import {
   EXPANDED_TPE_AMOUNT,
+  ROSTER_MAX_OFFSEASON,
   FIRST_APRON,
   LEAGUE_YEAR,
   MIN_TEAM_SALARY,
@@ -353,23 +354,32 @@ export function validateTrade(proposal: TradeProposal, ctx: TradeContext): Verdi
     const outStandard = s.outMatched.length;
     const inStandard = s.inMatched.length;
     const postStandard = s.sheet.standardCount - outStandard + inStandard;
-    const rosterStatus = postStandard > ROSTER_MAX_STANDARD ? "fail" : postStandard < ROSTER_MIN_SEASON ? "warning" : "pass";
+    const rosterStatus =
+      postStandard > ROSTER_MAX_OFFSEASON
+        ? "fail"
+        : postStandard > ROSTER_MAX_STANDARD || postStandard < ROSTER_MIN_SEASON
+          ? "warning"
+          : "pass";
     checks.push({
       id: "roster-bounds",
       team: t,
       status: rosterStatus,
       headline:
         rosterStatus === "fail"
-          ? `Roster: ${postStandard} standard contracts exceeds the ${ROSTER_MAX_STANDARD}-man limit`
-          : rosterStatus === "warning"
-            ? `Roster: ${postStandard} standard contracts (below the in-season floor of ${ROSTER_MIN_SEASON})`
-            : `Roster: ${postStandard} standard contracts`,
+          ? `Roster: ${postStandard} standard contracts exceeds the offseason limit of ${ROSTER_MAX_OFFSEASON}`
+          : postStandard > ROSTER_MAX_STANDARD
+            ? `Roster: ${postStandard} standard contracts (over the regular-season limit of ${ROSTER_MAX_STANDARD})`
+            : rosterStatus === "warning"
+              ? `Roster: ${postStandard} standard contracts (below the in-season floor of ${ROSTER_MIN_SEASON})`
+              : `Roster: ${postStandard} standard contracts`,
       detail:
         rosterStatus === "fail"
-          ? `${t} would go from ${s.sheet.standardCount} to ${postStandard} standard contracts; the maximum is ${ROSTER_MAX_STANDARD}. A player must be waived or added to the outgoing side.`
-          : rosterStatus === "warning"
-            ? `${t} would drop to ${postStandard} standard contracts. Teams must carry at least ${ROSTER_MIN_SEASON} during the season (a two-week grace window applies), so a signing would be required.`
-            : `${t} moves from ${s.sheet.standardCount} to ${postStandard} standard contracts, inside the ${ROSTER_MIN_SEASON}–${ROSTER_MAX_STANDARD} band.`,
+          ? `${t} would go from ${s.sheet.standardCount} to ${postStandard} standard contracts; even offseason rosters cap at ${ROSTER_MAX_OFFSEASON}. A player must be waived or added to the outgoing side.`
+          : postStandard > ROSTER_MAX_STANDARD
+            ? `${t} would carry ${postStandard} standard contracts. Legal in the offseason (up to ${ROSTER_MAX_OFFSEASON}), but the roster must be down to ${ROSTER_MAX_STANDARD} by opening night.`
+            : rosterStatus === "warning"
+              ? `${t} would drop to ${postStandard} standard contracts. Teams must carry at least ${ROSTER_MIN_SEASON} during the season (a two-week grace window applies), so a signing would be required.`
+              : `${t} moves from ${s.sheet.standardCount} to ${postStandard} standard contracts, inside the ${ROSTER_MIN_SEASON}–${ROSTER_MAX_STANDARD} band.`,
     });
 
     const postTwoWay = s.sheet.twoWayCount - s.outTwoWays.length + s.inTwoWays.length;

@@ -52,7 +52,7 @@ flowchart LR
         S["stats/players-2025-26.json"]
     end
     subgraph app["Next.js 14 (single Vercel deploy)"]
-        ENGINE["/engine · pure TS CBA rules<br/>constants · capsheet · tradeRules · picks<br/>zero UI imports, 43 unit tests"]
+        ENGINE["/engine · pure TS CBA rules<br/>constants · capsheet · tradeRules · picks<br/>zero UI imports, 44 unit tests"]
         API["/api REST routes"]
         UI["Cap Sheet · Trade Machine · Player Eval"]
     end
@@ -81,16 +81,16 @@ date recorded per team in [`docs/sources.md`](docs/sources.md).
 
 - Every roster file carries the source's **published team total**, and
   `npm run validate:data` re-sums the seeded players through the engine;
-  the build fails unless they match **to the dollar** (all 7 teams do).
+  the build fails unless they match **to the dollar** (all 9 teams do).
 - Unknown values are surfaced as *unknown*, never invented; unsigned cap
   holds and pending deals are excluded (see "Known gaps" in `docs/sources.md`).
-- The footer's "data as of" date is load-bearing: July rosters move fast.
+- The footer's "data as of" date is load-bearing: offseason rosters move fast.
 
 ## Run it
 
 ```bash
 npm install
-npm test              # 43 engine tests: golden CBA scenarios
+npm test              # 44 engine tests: golden CBA scenarios
 npm run validate:data # schema + published-total gate (also runs pre-build)
 npm run dev           # http://localhost:3000
 ```
@@ -138,7 +138,7 @@ curl -s -X POST localhost:3000/api/trade/validate \
 | First-apron teams | take back ≤ 100% of outgoing |
 | Second-apron teams | ≤ 100%, no aggregating two salaries, no sending cash |
 | Hard-cap triggers | >100% take-back → capped at apron 1; aggregation or cash → apron 2 (surfaced as warnings with the exact copy an analyst would want) |
-| Roster bounds | > 15 standard contracts fails; < 14 warns; ≤ 3 two-ways |
+| Roster bounds | > 21 fails (offseason cap); 16-21 warns (over the regular-season 15); < 14 warns; ≤ 3 two-ways |
 | Two-way contracts | tradeable, but excluded from matching and team salary; the ledger calls out when counting one would have made the math work |
 | Cash | $8,495,000 annual send/receive limits, tracked separately |
 | Stepien rule | no consecutive future drafts without a first; swap-encumbered years still count as having a pick |
@@ -172,4 +172,4 @@ docs/production-notes.md   Postgres schema + ingestion DAG sketch
 ---
 
 Unofficial demo by Adelson Aguasvivas. Not affiliated with the Sacramento
-Kings or the NBA. No team or league marks; data as of 2026-07-13.
+Kings or the NBA. No team or league marks; data as of 2026-08-04.
