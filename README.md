@@ -1,20 +1,39 @@
 # THE CAP ROOM
 
-**Live: [the-cap-room.vercel.app](https://the-cap-room.vercel.app)**
+**The trade machine that shows its work.** A front-office console for NBA
+roster construction under the 2023 CBA: cap sheets against the five lines, a
+trade machine whose verdicts explain themselves rule by rule, and
+league-percentile player evaluation.
 
-**A front-office console for NBA roster construction under the 2023 CBA.**
-Cap sheets against the five lines, a trade machine whose verdicts explain
-themselves rule by rule, and league-percentile player evaluation. Built as an
-engineering demo for the Sacramento Kings' Basketball Software Engineer role.
+**[Live demo](https://the-cap-room.vercel.app)** · designed and built by
+**[Adelson Aguasvivas](https://adelsonaguasvivas.com)**
+
+[![ci](https://github.com/aaguasvivas/the-cap-room/actions/workflows/ci.yml/badge.svg)](https://github.com/aaguasvivas/the-cap-room/actions/workflows/ci.yml)
+![Next.js 16](https://img.shields.io/badge/Next.js-16-111?logo=nextdotjs)
+![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
+![axe-core: 0 violations](https://img.shields.io/badge/axe--core-0%20violations-3FA66A)
 
 ![The Dončić test: the pick package fails the Stepien rule, swap 2028 for 2029, and it stamps LEGAL](docs/media/demo.gif)
 
 *The Dončić test: LaVine plus the 2027 and 2028 firsts fails on the Stepien
 rule with the reason written out; swap the 2028 pick for 2029 and it stamps
-LEGAL. Load it in one click from the Trade Machine's scenario menu, or press
-⌘K anywhere to jump to a player.*
+LEGAL. Load it in one click from the home page or the Trade Machine's scenario
+menu, or press ⌘K / Ctrl K anywhere to jump to a player.*
 
-![ci](https://github.com/aaguasvivas/the-cap-room/actions/workflows/ci.yml/badge.svg)
+### At a glance
+
+- **A pure rules engine**: `/engine` is framework-free TypeScript with 44
+  golden-scenario tests, dollar-exact at every apron boundary.
+- **Data that can't drift**: every roster re-sums through the engine to its
+  source's published total, to the dollar, or the build fails.
+- **Explanations, not red X's**: each verdict itemizes every CBA check with the
+  arithmetic in plain English.
+- **Shipped like a product**: CI runs typecheck, lint, tests, data validation
+  and a production build; zero axe-core accessibility violations; works down to
+  phone width; any trade is a shareable URL.
+
+Sacramento is the home desk (its pick ledger is seeded and trades start from
+the Kings' side). Unofficial demo, not affiliated with the Kings or the NBA.
 
 ---
 
@@ -51,7 +70,7 @@ flowchart LR
         P["picks/SAC.json"]
         S["stats/players-2025-26.json"]
     end
-    subgraph app["Next.js 14 (single Vercel deploy)"]
+    subgraph app["Next.js 16 (single Vercel deploy)"]
         ENGINE["/engine · pure TS CBA rules<br/>constants · capsheet · tradeRules · picks<br/>zero UI imports, 44 unit tests"]
         API["/api REST routes"]
         UI["Cap Sheet · Trade Machine · Player Eval"]
@@ -88,10 +107,13 @@ date recorded per team in [`docs/sources.md`](docs/sources.md).
 
 ## Run it
 
+Node 22.12+ (CI runs Node 22).
+
 ```bash
 npm install
 npm test              # 44 engine tests: golden CBA scenarios
 npm run validate:data # schema + published-total gate (also runs pre-build)
+npm run lint          # ESLint (Next core-web-vitals + React hooks rules)
 npm run dev           # http://localhost:3000
 ```
 
@@ -171,5 +193,6 @@ docs/production-notes.md   Postgres schema + ingestion DAG sketch
 
 ---
 
-Unofficial demo by Adelson Aguasvivas. Not affiliated with the Sacramento
-Kings or the NBA. No team or league marks; data as of 2026-08-04.
+Designed and built by [Adelson Aguasvivas](https://adelsonaguasvivas.com).
+Unofficial demo, not affiliated with the Sacramento Kings or the NBA. No team
+or league marks; data as of 2026-08-04.

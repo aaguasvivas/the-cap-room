@@ -119,6 +119,9 @@ function Palette({ onClose }: { onClose: () => void }) {
                 e.preventDefault();
                 setActive((a) => Math.max(a - 1, 0));
               } else if (e.key === "Enter" && results[active]) {
+                // Closing hands focus back to the opener; without this the same
+                // Enter would "click" that button and reopen the palette.
+                e.preventDefault();
                 go(results[active]!);
               }
             }}
