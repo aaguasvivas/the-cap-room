@@ -46,7 +46,9 @@ export function CapClient() {
         <div className={`space-y-4 transition-opacity ${sheet.loading ? "opacity-60" : ""}`} aria-busy={sheet.loading}>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
             <Card title={`${s.teamName} vs the five lines`} className="lg:col-span-2">
-              <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[minmax(0,240px)_1fr]">
+              {/* Side by side only where the card is wide enough to keep the gauge at full
+                  size; in between (md to xl, two-column page) it stacks. */}
+              <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[minmax(0,240px)_1fr] md:grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)]">
                 <Thermometer key={s.team} total={s.totalSalary} />
                 <div className="space-y-4">
                   <div>

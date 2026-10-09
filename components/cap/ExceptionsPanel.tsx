@@ -14,13 +14,11 @@ export function ExceptionsPanel({ exceptions }: { exceptions: ExceptionInfo[] })
           }`}
         >
           <div className="flex items-baseline justify-between gap-2">
-            <span className={`text-[13px] font-semibold ${ex.available ? "text-bone" : "text-silver"}`}>
+            {/* The reason line already says "Unavailable: ..."; no separate tag needed */}
+            <span className={`min-w-0 text-[13px] font-semibold ${ex.available ? "text-bone" : "text-silver"}`}>
               {ex.name}
-              {!ex.available && (
-                <span className="ml-2 font-mono text-[10px] font-normal uppercase tracking-wide text-dim">unavailable</span>
-              )}
             </span>
-            <span className={`font-mono text-[13px] tnum ${ex.available ? "text-bone" : "text-dim line-through decoration-dim/60"}`}>
+            <span className={`shrink-0 font-mono text-[13px] tnum ${ex.available ? "text-bone" : "text-dim line-through decoration-dim/60"}`}>
               {usd(ex.amount)}
             </span>
           </div>

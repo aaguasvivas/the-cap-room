@@ -40,8 +40,8 @@ export function PageHeader({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-      <div className="flex items-baseline gap-3">
-        <h1 className="font-display text-3xl font-bold uppercase tracking-wide text-bone md:text-4xl">{title}</h1>
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h1 className="whitespace-nowrap font-display text-3xl font-bold uppercase tracking-wide text-bone md:text-4xl">{title}</h1>
         {note && <span className="hidden font-mono text-[11px] text-dim sm:inline">{note}</span>}
       </div>
       {children && <div className="flex min-w-0 flex-wrap items-center gap-2 sm:ml-auto">{children}</div>}

@@ -84,7 +84,7 @@ function buildExceptions(status: ApronStatus): ExceptionInfo[] {
       amount: NON_TAXPAYER_MLE,
       available: !roomTeam && belowApron1,
       reason: !roomTeam && belowApron1
-        ? "Available while team salary stays at or below the first apron."
+        ? "Available by salary level while team salary stays at or below the first apron (use earlier this season is not tracked in this snapshot)."
         : roomTeam
           ? "Unavailable: room teams renounce the NT-MLE when they use cap space."
           : `Unavailable: team salary is above the first apron (${usd(FIRST_APRON)}).`,

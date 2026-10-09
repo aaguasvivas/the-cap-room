@@ -11,7 +11,7 @@ export function AppShell({ meta, children }: { meta: Meta; children: React.React
     <div className="flex min-h-dvh flex-col">
       <a
         href="#main"
-        className="sr-only z-50 rounded bg-royal px-3 py-2 text-sm text-bone focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+        className="sr-only z-50 rounded bg-royal px-3 py-2 text-sm text-bone focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-3 focus:py-2"
       >
         Skip to content
       </a>

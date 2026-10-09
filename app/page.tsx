@@ -38,7 +38,7 @@ const MODULES = [
     href: "/cap",
     title: "Cap Sheet",
     blurb:
-      "Team salary as a gauge against the five lines, dollar distance to each, three years of commitments, and which exceptions are live, including the hard cap each one would trigger.",
+      "Team salary as a gauge against the five lines, dollar distance to each, three years of commitments, and which exceptions its salary level allows, including the hard cap each one would trigger.",
   },
   {
     href: "/players",
@@ -81,7 +81,7 @@ export default function Home() {
   const tests = countEngineTests();
 
   const proof = [
-    tests !== null && { figure: String(tests), label: "engine tests", note: "golden CBA scenarios, run in CI on every push" },
+    tests !== null && { figure: String(tests), label: "engine tests", note: "golden CBA scenarios, run in CI on every push to main" },
     { figure: `${sheets.length}/${sheets.length}`, label: "rosters reconciled", note: "each re-sums to its published total, to the dollar" },
     { figure: `$${(leagueTotal / 1e9).toFixed(2)}B`, label: "salary on the board", note: "every contract traced to a dated public source" },
     { figure: String(qualified), label: "qualified players", note: "the pool behind every league percentile" },
@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Proof strip: every figure is computed from the repo at build time */}
       <section aria-label="By the numbers">
-        <dl className="grid grid-cols-2 overflow-hidden rounded-md border border-graphite-line bg-graphite-line [gap:1px] md:grid-cols-4">
+        <dl className="grid grid-cols-2 overflow-hidden rounded-md border border-graphite-line bg-graphite-line [gap:1px] lg:grid-cols-4">
           {proof.map((p) => (
             <div key={p.label} className="bg-graphite-raised px-4 py-4 md:px-5">
               <dt className="sr-only">{p.label}</dt>
@@ -164,7 +164,7 @@ export default function Home() {
       {/* Scenarios */}
       <section aria-labelledby="try-title">
         <SectionHead id="try-title" eyebrow="60 seconds" title="Three trades to try" />
-        <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           {SCENARIOS.map((s) => (
             <li key={s.url}>
               <Link
@@ -192,7 +192,7 @@ export default function Home() {
       {/* Modules */}
       <section aria-labelledby="modules-title">
         <SectionHead id="modules-title" eyebrow="Three modules" title="One rules engine underneath" />
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           {MODULES.map((m) => (
             <Link
               key={m.href}
@@ -211,7 +211,7 @@ export default function Home() {
       {/* How it's built */}
       <section aria-labelledby="built-title">
         <SectionHead id="built-title" eyebrow="Under the hood" title="How it's built" />
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           {BUILD_NOTES.map((n) => (
             <article key={n.title} className="flex flex-col rounded-md border border-graphite-line bg-graphite-raised p-4">
               <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-bone">{n.title}</h3>

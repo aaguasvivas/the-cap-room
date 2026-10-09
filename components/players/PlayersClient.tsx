@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { PlayersResponse, TeamsResponse } from "@/lib/apiTypes";
-import { normalizeName } from "@/lib/names";
+import { foldForSearch, normalizeName } from "@/lib/names";
 import type { PlayerStatProfile } from "@/lib/percentiles";
 import { useApi } from "@/lib/hooks";
 import { PageHeader } from "@/components/ui/bits";
@@ -40,11 +40,18 @@ export function PlayersClient() {
   // Dead money is a cap charge, not a player you can evaluate or trade for.
   const people = useMemo(() => (players.data?.players ?? []).filter((p) => p.contractType !== "dead"), [players.data]);
 
+  // Teams whose rosters carry salary past 2026-27; derived from the data so it
+  // corrects itself when ORL and PHI out-years are seeded.
+  const outYearTeams = useMemo(
+    () => new Set(people.filter((p) => p.salary["2027-28"] !== undefined || p.salary["2028-29"] !== undefined).map((p) => p.team)),
+    [people],
+  );
+
   const list = useMemo(() => {
     let l = people;
     if (team !== "ALL") l = l.filter((p) => p.team === team);
     if (pos) l = l.filter((p) => p.pos === pos);
-    if (q.trim()) l = l.filter((p) => normalizeName(p.name).includes(normalizeName(q)));
+    if (q.trim()) l = l.filter((p) => foldForSearch(p.name).includes(foldForSearch(q)));
     return [...l].sort((a, b) => (b.salary["2026-27"] ?? 0) - (a.salary["2026-27"] ?? 0));
   }, [people, team, pos, q]);
 
@@ -152,7 +159,7 @@ export function PlayersClient() {
             <p className="animate-pulse font-mono text-sm text-silver">Loading players…</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             {list.map((p) => (
               <PlayerCard
                 key={`${p.team}-${p.playerId}`}
@@ -161,6 +168,7 @@ export function PlayersClient() {
                 compareIndex={compare.indexOf(p.playerId)}
                 onCompareToggle={() => toggleCompare(p.playerId)}
                 compareFull={compare.length >= 4}
+                outYearsSeeded={outYearTeams.has(p.team)}
               />
             ))}
             {list.length === 0 && (

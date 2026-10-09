@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description,
     type: "website",
     siteName: SITE.name,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "The Cap Room: a trade verdict stamped LEGAL beside a salary gauge" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "The Cap Room: a trade stamped ILLEGAL beside its itemized Rule Ledger" }],
   },
   twitter: {
     card: "summary_large_image",

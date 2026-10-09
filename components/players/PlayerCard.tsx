@@ -20,12 +20,23 @@ function initials(name: string): string {
     .join("");
 }
 
+/**
+ * What the seeded salary years can honestly say about when a deal ends: the
+ * data window stops at 2028-29, and a few teams are seeded for 2026-27 only.
+ */
+function termNote(lastYear: LeagueYear | undefined, outYearsSeeded: boolean): string {
+  if (lastYear === "2028-29") return "on the books through at least 2028-29";
+  if (lastYear && lastYear !== "2026-27") return `signed through ${lastYear}`;
+  return outYearsSeeded ? "final year" : "later years not seeded";
+}
+
 export function PlayerCard({
   player,
   profile,
   compareIndex,
   onCompareToggle,
   compareFull,
+  outYearsSeeded,
 }: {
   player: ApiPlayer;
   profile: PlayerStatProfile | null;
@@ -33,6 +44,8 @@ export function PlayerCard({
   onCompareToggle: () => void;
   /** Four players are already on the radar. */
   compareFull: boolean;
+  /** The player's team has salary seeded beyond 2026-27 (so "final year" is a fact, not a gap). */
+  outYearsSeeded: boolean;
 }) {
   const lastYear = [...YEARS].reverse().find((y) => player.salary[y] !== undefined);
   const selected = compareIndex >= 0;
@@ -48,8 +61,12 @@ export function PlayerCard({
       <div className="flex items-center gap-3">
         <span
           aria-hidden
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-base font-bold text-bone ring-1 ring-inset ring-white/10"
-          style={{ background: selected ? COMPARE_COLORS[compareIndex % 4] : "#4B2A75" }}
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-royal font-display text-base font-bold text-bone ${
+            selected ? "" : "ring-1 ring-inset ring-white/10"
+          }`}
+          // The compare colour is a ring, not the fill: bone text on every compare
+          // colour falls below AA, while bone on royal is 9.3:1.
+          style={selected ? { boxShadow: `inset 0 0 0 3px ${COMPARE_COLORS[compareIndex % 4]}` } : undefined}
         >
           {initials(player.name)}
         </span>
@@ -65,7 +82,7 @@ export function PlayerCard({
         {usd(player.salary["2026-27"])}
         <span className="text-silver">
           {" "}
-          in 2026-27{lastYear && lastYear !== "2026-27" ? ` · signed through ${lastYear}` : " · final year"}
+          in 2026-27 · {termNote(lastYear, outYearsSeeded)}
         </span>
       </p>
       {(player.tradeRestrictions?.length ?? 0) > 0 && (

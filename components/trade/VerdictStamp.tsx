@@ -26,8 +26,8 @@ export function VerdictStamp({ verdict, validating }: { verdict: Verdict | null;
           <div className="mt-0.5 font-mono text-[10px] uppercase tracking-widest">
             {verdict.legal
               ? warnings > 0
-                ? `2026-27 CBA · ${warnings} flag${warnings > 1 ? "s" : ""} in the ledger`
-                : "2026-27 CBA · clean"
+                ? `2026-27 league year · ${warnings} flag${warnings > 1 ? "s" : ""} in the ledger`
+                : "2026-27 league year · clean"
               : `${fails} rule${fails > 1 ? "s" : ""} violated · the ledger explains`}
           </div>
         </div>

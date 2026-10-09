@@ -199,7 +199,7 @@ function Rows({ teams }: { teams: BoardTeam[] }) {
             key={l.key}
             className={`absolute -translate-x-1/2 whitespace-nowrap font-mono text-[10px] ${
               l.key === "cap" ? "text-bone" : "text-silver"
-            }`}
+            } ${l.key === "apron2" ? "max-[359px]:translate-x-0" : ""}`}
             style={{ left: pct(LINE[l.key]), top: l.row === 0 ? 0 : 16 }}
           >
             {l.text}

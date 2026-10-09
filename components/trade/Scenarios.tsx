@@ -4,16 +4,29 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SCENARIOS } from "@/lib/scenarios";
 
-/** Disclosure menu of the pre-built proposals (see lib/scenarios.ts). */
-export function Scenarios() {
+/**
+ * Disclosure menu of the pre-built proposals (see lib/scenarios.ts).
+ * `align` picks how the menu hangs off its trigger: "end" (right-aligned, for
+ * a trigger at the right of a toolbar) or "center" (for a centred trigger).
+ * Below sm the menu is as wide as the screen allows, so it starts at the
+ * trigger's left edge instead and never runs off-screen.
+ */
+export function Scenarios({ align = "end" }: { align?: "end" | "center" }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const root = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const listId = useId();
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      // Escaping from inside the menu would otherwise drop focus to <body>.
+      const inside = root.current?.contains(document.activeElement);
+      setOpen(false);
+      if (inside) trigger.current?.focus();
+    };
     const onDown = (e: PointerEvent) => !root.current?.contains(e.target as Node) && setOpen(false);
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onDown);
@@ -26,6 +39,7 @@ export function Scenarios() {
   return (
     <div ref={root} className="relative">
       <button
+        ref={trigger}
         type="button"
         aria-expanded={open}
         aria-controls={listId}
@@ -37,7 +51,9 @@ export function Scenarios() {
       {open && (
         <ul
           id={listId}
-          className="absolute right-0 z-20 mt-1.5 w-[min(22rem,calc(100vw-2rem))] rounded-md border border-graphite-line bg-graphite-raised p-1.5 shadow-xl shadow-black/50"
+          className={`absolute z-20 mt-1.5 w-[min(22rem,calc(100vw-2rem))] rounded-md ${
+            align === "center" ? "left-1/2 -translate-x-1/2" : "left-0 sm:left-auto sm:right-0"
+          } border border-graphite-line bg-graphite-raised p-1.5 shadow-xl shadow-black/50`}
         >
           {SCENARIOS.map((s) => (
             <li key={s.name}>
@@ -46,6 +62,7 @@ export function Scenarios() {
                 className="block w-full rounded px-3 py-2 text-left hover:bg-graphite-panel focus-visible:bg-graphite-panel"
                 onClick={() => {
                   setOpen(false);
+                  trigger.current?.focus();
                   router.replace(s.url, { scroll: false });
                 }}
               >

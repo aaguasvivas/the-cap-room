@@ -30,6 +30,12 @@ export function TradeClient() {
   const rosterB = usePlayers(state.b);
   const sheetA = useCapsheet(state.a);
   const sheetB = useCapsheet(state.b);
+  // useApi keeps the previous URL's data while a new one loads. Here that would
+  // put the old team's roster under the new team's name, so wait for fresh data.
+  const rA = rosterA.loading ? null : rosterA.data;
+  const rB = rosterB.loading ? null : rosterB.data;
+  const sA = sheetA.loading ? null : sheetA.data;
+  const sB = sheetB.loading ? null : sheetB.data;
 
   const update = useCallback(
     (patch: Partial<TradeUrlState>) => {
@@ -81,25 +87,25 @@ export function TradeClient() {
 
   // Post-trade totals for the mini thermometers (same counting rules as the engine).
   const post = useMemo(() => {
-    if (!sheetA.data || !sheetB.data || !rosterA.data || !rosterB.data) return null;
+    if (!sA || !sB || !rA || !rB) return null;
     const sum = (players: Player[], ids: string[]) =>
       players
         .filter((p) => ids.includes(p.playerId) && countsTowardCap(p))
         .reduce((s, p) => s + salaryFor(p, "2026-27"), 0);
-    const outA = sum(rosterA.data.players, state.give);
-    const outB = sum(rosterB.data.players, state.get);
+    const outA = sum(rA.players, state.give);
+    const outB = sum(rB.players, state.get);
     return {
-      a: { pre: sheetA.data.totalSalary, post: sheetA.data.totalSalary - outA + outB, out: outA, in: outB },
-      b: { pre: sheetB.data.totalSalary, post: sheetB.data.totalSalary - outB + outA, out: outB, in: outA },
+      a: { pre: sA.totalSalary, post: sA.totalSalary - outA + outB, out: outA, in: outB },
+      b: { pre: sB.totalSalary, post: sB.totalSalary - outB + outA, out: outB, in: outA },
     };
-  }, [sheetA.data, sheetB.data, rosterA.data, rosterB.data, state.give, state.get]);
+  }, [sA, sB, rA, rB, state.give, state.get]);
 
   const shareUrl = serializeTradeUrl(state);
   const [copied, setCopied] = useState(false);
 
   return (
     <div className="space-y-5">
-      <PageHeader title="Trade Machine" note="two-team trades · 2026-27 CBA">
+      <PageHeader title="Trade Machine" note="two-team trades · 2023 CBA · 2026-27 league year">
         <Scenarios />
         <button
           type="button"
@@ -122,11 +128,11 @@ export function TradeClient() {
           teams={teams.data?.teams ?? []}
           team={state.a}
           exclude={state.b}
-          roster={rosterA.data?.players ?? []}
+          roster={rA?.players ?? []}
           rosterError={rosterA.error}
           selected={state.give}
           cash={state.cashA}
-          picks={sheetA.data?.picks ?? null}
+          picks={sA?.picks ?? null}
           pickYears={state.picksA}
           onTeam={(t) => update({ a: t })}
           onToggle={(id) =>
@@ -143,11 +149,11 @@ export function TradeClient() {
           teams={teams.data?.teams ?? []}
           team={state.b}
           exclude={state.a}
-          roster={rosterB.data?.players ?? []}
+          roster={rB?.players ?? []}
           rosterError={rosterB.error}
           selected={state.get}
           cash={state.cashB}
-          picks={sheetB.data?.picks ?? null}
+          picks={sB?.picks ?? null}
           pickYears={state.picksB}
           onTeam={(t) => update({ b: t })}
           onToggle={(id) =>
@@ -168,7 +174,7 @@ export function TradeClient() {
             moment both sides send something.
           </p>
           <div className="mt-4 flex justify-center">
-            <Scenarios />
+            <Scenarios align="center" />
           </div>
         </div>
       ) : (
@@ -186,12 +192,12 @@ export function TradeClient() {
                 <RuleLedger verdict={verdict} />
               </div>
               <div className="space-y-4">
-                {post && sheetA.data && sheetB.data && (
+                {post && sA && sB && (
                   <Card title="Post-trade cap position">
                     <div className="space-y-4">
                       {[
-                        { code: state.a, d: post.a, name: sheetA.data.teamName },
-                        { code: state.b, d: post.b, name: sheetB.data.teamName },
+                        { code: state.a, d: post.a, name: sA.teamName },
+                        { code: state.b, d: post.b, name: sB.teamName },
                       ].map(({ code, d, name }) => (
                         <div key={code}>
                           <div className="mb-1 flex items-baseline justify-between">

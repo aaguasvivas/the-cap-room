@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usd } from "@/engine/format";
 import type { ApiPlayer, PlayersResponse } from "@/lib/apiTypes";
+import { foldForSearch } from "@/lib/names";
 import { tradeUrlFor } from "@/lib/tradeUrl";
 
 /** Fired by any "search" trigger (header button, mobile icon) to open the palette. */
@@ -43,6 +44,10 @@ function Palette({ onClose }: { onClose: () => void }) {
   const [found, setFound] = useState<{ query: string; players: ApiPlayer[] } | null>(null);
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  /** Enter pressed before the current query's results arrived: act on them when they land. */
+  const pendingEnter = useRef(false);
+  /** Only keyboard moves scroll the list; hover must not make it jump. */
+  const keyboardMove = useRef(false);
   const needle = q.trim().toLowerCase();
 
   // Focus the input on open; hand focus back to whatever opened the palette on close.
@@ -59,11 +64,12 @@ function Palette({ onClose }: { onClose: () => void }) {
       fetch(`/api/players?q=${encodeURIComponent(needle)}`, { signal: ctrl.signal })
         .then((r) => r.json())
         .then((d: PlayersResponse) => {
+          const folded = foldForSearch(needle);
           const ranked = d.players
             .filter((p) => p.contractType !== "dead")
             .sort((a, b) => {
-              const aStarts = a.name.toLowerCase().startsWith(needle) ? 0 : 1;
-              const bStarts = b.name.toLowerCase().startsWith(needle) ? 0 : 1;
+              const aStarts = foldForSearch(a.name).startsWith(folded) ? 0 : 1;
+              const bStarts = foldForSearch(b.name).startsWith(folded) ? 0 : 1;
               if (aStarts !== bStarts) return aStarts - bStarts;
               return (b.salary["2026-27"] ?? 0) - (a.salary["2026-27"] ?? 0);
             });
@@ -78,6 +84,8 @@ function Palette({ onClose }: { onClose: () => void }) {
     };
   }, [needle]);
 
+  // The list on screen can still belong to the previous query while the next
+  // request is in flight; Enter only ever acts on the current query's results.
   const results = needle && found ? found.players : [];
   const settled = found?.query === needle;
 
@@ -88,6 +96,19 @@ function Palette({ onClose }: { onClose: () => void }) {
     },
     [onClose, router],
   );
+
+  useEffect(() => {
+    if (!settled || !pendingEnter.current) return;
+    pendingEnter.current = false;
+    const top = found?.players[0];
+    if (top) go(top);
+  }, [settled, found, go]);
+
+  useEffect(() => {
+    if (!keyboardMove.current) return;
+    keyboardMove.current = false;
+    document.getElementById(`player-opt-${active}`)?.scrollIntoView({ block: "nearest" });
+  }, [active]);
 
   return (
     <div
@@ -110,24 +131,34 @@ function Palette({ onClose }: { onClose: () => void }) {
           <input
             ref={inputRef}
             value={q}
-            onChange={(e) => setQ(e.target.value)}
+            onChange={(e) => {
+              setQ(e.target.value);
+              pendingEnter.current = false;
+              if (!e.target.value.trim()) setFound(null);
+            }}
             onKeyDown={(e) => {
-              if (e.key === "ArrowDown") {
+              if (e.key === "ArrowDown" || e.key === "ArrowUp") {
                 e.preventDefault();
-                setActive((a) => Math.min(a + 1, results.length - 1));
-              } else if (e.key === "ArrowUp") {
-                e.preventDefault();
-                setActive((a) => Math.max(a - 1, 0));
-              } else if (e.key === "Enter" && results[active]) {
+                pendingEnter.current = false;
+                keyboardMove.current = true;
+                setActive((a) => (e.key === "ArrowDown" ? Math.min(a + 1, results.length - 1) : Math.max(a - 1, 0)));
+              } else if (e.key === "Enter") {
                 // Closing hands focus back to the opener; without this the same
                 // Enter would "click" that button and reopen the palette.
                 e.preventDefault();
-                go(results[active]!);
+                if (settled) {
+                  if (results[active]) go(results[active]!);
+                } else if (needle) {
+                  pendingEnter.current = true;
+                }
+              } else if (e.key === "Tab") {
+                // The input is the dialog's only control: keep focus inside the modal.
+                e.preventDefault();
               }
             }}
             role="combobox"
             aria-expanded={results.length > 0}
-            aria-controls="player-search-results"
+            aria-controls={results.length > 0 ? "player-search-results" : undefined}
             aria-activedescendant={results[active] ? `player-opt-${active}` : undefined}
             aria-autocomplete="list"
             aria-label="Search all seeded players"
@@ -135,7 +166,7 @@ function Palette({ onClose }: { onClose: () => void }) {
             className="w-full bg-transparent py-3.5 text-[15px] text-bone placeholder:text-silver focus:outline-none"
           />
         </div>
-        {needle && (
+        {results.length > 0 && (
           <ul id="player-search-results" role="listbox" aria-label="Players" className="max-h-80 overflow-y-auto py-1">
             {results.map((p, i) => (
               <li
@@ -156,10 +187,12 @@ function Palette({ onClose }: { onClose: () => void }) {
                 <span className="w-24 text-right font-mono text-[12px] tnum">{usd(p.salary["2026-27"])}</span>
               </li>
             ))}
-            {settled && results.length === 0 && (
-              <li className="px-4 py-3 font-mono text-[12px] text-silver">No seeded player matches “{q.trim()}”</li>
-            )}
           </ul>
+        )}
+        {needle && settled && results.length === 0 && (
+          <p role="status" className="px-4 py-3 font-mono text-[12px] text-silver">
+            No seeded player matches “{q.trim()}”
+          </p>
         )}
         <div className="flex items-center gap-3 border-t border-graphite-line px-4 py-2 font-mono text-[10px] uppercase tracking-wide text-silver">
           <span>↑↓ move</span>

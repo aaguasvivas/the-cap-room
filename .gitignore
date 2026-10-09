@@ -32,3 +32,6 @@ yarn-error.log*
 etl/.venv/
 __pycache__/
 *.pyc
+
+# vitest results cache
+.vitest/
