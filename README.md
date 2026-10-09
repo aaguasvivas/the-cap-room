@@ -29,8 +29,9 @@ menu, or press ⌘K / Ctrl K anywhere to jump to a player.*
 - **Explanations, not red X's**: each verdict itemizes every CBA check with the
   arithmetic in plain English.
 - **Shipped like a product**: CI runs typecheck, lint, tests, data validation
-  and a production build; zero axe-core accessibility violations; works down to
-  phone width; any trade is a shareable URL.
+  and a production build; zero axe-core violations on every page and open
+  panel, swept from 1440px down to 320px; works down to phone width; any trade
+  is a shareable URL.
 
 Sacramento is the home desk (its pick ledger is seeded and trades start from
 the Kings' side). Unofficial demo, not affiliated with the Kings or the NBA.

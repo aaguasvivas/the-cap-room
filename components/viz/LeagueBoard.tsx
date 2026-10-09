@@ -44,6 +44,12 @@ const SHORT: Record<string, string> = {
 
 const frac = (v: number) => (Math.min(MAX, Math.max(MIN, v)) - MIN) / (MAX - MIN);
 
+/**
+ * A team link's name opens with exactly what the link shows, code then salary ("NYK $218.4M"), so speech
+ * users can say what they see (WCAG 2.5.3). Both layouts keep the code before the salary in the DOM to match.
+ */
+const linkLabel = (t: BoardTeam) => `${t.team} ${usdM(t.total)}, ${t.teamName}. Open cap sheet`;
+
 export function LeagueBoard({ teams, asOf }: { teams: BoardTeam[]; asOf: string }) {
   return (
     <figure>
@@ -130,7 +136,7 @@ function Columns({ teams }: { teams: BoardTeam[] }) {
           <Link
             key={t.team}
             href={`/cap?team=${t.team}`}
-            aria-label={`${t.teamName}: ${usdM(t.total)}. Open cap sheet`}
+            aria-label={linkLabel(t)}
             className="group"
           >
             <rect
@@ -148,6 +154,17 @@ function Columns({ teams }: { teams: BoardTeam[] }) {
               }}
               className="transition-[filter] group-hover:brightness-125"
             />
+            {/* Code before salary, as in Rows and linkLabel. The two never overlap, so the order
+                they paint in does not change a pixel. */}
+            <text
+              x={x + colW / 2}
+              y={yBase + 17}
+              textAnchor="middle"
+              fontSize={11}
+              className={`font-mono ${home ? "fill-royal-ink" : "fill-silver"} group-hover:fill-bone`}
+            >
+              {home ? "◆ SAC" : t.team}
+            </text>
             {/* Halo keeps the figure legible when it lands on a line */}
             <text
               x={x + colW / 2}
@@ -162,15 +179,6 @@ function Columns({ teams }: { teams: BoardTeam[] }) {
               className="tnum fill-bone font-display"
             >
               {usdM(t.total)}
-            </text>
-            <text
-              x={x + colW / 2}
-              y={yBase + 17}
-              textAnchor="middle"
-              fontSize={11}
-              className={`font-mono ${home ? "fill-royal-ink" : "fill-silver"} group-hover:fill-bone`}
-            >
-              {home ? "◆ SAC" : t.team}
             </text>
           </Link>
         );
@@ -233,7 +241,7 @@ function Rows({ teams }: { teams: BoardTeam[] }) {
           <Link
             key={t.team}
             href={`/cap?team=${t.team}`}
-            aria-label={`${t.teamName}: ${usdM(t.total)}. Open cap sheet`}
+            aria-label={linkLabel(t)}
             className="group col-span-3 col-start-1 grid grid-cols-subgrid items-center py-[5px]"
             style={{ gridRow: i + 2 }}
           >
