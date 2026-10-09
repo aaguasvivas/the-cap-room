@@ -9,7 +9,7 @@ export function ExceptionsPanel({ exceptions }: { exceptions: ExceptionInfo[] })
       {sorted.map((ex) => (
         <li
           key={ex.id}
-          className={`rounded border px-3 py-2.5 ${
+          className={`rounded-sm border px-3 py-2.5 ${
             ex.available ? "border-graphite-line bg-graphite-panel" : "border-dashed border-graphite-line"
           }`}
         >

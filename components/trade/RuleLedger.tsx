@@ -24,7 +24,7 @@ function LedgerRow({ check }: { check: RuleCheck }) {
   return (
     <details
       open={openByDefault}
-      className={`group border-l-2 ${tone.border} ${check.status === "fail" ? "bg-illegal/[0.04]" : ""}`}
+      className={`group border-l-2 ${tone.border} ${check.status === "fail" ? "bg-illegal/4" : ""}`}
     >
       <summary className="flex cursor-pointer select-none items-baseline gap-2.5 px-3 py-2 hover:bg-graphite-panel/60 [&::-webkit-details-marker]:hidden">
         <span aria-hidden className={`w-4 shrink-0 text-center font-mono text-[12px] ${tone.text}`}>
@@ -38,7 +38,7 @@ function LedgerRow({ check }: { check: RuleCheck }) {
           ▸
         </span>
       </summary>
-      <p className="px-3 pb-3 pl-[2.375rem] font-mono sm:pl-[5.5rem] text-[11.5px] leading-relaxed text-silver">
+      <p className="px-3 pb-3 pl-9.5 font-mono sm:pl-22 text-[11.5px] leading-relaxed text-silver">
         <span className="mb-1 block text-dim sm:hidden">[{check.id}]</span>
         {check.detail}
       </p>

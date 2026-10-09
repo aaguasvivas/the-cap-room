@@ -88,7 +88,7 @@ export function PlayersClient() {
           <select
             value={team}
             onChange={(e) => setTeam(e.target.value)}
-            className="w-56 max-w-full rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm font-medium text-bone hover:border-royal-soft"
+            className="w-56 max-w-full rounded-sm border border-graphite-line bg-graphite-panel px-2.5 py-1.5 text-sm font-medium text-bone hover:border-royal-soft"
           >
             <option value="ALL">All seeded teams</option>
             {(teams.data?.teams ?? []).map((t) => (
@@ -105,7 +105,7 @@ export function PlayersClient() {
               key={p}
               aria-pressed={pos === p}
               onClick={() => setPos(pos === p ? null : p)}
-              className={`rounded border px-2 py-1.5 font-mono text-[11px] transition-colors ${
+              className={`rounded-sm border px-2 py-1.5 font-mono text-[11px] transition-colors ${
                 pos === p ? "border-royal-bright bg-royal text-bone" : "border-graphite-line text-silver hover:border-royal-soft hover:text-bone"
               }`}
             >
@@ -119,7 +119,7 @@ export function PlayersClient() {
           onChange={(e) => setQ(e.target.value)}
           placeholder="Search players…"
           aria-label="Search players"
-          className="min-w-40 flex-1 rounded border border-graphite-line bg-graphite-panel px-3 py-1.5 text-sm text-bone placeholder:text-dim sm:max-w-xs"
+          className="min-w-40 flex-1 rounded-sm border border-graphite-line bg-graphite-panel px-3 py-1.5 text-sm text-bone placeholder:text-dim sm:max-w-xs"
         />
         <p aria-hidden className="hidden items-center gap-3 font-mono text-[10px] text-dim xl:ml-auto xl:flex">
           {PCTL_TIERS.map((t) => (
@@ -141,7 +141,7 @@ export function PlayersClient() {
         />
       )}
       {compare.length === 1 && (
-        <p className="rounded border border-dashed border-royal-bright/50 px-3 py-2 font-mono text-[11px] text-silver">
+        <p className="rounded-sm border border-dashed border-royal-bright/50 px-3 py-2 font-mono text-[11px] text-silver">
           Pick one more player to open the comparison radar (up to four).
         </p>
       )}
@@ -151,7 +151,7 @@ export function PlayersClient() {
           Players
         </h2>
         {players.error || stats.error ? (
-          <p role="alert" className="rounded border border-illegal/60 bg-illegal/10 px-4 py-3 text-sm text-bone">
+          <p role="alert" className="rounded-sm border border-illegal/60 bg-illegal/10 px-4 py-3 text-sm text-bone">
             {players.error ?? stats.error}
           </p>
         ) : loading ? (

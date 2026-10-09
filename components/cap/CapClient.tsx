@@ -35,7 +35,7 @@ export function CapClient() {
       </PageHeader>
 
       {sheet.error ? (
-        <p role="alert" className="rounded border border-illegal/60 bg-illegal/10 px-4 py-3 text-sm text-bone">
+        <p role="alert" className="rounded-sm border border-illegal/60 bg-illegal/10 px-4 py-3 text-sm text-bone">
           {sheet.error}
         </p>
       ) : !s ? (

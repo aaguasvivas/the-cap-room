@@ -22,7 +22,7 @@ function describe(d: CapLineDistance): { text: string; tone: string } {
 export function LineDistances({ distances }: { distances: CapLineDistance[] }) {
   const rows = [...distances].sort((a, b) => b.amount - a.amount);
   return (
-    <dl className="divide-y divide-graphite-line/70 rounded border border-graphite-line">
+    <dl className="divide-y divide-graphite-line/70 rounded-sm border border-graphite-line">
       {rows.map((d) => {
         const { text, tone } = describe(d);
         return (

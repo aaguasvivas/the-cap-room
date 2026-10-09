@@ -93,7 +93,7 @@ export default function Home() {
       <section className="relative pt-2 md:pt-6">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 -top-24 h-72 w-[36rem] max-w-[100vw] rounded-full bg-royal/25 blur-3xl"
+          className="pointer-events-none absolute -left-24 -top-24 h-72 w-xl max-w-[100vw] rounded-full bg-royal/25 blur-3xl"
         />
         <div className="relative">
           <p className="eyebrow text-royal-ink">NBA salary cap · 2023 CBA · {meta.leagueYear} league year</p>
@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Proof strip: every figure is computed from the repo at build time */}
       <section aria-label="By the numbers">
-        <dl className="grid grid-cols-2 overflow-hidden rounded-md border border-graphite-line bg-graphite-line [gap:1px] lg:grid-cols-4">
+        <dl className="grid grid-cols-2 overflow-hidden rounded-md border border-graphite-line bg-graphite-line gap-px lg:grid-cols-4">
           {proof.map((p) => (
             <div key={p.label} className="bg-graphite-raised px-4 py-4 md:px-5">
               <dt className="sr-only">{p.label}</dt>
@@ -172,7 +172,7 @@ export default function Home() {
                 className="group flex h-full flex-col rounded-md border border-graphite-line bg-graphite-raised p-4 transition-colors hover:border-royal-soft"
               >
                 <span
-                  className={`self-start rounded-sm border-2 border-double px-1.5 py-0.5 font-display text-[13px] font-bold uppercase tracking-wideish ${
+                  className={`self-start rounded-xs border-2 border-double px-1.5 py-0.5 font-display text-[13px] font-bold uppercase tracking-wideish ${
                     s.verdict === "legal" ? "border-legal text-legal" : "border-illegal text-illegal"
                   }`}
                 >
@@ -229,7 +229,7 @@ export default function Home() {
         </div>
         <ul aria-label="Stack" className="mt-4 flex flex-wrap gap-1.5">
           {STACK.map((s) => (
-            <li key={s} className="rounded-sm border border-graphite-line px-2 py-1 font-mono text-[11px] text-silver">
+            <li key={s} className="rounded-xs border border-graphite-line px-2 py-1 font-mono text-[11px] text-silver">
               {s}
             </li>
           ))}

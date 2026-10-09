@@ -1,74 +1,128 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Scan only the code that renders markup (the Tailwind 3 `content` globs), not
+   docs, data or the README, so prose can't mint stray utilities. */
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
+@source "../lib";
 
-:root {
-  color-scheme: dark;
+/*
+ * Palette: broadcast scoreboard meets cap analyst's ledger. Deep royal purple
+ * evokes Sacramento without reproducing marks.
+ *
+ * Text tiers, all WCAG AA (>= 4.5:1) on every surface they sit on:
+ * bone (primary) -> silver (secondary) -> dim (tertiary). Never fade text with
+ * opacity; reach for the next tier instead. `royal-ink` is purple as text;
+ * `royal-soft` is for strokes and focus rings only.
+ */
+@theme {
+  --color-royal: #4b2a75;
+  --color-royal-bright: #6b44a3;
+  --color-royal-soft: #8e6bc2;
+  --color-royal-ink: #b39bdf;
+  --color-royal-faint: #2e1d47;
+
+  --color-graphite: #17161a;
+  --color-graphite-raised: #1e1d22;
+  --color-graphite-panel: #232228;
+  --color-graphite-line: #2e2d34;
+
+  --color-bone: #edeae4;
+  --color-silver: #a9a6b0;
+  --color-dim: #94919b;
+  --color-legal: #3fa66a;
+  --color-illegal: #ef5b5b;
+  --color-warn: #d69a3c;
+
+  --tracking-tightest: -0.02em;
+  --tracking-wideish: 0.08em;
 }
 
-body {
-  @apply bg-graphite text-bone font-body antialiased;
+/* next/font exposes each face as a CSS variable on <html> (app/layout.tsx);
+   `inline` writes these stacks straight into the font-* utilities. */
+@theme inline {
+  --font-display: var(--font-barlow), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-graphite font-body text-bone antialiased;
+  }
+
+  /* Tailwind 4 gives buttons the default cursor; every button here is a control */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Visible focus everywhere: keyboard navigation is a ship requirement */
+  :focus-visible {
+    outline: 2px solid var(--color-royal-soft);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-royal-bright);
+    color: var(--color-bone);
+  }
+
+  /* Thin, quiet scrollbars for the war-room look */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-graphite-line) transparent;
+  }
+}
+
+/* One button system. Mono caps reads as "console control", not marketing. */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm border px-2.5 py-1.5 font-mono text-[11px] tracking-wide whitespace-nowrap uppercase transition-colors;
+}
+
+@utility btn-primary {
+  @apply border-royal-bright bg-royal text-bone hover:border-royal-soft hover:bg-royal-bright;
+}
+
+@utility btn-accent {
+  @apply border-royal-bright/70 bg-royal-faint text-royal-ink hover:bg-royal hover:text-bone;
+}
+
+@utility btn-ghost {
+  @apply border-graphite-line bg-graphite-panel text-silver hover:border-royal-soft hover:text-bone;
+}
+
+@utility btn-lg {
+  @apply px-4 py-2.5 text-[12px];
+}
+
+/* Section label: the small mono caps line above a heading or a figure */
+@utility eyebrow {
+  @apply font-mono text-[11px] tracking-wideish text-silver uppercase;
+}
+
+/* A link inside prose */
+@utility link {
+  @apply text-bone underline decoration-royal-soft/60 underline-offset-4 transition-colors hover:decoration-royal-ink;
 }
 
 /* Money and any figure-aligned data: tabular numerals always */
-.tnum {
+@utility tnum {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
 
-/* Visible focus everywhere: keyboard navigation is a ship requirement */
-:focus-visible {
-  outline: 2px solid theme("colors.royal.soft");
-  outline-offset: 2px;
-  border-radius: 2px;
+@utility text-money {
+  @apply font-display tracking-tightest tnum;
 }
 
-::selection {
-  background: theme("colors.royal.bright");
-  color: theme("colors.bone");
-}
-
-/* Thin, quiet scrollbars for the war-room look */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: theme("colors.graphite.line") transparent;
-}
-
-@layer components {
-  /* One button system. Mono caps reads as "console control", not marketing. */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded border px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition-colors;
-  }
-  .btn-primary {
-    @apply border-royal-bright bg-royal text-bone hover:border-royal-soft hover:bg-royal-bright;
-  }
-  .btn-accent {
-    @apply border-royal-bright/70 bg-royal-faint text-royal-ink hover:bg-royal hover:text-bone;
-  }
-  .btn-ghost {
-    @apply border-graphite-line bg-graphite-panel text-silver hover:border-royal-soft hover:text-bone;
-  }
-  .btn-lg {
-    @apply px-4 py-2.5 text-[12px];
-  }
-  /* Section label: the small mono caps line above a heading or a figure */
-  .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-wideish text-silver;
-  }
-  /* A link inside prose */
-  .link {
-    @apply text-bone underline decoration-royal-soft/60 underline-offset-4 transition-colors hover:decoration-royal-ink;
-  }
-}
-
-@layer utilities {
-  .text-money {
-    @apply font-display tnum tracking-tightest;
-  }
-  /* Fades the last rows of a scroll box so it reads as scrollable */
-  .fade-bottom {
-    mask-image: linear-gradient(to bottom, black calc(100% - 28px), transparent);
-  }
+/* Fades the last rows of a scroll box so it reads as scrollable */
+@utility fade-bottom {
+  mask-image: linear-gradient(to bottom, black calc(100% - 28px), transparent);
 }
 
 /* One orchestrated moment: thermometer fill + verdict stamp. Everything else is instant. */

@@ -11,7 +11,7 @@ export function MultiYearStrip({ multiYear }: { multiYear: TeamCapSheet["multiYe
         // seed only captured 2026-27 for this team, so say so instead of "$0M".
         const unseeded = i > 0 && y.countedPlayers === 0;
         return (
-          <div key={y.year} className="rounded border border-graphite-line bg-graphite-panel px-4 py-3">
+          <div key={y.year} className="rounded-sm border border-graphite-line bg-graphite-panel px-4 py-3">
             <div className="eyebrow">{y.year}</div>
             <div className={`mt-1 font-display text-3xl font-semibold tnum ${unseeded ? "text-dim" : "text-bone"}`}>
               {unseeded ? "Not seeded" : usdM(y.committed)}
@@ -19,7 +19,7 @@ export function MultiYearStrip({ multiYear }: { multiYear: TeamCapSheet["multiYe
             {/* Committed money as a share of this year's cap: a quick read on future flexibility */}
             <div aria-hidden className="relative mt-2 h-1.5 rounded-full bg-graphite-line">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-royal to-royal-soft"
+                className="h-full rounded-full bg-linear-to-r from-royal to-royal-soft"
                 style={{ width: `${(y.committed / peak) * 100}%` }}
               />
               {i === 0 && (

@@ -180,7 +180,7 @@ export function TradeClient() {
       ) : (
         <>
           {validateError ? (
-            <p role="alert" className="rounded border border-illegal/60 bg-illegal/10 px-4 py-3 font-mono text-[12px] text-bone">
+            <p role="alert" className="rounded-sm border border-illegal/60 bg-illegal/10 px-4 py-3 font-mono text-[12px] text-bone">
               The validator rejected this proposal: {validateError}
             </p>
           ) : (

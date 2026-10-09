@@ -8,17 +8,17 @@ import "./globals.css";
 const display = Barlow_Condensed({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-barlow",
 });
 
 const body = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-inter",
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains",
 });
 
 const description =

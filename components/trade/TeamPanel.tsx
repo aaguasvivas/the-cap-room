@@ -23,7 +23,7 @@ function PlayerRow({
         type="button"
         onClick={onToggle}
         aria-pressed={selected}
-        className={`flex w-full items-center gap-2 rounded px-2.5 py-1.5 text-left transition-colors ${
+        className={`flex w-full items-center gap-2 rounded-sm px-2.5 py-1.5 text-left transition-colors ${
           selected ? "bg-royal text-bone" : "text-bone/90 hover:bg-graphite-panel"
         }`}
       >
@@ -100,7 +100,7 @@ export function TeamPanel({
       }
     >
       <div className="space-y-3">
-        <div className="flex items-baseline justify-between rounded bg-graphite-panel px-3 py-2">
+        <div className="flex items-baseline justify-between rounded-sm bg-graphite-panel px-3 py-2">
           <span className="eyebrow">
             outgoing salary{outgoing.length > 0 && <span className="text-dim"> · {outgoing.length} player{outgoing.length > 1 ? "s" : ""}</span>}
           </span>
@@ -152,7 +152,7 @@ export function TeamPanel({
                   return (
                     <span
                       key={pk.year}
-                      className="rounded-sm border border-graphite-line px-2 py-1 font-mono text-[11px] text-dim line-through"
+                      className="rounded-xs border border-graphite-line px-2 py-1 font-mono text-[11px] text-dim line-through"
                       title={`Already owed to ${pk.counterparty ?? "another team"}`}
                     >
                       {pk.year}
@@ -163,7 +163,7 @@ export function TeamPanel({
                   return (
                     <span
                       key={pk.year}
-                      className="rounded-sm border border-dashed border-graphite-line px-2 py-1 font-mono text-[11px] text-dim"
+                      className="rounded-xs border border-dashed border-graphite-line px-2 py-1 font-mono text-[11px] text-dim"
                       title={pk.note ?? `Swap rights held by ${pk.counterparty}`}
                     >
                       {pk.year} ⇄ {pk.counterparty}
@@ -177,7 +177,7 @@ export function TeamPanel({
                     aria-pressed={inDeal}
                     onClick={() => onTogglePick(pk.year)}
                     title={pk.protections}
-                    className={`rounded-sm border px-2 py-1 font-mono text-[11px] transition-colors ${
+                    className={`rounded-xs border px-2 py-1 font-mono text-[11px] transition-colors ${
                       inDeal
                         ? "border-royal-bright bg-royal text-bone"
                         : "border-graphite-line text-silver hover:border-royal-soft hover:text-bone"

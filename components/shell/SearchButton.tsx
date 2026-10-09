@@ -21,7 +21,7 @@ export function SearchButton() {
     >
       <SearchIcon />
       <span className="hidden font-body text-[13px] sm:inline">Search players</span>
-      <kbd className="hidden rounded-sm border border-graphite-line bg-graphite px-1.5 py-px font-mono text-[10px] text-silver md:inline">
+      <kbd className="hidden rounded-xs border border-graphite-line bg-graphite px-1.5 py-px font-mono text-[10px] text-silver md:inline">
         {apple ? "⌘K" : "Ctrl K"}
       </kbd>
     </button>

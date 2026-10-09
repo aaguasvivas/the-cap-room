@@ -49,7 +49,7 @@ export function NavRail() {
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
-            className={`flex items-center justify-center gap-2 whitespace-nowrap rounded px-2 py-2 text-[13px] transition-colors md:justify-start md:gap-2.5 md:px-3 md:text-sm ${
+            className={`flex items-center justify-center gap-2 whitespace-nowrap rounded-sm px-2 py-2 text-[13px] transition-colors md:justify-start md:gap-2.5 md:px-3 md:text-sm ${
               active ? "bg-royal text-bone" : "text-silver hover:bg-graphite-panel hover:text-bone"
             }`}
           >

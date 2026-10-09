@@ -11,7 +11,7 @@ export function AppShell({ meta, children }: { meta: Meta; children: React.React
     <div className="flex min-h-dvh flex-col">
       <a
         href="#main"
-        className="sr-only z-50 rounded bg-royal px-3 py-2 text-sm text-bone focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-3 focus:py-2"
+        className="sr-only z-50 rounded-sm bg-royal px-3 py-2 text-sm text-bone focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-3 focus:py-2"
       >
         Skip to content
       </a>
@@ -25,7 +25,7 @@ export function AppShell({ meta, children }: { meta: Meta; children: React.React
             </span>
           </Link>
           <span
-            className="hidden rounded-sm border border-royal-bright/60 bg-royal-faint px-1.5 py-0.5 font-mono text-[11px] font-medium text-royal-ink min-[420px]:inline"
+            className="hidden rounded-xs border border-royal-bright/60 bg-royal-faint px-1.5 py-0.5 font-mono text-[11px] font-medium text-royal-ink min-[420px]:inline"
             title="League year"
           >
             {meta.leagueYear}

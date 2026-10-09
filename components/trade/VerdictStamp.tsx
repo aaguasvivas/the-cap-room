@@ -14,7 +14,7 @@ export function VerdictStamp({ verdict, validating }: { verdict: Verdict | null;
         <div
           key={`${verdict.legal}-${fails}-${warnings}`}
           style={{ animation: "stamp-in 420ms cubic-bezier(.2,.8,.3,1.2) both" }}
-          className={`relative max-w-full select-none rounded border-4 border-double px-5 py-3 text-center transition-opacity sm:px-7 ${
+          className={`relative max-w-full select-none rounded-sm border-4 border-double px-5 py-3 text-center transition-opacity sm:px-7 ${
             verdict.legal
               ? "border-legal text-legal shadow-[0_0_40px_-12px_rgba(63,166,106,0.55)]"
               : "border-illegal text-illegal shadow-[0_0_40px_-12px_rgba(239,91,91,0.55)]"

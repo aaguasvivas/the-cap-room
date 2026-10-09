@@ -59,7 +59,7 @@ export function Scenarios({ align = "end" }: { align?: "end" | "center" }) {
             <li key={s.name}>
               <button
                 type="button"
-                className="block w-full rounded px-3 py-2 text-left hover:bg-graphite-panel focus-visible:bg-graphite-panel"
+                className="block w-full rounded-sm px-3 py-2 text-left hover:bg-graphite-panel focus-visible:bg-graphite-panel"
                 onClick={() => {
                   setOpen(false);
                   trigger.current?.focus();

@@ -60,7 +60,7 @@ const STATUS_TONE: Record<ApronStatus, string> = {
 export function StatusChip({ status, label }: { status: ApronStatus; label: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-sm border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide ${STATUS_TONE[status]}`}
+      className={`inline-flex items-center gap-1.5 rounded-xs border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide ${STATUS_TONE[status]}`}
     >
       <span aria-hidden className="text-[9px]">◆</span>
       {label}
@@ -70,7 +70,7 @@ export function StatusChip({ status, label }: { status: ApronStatus; label: stri
 
 export function WarnChip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-sm border border-warn/70 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-warn">
+    <span className="inline-flex items-center gap-1 rounded-xs border border-warn/70 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-warn">
       <span aria-hidden>▲</span> {children}
     </span>
   );
@@ -81,7 +81,7 @@ export function Flag({ tone = "neutral", title, children }: { tone?: "neutral" |
   return (
     <span
       title={title}
-      className={`ml-1.5 inline-block rounded-sm border px-1 align-middle font-mono text-[9px] uppercase leading-[1.5] ${
+      className={`ml-1.5 inline-block rounded-xs border px-1 align-middle font-mono text-[9px] uppercase leading-normal ${
         tone === "warn" ? "border-warn/60 text-warn" : "border-silver/40 text-silver"
       }`}
     >

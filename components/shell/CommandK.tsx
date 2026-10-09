@@ -163,7 +163,7 @@ function Palette({ onClose }: { onClose: () => void }) {
             aria-autocomplete="list"
             aria-label="Search all seeded players"
             placeholder="Jump to any player…"
-            className="w-full bg-transparent py-3.5 text-[15px] text-bone placeholder:text-silver focus:outline-none"
+            className="w-full bg-transparent py-3.5 text-[15px] text-bone placeholder:text-silver focus:outline-hidden"
           />
         </div>
         {results.length > 0 && (

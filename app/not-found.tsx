@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center py-16 text-center md:py-24">
       <div
-        className="select-none rounded border-4 border-double border-illegal px-6 py-3 text-illegal"
+        className="select-none rounded-sm border-4 border-double border-illegal px-6 py-3 text-illegal"
         style={{ transform: "rotate(-2.5deg)" }}
       >
         <div className="font-display text-5xl font-bold uppercase tracking-wideish">404</div>
