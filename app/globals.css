@@ -72,10 +72,13 @@
     color: var(--color-bone);
   }
 
-  /* Thin, quiet scrollbars for the war-room look */
   * {
+    /* Thin, quiet scrollbars for the war-room look */
     scrollbar-width: thin;
     scrollbar-color: var(--color-graphite-line) transparent;
+    /* Ring colour at rest: Tailwind 4's transition-colors animates outline-color,
+       so without this the focus ring fades in from the text colour */
+    outline-color: var(--color-royal-soft);
   }
 }
 
