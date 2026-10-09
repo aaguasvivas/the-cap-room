@@ -3,8 +3,8 @@ import { statusLabel } from "@/engine/capsheet";
 import { loadCapSheet, loadPicks, loadRoster } from "@/lib/data/load";
 
 /** GET /api/teams/:code/capsheet: full engine-computed cap sheet for a team. */
-export async function GET(_req: Request, { params }: { params: { code: string } }) {
-  const code = params.code.toUpperCase();
+export async function GET(_req: Request, { params }: { params: Promise<{ code: string }> }) {
+  const code = (await params).code.toUpperCase();
   const sheet = loadCapSheet(code);
   const roster = loadRoster(code);
   if (!sheet || !roster) {

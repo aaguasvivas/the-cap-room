@@ -3,34 +3,42 @@
 import { useEffect, useState } from "react";
 import type { CapsheetResponse, PlayersResponse, TeamsResponse } from "./apiTypes";
 
-/** Minimal fetch-into-state hook: the UI deliberately consumes its own REST API. */
+interface Settled<T> {
+  url: string;
+  data: T | null;
+  error: string | null;
+}
+
+/**
+ * Minimal fetch-into-state hook: the UI deliberately consumes its own REST API.
+ * The last settled response is remembered with the URL it answered, so loading
+ * is derived (no setState in the effect body) and the previous data stays on
+ * screen while a new URL is in flight, which keeps team switches from flashing.
+ */
 export function useApi<T>(url: string | null): { data: T | null; error: string | null; loading: boolean } {
-  const [state, setState] = useState<{ data: T | null; error: string | null; loading: boolean }>({
-    data: null,
-    error: null,
-    loading: !!url,
-  });
+  const [settled, setSettled] = useState<Settled<T> | null>(null);
 
   useEffect(() => {
-    if (!url) {
-      setState({ data: null, error: null, loading: false });
-      return;
-    }
+    if (!url) return;
     let cancelled = false;
-    setState((s) => ({ ...s, loading: true, error: null }));
     fetch(url)
       .then(async (res) => {
         if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? `HTTP ${res.status}`);
         return res.json() as Promise<T>;
       })
-      .then((data) => !cancelled && setState({ data, error: null, loading: false }))
-      .catch((e: Error) => !cancelled && setState({ data: null, error: e.message, loading: false }));
+      .then((data) => !cancelled && setSettled({ url, data, error: null }))
+      .catch((e: Error) => !cancelled && setSettled({ url, data: null, error: e.message }));
     return () => {
       cancelled = true;
     };
   }, [url]);
 
-  return state;
+  const fresh = !!url && settled?.url === url;
+  return {
+    data: url ? (settled?.data ?? null) : null,
+    error: fresh ? (settled?.error ?? null) : null,
+    loading: !!url && !fresh,
+  };
 }
 
 export const useTeams = () => useApi<TeamsResponse>("/api/teams");

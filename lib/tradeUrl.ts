@@ -82,6 +82,16 @@ export function toProposal(s: TradeUrlState): TradeProposal {
   };
 }
 
+/**
+ * "Build a trade around" a player. SAC is the home desk: a Kings player is
+ * offered to LAL, anyone else is brought in to SAC from their own team.
+ */
+export function tradeUrlFor(p: { team: string; playerId: string }): string {
+  return p.team === "SAC"
+    ? serializeTradeUrl({ ...EMPTY_STATE, give: [p.playerId] })
+    : serializeTradeUrl({ ...EMPTY_STATE, b: p.team, get: [p.playerId] });
+}
+
 /** Both sides send something → worth validating. */
 export function isEvaluable(s: TradeUrlState): boolean {
   const sends = (players: string[], cash: number, picks: number[]) =>

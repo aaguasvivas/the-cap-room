@@ -19,7 +19,6 @@ import type {
   Player,
   RuleCheck,
   TeamCapSheet,
-  TeamCode,
   TradeContext,
   TradeProposal,
   TradeSide,

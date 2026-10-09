@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import type { Verdict } from "@/engine/types";
 import { salaryFor, countsTowardCap } from "@/engine/capsheet";
-import type { Player } from "@/engine/types";
+import type { Player, Verdict } from "@/engine/types";
 import { useCapsheet, usePlayers, useTeams } from "@/lib/hooks";
 import {
   isEvaluable,
@@ -43,40 +42,42 @@ export function TradeClient() {
     [router, state],
   );
 
-  // Debounced validation against the app's own REST API.
-  const [verdict, setVerdict] = useState<Verdict | null>(null);
-  const [validating, setValidating] = useState(false);
+  // Debounced validation against the app's own REST API. Each response is
+  // stored with the proposal it answers, so "validating" is derived: the last
+  // verdict stays on screen (dimmed) until the current proposal's arrives.
   const evaluable = isEvaluable(state);
   const proposalJson = JSON.stringify(toProposal(state));
-  const abortRef = useRef<AbortController | null>(null);
+  const [answer, setAnswer] = useState<{ key: string; verdict: Verdict | null; error: string | null } | null>(null);
 
   useEffect(() => {
-    if (!evaluable) {
-      setVerdict(null);
-      return;
-    }
-    setValidating(true);
+    if (!evaluable) return;
+    const ctrl = new AbortController();
     const t = setTimeout(() => {
-      abortRef.current?.abort();
-      const ctrl = new AbortController();
-      abortRef.current = ctrl;
       fetch("/api/trade/validate", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: proposalJson,
         signal: ctrl.signal,
       })
-        .then((r) => r.json())
-        .then((v: Verdict) => {
-          setVerdict(v);
-          setValidating(false);
+        .then(async (r) => {
+          const body = await r.json().catch(() => null);
+          if (!r.ok) throw new Error(body?.issues?.join("; ") ?? body?.error ?? `HTTP ${r.status}`);
+          return body as Verdict;
         })
-        .catch((e) => {
-          if (e.name !== "AbortError") setValidating(false);
+        .then((v) => setAnswer({ key: proposalJson, verdict: v, error: null }))
+        .catch((e: Error) => {
+          if (e.name !== "AbortError") setAnswer({ key: proposalJson, verdict: null, error: e.message });
         });
     }, 220);
-    return () => clearTimeout(t);
+    return () => {
+      clearTimeout(t);
+      ctrl.abort();
+    };
   }, [proposalJson, evaluable]);
+
+  const validating = evaluable && answer?.key !== proposalJson;
+  const verdict = evaluable ? (answer?.verdict ?? null) : null;
+  const validateError = evaluable && answer?.key === proposalJson ? answer.error : null;
 
   // Post-trade totals for the mini thermometers (same counting rules as the engine).
   const post = useMemo(() => {
@@ -170,7 +171,13 @@ export function TradeClient() {
         </Card>
       ) : (
         <>
-          <VerdictStamp verdict={verdict} validating={validating} />
+          {validateError ? (
+            <p role="alert" className="rounded border border-illegal/60 bg-illegal/10 px-4 py-3 font-mono text-[12px] text-bone">
+              The validator rejected this proposal: {validateError}
+            </p>
+          ) : (
+            <VerdictStamp verdict={verdict} validating={validating} />
+          )}
           {verdict && (
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
               <div className="lg:col-span-2">

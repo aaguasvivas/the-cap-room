@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { statusLabel } from "@/engine/capsheet";
 import { loadAllCapSheets, loadMeta, loadRoster } from "@/lib/data/load";
 
+/** The seeded league is fixed at build time, so this response is too. */
+export const dynamic = "force-static";
+
 /** GET /api/teams: every seeded team with its cap position. */
 export async function GET() {
   const sheets = loadAllCapSheets();

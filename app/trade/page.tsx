@@ -10,13 +10,14 @@ const CODE = /^[A-Z]{2,4}$/;
  * flight during HTML parse, not after hydration. The UI still consumes the
  * REST API; this just starts the requests earlier.
  */
-export default function TradePage({
+export default async function TradePage({
   searchParams,
 }: {
-  searchParams: { a?: string; b?: string };
+  searchParams: Promise<{ a?: string; b?: string }>;
 }) {
-  const a = (searchParams.a ?? "SAC").toUpperCase();
-  const b = (searchParams.b ?? "LAL").toUpperCase();
+  const sp = await searchParams;
+  const a = (sp.a ?? "SAC").toUpperCase();
+  const b = (sp.b ?? "LAL").toUpperCase();
   const teams = [a, b].filter((t) => CODE.test(t));
   return (
     <>
