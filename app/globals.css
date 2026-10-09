@@ -16,7 +16,7 @@ body {
   font-feature-settings: "tnum" 1;
 }
 
-/* Visible focus everywhere — keyboard navigation is a ship requirement */
+/* Visible focus everywhere: keyboard navigation is a ship requirement */
 :focus-visible {
   outline: 2px solid theme("colors.royal.soft");
   outline-offset: 2px;
@@ -34,9 +34,40 @@ body {
   scrollbar-color: theme("colors.graphite.line") transparent;
 }
 
+@layer components {
+  /* One button system. Mono caps reads as "console control", not marketing. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded border px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition-colors;
+  }
+  .btn-primary {
+    @apply border-royal-bright bg-royal text-bone hover:border-royal-soft hover:bg-royal-bright;
+  }
+  .btn-accent {
+    @apply border-royal-bright/70 bg-royal-faint text-royal-ink hover:bg-royal hover:text-bone;
+  }
+  .btn-ghost {
+    @apply border-graphite-line bg-graphite-panel text-silver hover:border-royal-soft hover:text-bone;
+  }
+  .btn-lg {
+    @apply px-4 py-2.5 text-[12px];
+  }
+  /* Section label: the small mono caps line above a heading or a figure */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-wideish text-silver;
+  }
+  /* A link inside prose */
+  .link {
+    @apply text-bone underline decoration-royal-soft/60 underline-offset-4 transition-colors hover:decoration-royal-ink;
+  }
+}
+
 @layer utilities {
   .text-money {
     @apply font-display tnum tracking-tightest;
+  }
+  /* Fades the last rows of a scroll box so it reads as scrollable */
+  .fade-bottom {
+    mask-image: linear-gradient(to bottom, black calc(100% - 28px), transparent);
   }
 }
 
@@ -47,6 +78,15 @@ body {
   }
   to {
     transform: scaleY(1);
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -70,6 +110,7 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }

@@ -12,7 +12,7 @@ import {
   toProposal,
   type TradeUrlState,
 } from "@/lib/tradeUrl";
-import { Card } from "@/components/ui/bits";
+import { Card, PageHeader } from "@/components/ui/bits";
 import { Thermometer } from "@/components/viz/Thermometer";
 import { usd, usdM } from "@/engine/format";
 import { RuleLedger } from "./RuleLedger";
@@ -99,26 +99,21 @@ export function TradeClient() {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-3">
-        <h1 className="font-display text-3xl font-bold uppercase tracking-wide text-bone">
-          Trade Machine
-        </h1>
-        <span className="font-mono text-[11px] text-silver">two-team trades · 2026-27 CBA</span>
-        <div className="ml-auto flex min-w-0 flex-wrap items-center justify-end gap-2">
-          <Scenarios />
-          <button
-            className="rounded border border-graphite-line bg-graphite-panel px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide text-silver hover:border-royal-soft hover:text-bone"
-            onClick={() => {
-              navigator.clipboard?.writeText(window.location.origin + shareUrl).then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 1600);
-              });
-            }}
-          >
-            {copied ? "✓ copied" : "copy trade link"}
-          </button>
-        </div>
-      </div>
+      <PageHeader title="Trade Machine" note="two-team trades · 2026-27 CBA">
+        <Scenarios />
+        <button
+          type="button"
+          className="btn btn-ghost"
+          onClick={() => {
+            navigator.clipboard?.writeText(window.location.origin + shareUrl).then(() => {
+              setCopied(true);
+              setTimeout(() => setCopied(false), 1600);
+            });
+          }}
+        >
+          <span aria-live="polite">{copied ? "✓ Link copied" : "Copy trade link"}</span>
+        </button>
+      </PageHeader>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <TeamPanel
@@ -128,6 +123,7 @@ export function TradeClient() {
           team={state.a}
           exclude={state.b}
           roster={rosterA.data?.players ?? []}
+          rosterError={rosterA.error}
           selected={state.give}
           cash={state.cashA}
           picks={sheetA.data?.picks ?? null}
@@ -148,6 +144,7 @@ export function TradeClient() {
           team={state.b}
           exclude={state.a}
           roster={rosterB.data?.players ?? []}
+          rosterError={rosterB.error}
           selected={state.get}
           cash={state.cashB}
           picks={sheetB.data?.picks ?? null}
@@ -164,11 +161,16 @@ export function TradeClient() {
       </div>
 
       {!evaluable ? (
-        <Card>
-          <p className="py-6 text-center font-mono text-sm text-silver">
-            Add at least one asset to each side. The full rule ledger renders the moment a deal exists.
+        <div className="rounded-md border border-dashed border-graphite-line px-4 py-8 text-center">
+          <p className="font-display text-xl font-semibold uppercase tracking-wide text-bone">No deal on the table yet</p>
+          <p className="mx-auto mt-2 max-w-md text-[13px] leading-relaxed text-silver">
+            Add at least one player, pick or cash to each side. The verdict and the full rule ledger appear the
+            moment both sides send something.
           </p>
-        </Card>
+          <div className="mt-4 flex justify-center">
+            <Scenarios />
+          </div>
+        </div>
       ) : (
         <>
           {validateError ? (
@@ -201,7 +203,7 @@ export function TradeClient() {
                             </span>
                           </div>
                           <Thermometer total={d.post} preTotal={d.pre} compact animate={false} />
-                          <p className="mt-1 font-mono text-[10px] text-silver/80">
+                          <p className="mt-1 font-mono text-[10px] tnum text-dim">
                             out {usd(d.out)} · in {usd(d.in)}
                           </p>
                         </div>

@@ -83,7 +83,7 @@ export function RadarChart({ profiles }: { profiles: PlayerStatProfile[] }) {
           })}
         </g>
       ))}
-      <text x={cx} y={size - 2} textAnchor="middle" fontSize={8} className="fill-silver/60 font-mono">
+      <text x={cx} y={size - 2} textAnchor="middle" fontSize={8} className="fill-dim font-mono">
         rings = 25 / 50 / 75 / 100th percentile
       </text>
     </svg>

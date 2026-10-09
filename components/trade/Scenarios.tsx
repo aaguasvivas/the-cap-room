@@ -1,64 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SCENARIOS } from "@/lib/scenarios";
 
-/**
- * Three pre-built proposals so a reviewer with 60 seconds sees the depth:
- * one legal (with hard-cap flag), one apron-illegal, one Stepien-illegal.
- * Player ids reference the seeded rosters in /data.
- */
-const SCENARIOS = [
-  {
-    name: "Monk ⇄ Vanderbilt + Hardy",
-    note: "legal: LAL takes back more than 100%, which flags a first-apron hard cap",
-    url: "/trade?a=SAC&b=LAL&give=1628370&get=1629020.lal-hardy",
-  },
-  {
-    name: "Monk ⇄ McBride",
-    note: "illegal: the deal would carry NYK over the second apron, where a team cannot take back more than it sends",
-    url: "/trade?a=SAC&b=NYK&give=1628370&get=1630540",
-  },
-  {
-    name: "LaVine + 2027 + 2028 firsts ⇄ Dončić",
-    note: "illegal: the pick package strips consecutive future firsts (Stepien rule)",
-    url: "/trade?a=SAC&b=LAL&give=203897&get=1629029&picksA=2027.2028",
-  },
-] as const;
-
+/** Disclosure menu of the pre-built proposals (see lib/scenarios.ts). */
 export function Scenarios() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const root = useRef<HTMLDivElement>(null);
+  const listId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onDown = (e: PointerEvent) => !root.current?.contains(e.target as Node) && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("pointerdown", onDown);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("pointerdown", onDown);
+    };
+  }, [open]);
+
   return (
-    <div className="relative">
+    <div ref={root} className="relative">
       <button
+        type="button"
         aria-expanded={open}
-        aria-haspopup="menu"
+        aria-controls={listId}
         onClick={() => setOpen((o) => !o)}
-        className="rounded border border-royal-bright/70 bg-royal-faint px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-wide text-royal-soft hover:bg-royal hover:text-bone"
+        className="btn btn-accent"
       >
-        load scenario ▾
+        Load scenario <span aria-hidden>▾</span>
       </button>
       {open && (
-        <>
-          <div className="fixed inset-0 z-10" aria-hidden onClick={() => setOpen(false)} />
-          <div role="menu" className="absolute right-0 z-20 mt-1.5 w-80 rounded-md border border-graphite-line bg-graphite-raised p-1.5 shadow-xl">
-            {SCENARIOS.map((s) => (
+        <ul
+          id={listId}
+          className="absolute right-0 z-20 mt-1.5 w-[min(22rem,calc(100vw-2rem))] rounded-md border border-graphite-line bg-graphite-raised p-1.5 shadow-xl shadow-black/50"
+        >
+          {SCENARIOS.map((s) => (
+            <li key={s.name}>
               <button
-                key={s.name}
-                role="menuitem"
-                className="block w-full rounded px-3 py-2 text-left hover:bg-graphite-panel"
+                type="button"
+                className="block w-full rounded px-3 py-2 text-left hover:bg-graphite-panel focus-visible:bg-graphite-panel"
                 onClick={() => {
                   setOpen(false);
                   router.replace(s.url, { scroll: false });
                 }}
               >
-                <span className="block text-[13px] font-semibold text-bone">{s.name}</span>
-                <span className="mt-0.5 block text-[11px] leading-snug text-silver">{s.note}</span>
+                <span className="flex items-center gap-2">
+                  <span
+                    className={`font-mono text-[9px] font-bold uppercase tracking-wider ${
+                      s.verdict === "legal" ? "text-legal" : "text-illegal"
+                    }`}
+                  >
+                    {s.verdict}
+                  </span>
+                  <span className="text-[13px] font-semibold text-bone">{s.name}</span>
+                </span>
+                <span className="mt-0.5 block text-[11px] leading-snug text-silver">{s.why}</span>
               </button>
-            ))}
-          </div>
-        </>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

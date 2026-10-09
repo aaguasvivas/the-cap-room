@@ -3,6 +3,11 @@ import type { Config } from "tailwindcss";
 /**
  * Palette per design spec: broadcast scoreboard meets cap analyst's ledger.
  * Deep royal purple evokes Sacramento without reproducing marks.
+ *
+ * Text tiers, all WCAG AA (≥4.5:1) on every surface they sit on:
+ * bone (primary) → silver (secondary) → dim (tertiary). Never fade text with
+ * opacity; reach for the next tier instead. `royal.ink` is purple *as text*;
+ * `royal.soft` is for strokes and focus rings only.
  */
 const config: Config = {
   content: [
@@ -17,6 +22,7 @@ const config: Config = {
           DEFAULT: "#4B2A75",
           bright: "#6B44A3",
           soft: "#8E6BC2",
+          ink: "#B39BDF",
           faint: "#2E1D47",
         },
         graphite: {
@@ -27,8 +33,9 @@ const config: Config = {
         },
         bone: "#EDEAE4",
         silver: "#A9A6B0",
+        dim: "#94919B",
         legal: "#3FA66A",
-        illegal: "#D64545",
+        illegal: "#EF5B5B",
         warn: "#D69A3C",
       },
       fontFamily: {

@@ -5,6 +5,7 @@ import { usd } from "@/engine/format";
 import type { LeagueYear } from "@/engine/types";
 import type { ApiPlayer } from "@/lib/apiTypes";
 import type { PlayerStatProfile } from "@/lib/percentiles";
+import { tradeUrlFor } from "@/lib/tradeUrl";
 import { PercentileBars } from "./PercentileBars";
 import { COMPARE_COLORS } from "./RadarChart";
 
@@ -24,16 +25,19 @@ export function PlayerCard({
   profile,
   compareIndex,
   onCompareToggle,
-  compareDisabled,
+  compareFull,
 }: {
   player: ApiPlayer;
   profile: PlayerStatProfile | null;
   compareIndex: number; // -1 when not selected
   onCompareToggle: () => void;
-  compareDisabled: boolean;
+  /** Four players are already on the radar. */
+  compareFull: boolean;
 }) {
   const lastYear = [...YEARS].reverse().find((y) => player.salary[y] !== undefined);
   const selected = compareIndex >= 0;
+  const compareBlocked = !selected && (compareFull || !profile);
+  const blockedReason = !profile ? "No 2025-26 stats to compare" : "The radar holds four players";
 
   return (
     <article
@@ -44,7 +48,7 @@ export function PlayerCard({
       <div className="flex items-center gap-3">
         <span
           aria-hidden
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-base font-bold text-bone"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-base font-bold text-bone ring-1 ring-inset ring-white/10"
           style={{ background: selected ? COMPARE_COLORS[compareIndex % 4] : "#4B2A75" }}
         >
           {initials(player.name)}
@@ -59,57 +63,59 @@ export function PlayerCard({
 
       <p className="mt-2.5 font-mono text-[11.5px] tnum text-bone">
         {usd(player.salary["2026-27"])}
-        <span className="text-silver"> in 2026-27{lastYear && lastYear !== "2026-27" ? ` · under contract through ${lastYear}` : " · final year"}</span>
+        <span className="text-silver">
+          {" "}
+          in 2026-27{lastYear && lastYear !== "2026-27" ? ` · signed through ${lastYear}` : " · final year"}
+        </span>
       </p>
       {(player.tradeRestrictions?.length ?? 0) > 0 && (
         <p className="mt-1 font-mono text-[10px] text-warn">
-          {player.tradeRestrictions!.includes("recently-signed") &&
-            `⏳ trade-restricted until ${player.returnEligibleDate ?? "unknown"}`}
-          {player.tradeRestrictions!.includes("no-trade") && " · no-trade clause"}
+          {[
+            player.tradeRestrictions!.includes("recently-signed") &&
+              `⏳ trade-restricted until ${player.returnEligibleDate ?? "unknown"}`,
+            player.tradeRestrictions!.includes("no-trade") && "no-trade clause",
+          ]
+            .filter(Boolean)
+            .join(" · ")}
         </p>
       )}
 
       <div className="mt-3 border-t border-graphite-line pt-3">
         {profile ? (
           <>
-            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wide text-silver/80">
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wide text-dim">
               2025-26 · {profile.gp} gp · {profile.min.toLocaleString()} min
-              {!profile.qualified && " · under 500 min (percentiles thin)"}
+              {!profile.qualified && " · under 500 min, percentiles thin"}
             </p>
             <PercentileBars profile={profile} />
           </>
         ) : (
-          <p className="py-2 font-mono text-[11px] leading-relaxed text-silver/70">
-            No 2025-26 NBA minutes in the snapshot (rookie or did not play). Shown as
-            unknown rather than invented.
+          <p className="py-2 font-mono text-[11px] leading-relaxed text-dim">
+            No 2025-26 NBA minutes in the snapshot (rookie or did not play). Shown as unknown rather than
+            invented.
           </p>
         )}
       </div>
 
-      <div className="mt-auto flex items-center gap-2 pt-3">
-        <Link
-          href={
-            player.team === "SAC"
-              ? `/trade?a=SAC&b=LAL&give=${player.playerId}`
-              : `/trade?a=SAC&b=${player.team}&get=${player.playerId}`
-          }
-          className="rounded border border-royal-bright/60 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wide text-royal-soft hover:bg-royal hover:text-bone"
-        >
-          build trade around
+      <div className="mt-auto flex items-center gap-2 pt-4">
+        <Link href={tradeUrlFor(player)} className="btn btn-accent text-[10px]">
+          Build trade around
         </Link>
         <button
+          type="button"
           onClick={onCompareToggle}
-          disabled={!selected && compareDisabled}
+          disabled={compareBlocked}
           aria-pressed={selected}
-          className={`rounded border px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wide transition-colors ${
+          title={compareBlocked ? blockedReason : undefined}
+          className={`btn text-[10px] ${
             selected
               ? "border-royal-bright bg-royal text-bone"
-              : compareDisabled
-                ? "cursor-not-allowed border-graphite-line text-silver/40"
-                : "border-graphite-line text-silver hover:border-royal-soft hover:text-bone"
+              : compareBlocked
+                ? "cursor-not-allowed border-dashed border-graphite-line text-dim"
+                : "btn-ghost"
           }`}
         >
-          {selected ? "✓ comparing" : "compare"}
+          {selected ? "✓ Comparing" : "Compare"}
         </button>
       </div>
     </article>

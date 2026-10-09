@@ -28,8 +28,10 @@ export function ComparePanel({
                 {profiles.map((p, i) => (
                   <th key={p.playerId} scope="col" className="px-2 py-1.5 text-right">
                     <button
+                      type="button"
                       onClick={() => onRemove(p.playerId)}
                       title="Remove from comparison"
+                      aria-label={`Remove ${p.name} from comparison`}
                       className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-bone hover:text-illegal"
                     >
                       <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ background: COMPARE_COLORS[i % 4] }} />
@@ -44,7 +46,7 @@ export function ComparePanel({
                 <tr key={m.key} className="border-b border-graphite-line/40">
                   <td className="px-2 py-1.5 font-mono text-[10px] uppercase tracking-wide text-silver">
                     {m.label.replace(" (ball security)", "")}
-                    {!m.higherBetter && <span className="text-silver/60"> ↓</span>}
+                    {!m.higherBetter && <span className="text-dim"> ↓</span>}
                   </td>
                   {profiles.map((p) => {
                     const mv = p.metrics[m.key];
@@ -54,10 +56,10 @@ export function ComparePanel({
                         {has ? (
                           <>
                             {fmtMetric(m.kind, mv.value!)}
-                            <span className="text-silver/60"> · {mv.pctl}</span>
+                            <span className="text-dim"> · {mv.pctl}</span>
                           </>
                         ) : (
-                          <span className="text-silver/40">unknown</span>
+                          <span className="text-dim">unknown</span>
                         )}
                       </td>
                     );
@@ -74,7 +76,7 @@ export function ComparePanel({
               </tr>
             </tbody>
           </table>
-          <p className="mt-2 font-mono text-[10px] text-silver/70">
+          <p className="mt-2 font-mono text-[10px] leading-relaxed text-dim">
             value · league percentile among qualified players. ↓ = lower raw value is better
             (percentile already flipped so higher is always better).
           </p>

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { usd } from "@/engine/format";
 import type { LeagueYear, Player } from "@/engine/types";
+import { Flag } from "@/components/ui/bits";
 
 type SortKey = "name" | "pos" | "age" | "2026-27" | "2027-28" | "2028-29";
 const YEARS: LeagueYear[] = ["2026-27", "2027-28", "2028-29"];
@@ -19,11 +20,11 @@ function SalaryCell({ p, year }: { p: Player; year: LeagueYear }) {
   return (
     <td className="whitespace-nowrap px-3 py-1.5 text-right font-mono text-[13px] tnum">
       {v === undefined ? (
-        <span className="text-silver/40">·</span>
+        <span className="text-dim">·</span>
       ) : (
         <span className={p.guaranteed || year !== "2026-27" ? "text-bone" : "italic text-silver"}>
           {usd(v)}
-          {mark && <sup className="ml-0.5 text-[9px] text-royal-soft">{mark}</sup>}
+          {mark && <sup className="ml-0.5 text-[9px] text-royal-ink">{mark}</sup>}
         </span>
       )}
     </td>
@@ -43,21 +44,12 @@ function Rows({ players, label }: { players: Player[]; label: string }) {
         <tr key={p.playerId} className="border-t border-graphite-line/60 hover:bg-graphite-panel/50">
           <td className="px-3 py-1.5 text-[13px] font-medium text-bone">
             {p.name}
-            {!p.guaranteed && p.contractType !== "two-way" && (
-              <span className="ml-1.5 align-middle rounded-sm border border-silver/40 px-1 font-mono text-[9px] uppercase text-silver" title="2026-27 not fully guaranteed">
-                NG
-              </span>
-            )}
-            {p.tradeRestrictions?.includes("no-trade") && (
-              <span className="ml-1.5 align-middle rounded-sm border border-warn/60 px-1 font-mono text-[9px] uppercase text-warn">NTC</span>
-            )}
+            {!p.guaranteed && p.contractType !== "two-way" && <Flag title="2026-27 not fully guaranteed">NG</Flag>}
+            {p.tradeRestrictions?.includes("no-trade") && <Flag tone="warn" title="No-trade clause">NTC</Flag>}
             {p.tradeRestrictions?.includes("recently-signed") && (
-              <span
-                className="ml-1.5 align-middle rounded-sm border border-warn/60 px-1 font-mono text-[9px] uppercase text-warn"
-                title={`Recently signed. Trade-eligible ${p.returnEligibleDate ?? "date unknown"}`}
-              >
+              <Flag tone="warn" title={`Recently signed. Trade-eligible ${p.returnEligibleDate ?? "date unknown"}`}>
                 ⏳{p.returnEligibleDate ? ` ${p.returnEligibleDate}` : ""}
-              </span>
+              </Flag>
             )}
           </td>
           <td className="px-3 py-1.5 text-center font-mono text-[12px] text-silver">{p.pos}</td>
@@ -65,7 +57,7 @@ function Rows({ players, label }: { players: Player[]; label: string }) {
           {YEARS.map((y) => (
             <SalaryCell key={y} p={p} year={y} />
           ))}
-          <td className="px-3 py-1.5 font-mono text-[11px] text-silver/80">{p.contractType}</td>
+          <td className="px-3 py-1.5 font-mono text-[11px] text-dim">{p.contractType}</td>
         </tr>
       ))}
     </>
@@ -130,7 +122,7 @@ export function ContractTable({ players }: { players: Player[] }) {
           <Rows players={twoWay} label={`Two-way (${twoWay.length}), excluded from team salary`} />
         </tbody>
       </table>
-      <p className="mt-2 font-mono text-[10px] text-silver/70">
+      <p className="mt-3 font-mono text-[10px] leading-relaxed text-dim">
         PO player option · TO team option · NG not fully guaranteed · ⏳ trade-restricted until date shown · italics = non-guaranteed
       </p>
     </div>

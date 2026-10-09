@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { CapClient } from "@/components/cap/CapClient";
 
-export const metadata = { title: "Cap Sheet · The Cap Room" };
+export const metadata = { title: "Cap Sheet" };
 
 /** Preload the page's own API calls; see app/trade/page.tsx for the pattern. */
 export default async function CapPage({

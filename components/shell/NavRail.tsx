@@ -7,8 +7,9 @@ const ITEMS = [
   {
     href: "/cap",
     label: "Cap Sheet",
+    short: "Cap Sheet",
     icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden>
+      <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" aria-hidden>
         <path d="M3 13V6M8 13V3M13 13V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
@@ -16,8 +17,9 @@ const ITEMS = [
   {
     href: "/trade",
     label: "Trade Machine",
+    short: "Trade",
     icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden>
+      <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" aria-hidden>
         <path d="M11 2l3 3-3 3M14 5H5M5 8l-3 3 3 3M2 11h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
@@ -25,8 +27,9 @@ const ITEMS = [
   {
     href: "/players",
     label: "Player Eval",
+    short: "Players",
     icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" aria-hidden>
+      <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" aria-hidden>
         <circle cx="8" cy="5" r="2.6" stroke="currentColor" strokeWidth="1.8" />
         <path d="M2.8 13.4c.9-2.6 2.8-3.9 5.2-3.9s4.3 1.3 5.2 3.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
@@ -34,10 +37,11 @@ const ITEMS = [
   },
 ] as const;
 
+/** Module navigation: a vertical rail on desktop, three equal tabs on phones. */
 export function NavRail() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Modules" className="flex md:flex-col gap-1 md:gap-1.5">
+    <nav aria-label="Modules" className="grid grid-cols-3 gap-1 md:flex md:flex-col md:gap-1.5">
       {ITEMS.map((item) => {
         const active = pathname.startsWith(item.href);
         return (
@@ -45,14 +49,13 @@ export function NavRail() {
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
-            className={`flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded px-3 py-2 text-sm transition-colors ${
-              active
-                ? "bg-royal text-bone"
-                : "text-silver hover:bg-graphite-panel hover:text-bone"
+            className={`flex items-center justify-center gap-2 whitespace-nowrap rounded px-2 py-2 text-[13px] transition-colors md:justify-start md:gap-2.5 md:px-3 md:text-sm ${
+              active ? "bg-royal text-bone" : "text-silver hover:bg-graphite-panel hover:text-bone"
             }`}
           >
             {item.icon}
-            <span className="font-medium tracking-wide">{item.label}</span>
+            <span className="font-medium tracking-wide md:hidden">{item.short}</span>
+            <span className="hidden font-medium tracking-wide md:inline">{item.label}</span>
           </Link>
         );
       })}
